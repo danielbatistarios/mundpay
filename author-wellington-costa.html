@@ -423,7 +423,7 @@
       top: 80px;
       display: flex;
       flex-direction: column;
-      gap: var(--space-md);
+      gap: 20px;
     }
 
     .bio-card {
@@ -432,6 +432,8 @@
       border-radius: 14px;
       padding: var(--space-lg);
     }
+
+    .bio-card + .bio-card { margin-top: 0; }
 
     .bio-card h3 {
       font-family: var(--font-meta);
@@ -1022,7 +1024,7 @@
     <div class="author-content">
 
       <!-- BIO SIDEBAR -->
-      <aside aria-label="Sobre Wellington Costa">
+      <aside class="bio-sidebar" aria-label="Sobre Wellington Costa">
 
         <div class="bio-card">
           <h3>Sobre</h3>
