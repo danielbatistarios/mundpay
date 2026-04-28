@@ -2402,20 +2402,22 @@
     revealEls.forEach(el => revealObs.observe(el));
 
     // TOC ACTIVE SECTION
-    const sections = document.querySelectorAll('.article-body h2[id]');
+    const tocSections = Array.from(document.querySelectorAll('.article-body h2[id]'));
     const tocLinks = document.querySelectorAll('.toc-list a');
 
-    const tocObs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          tocLinks.forEach(l => l.classList.remove('active'));
-          const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
-          if (active) active.classList.add('active');
-        }
+    function setActiveToc() {
+      const scrollY = window.scrollY + window.innerHeight * 0.25;
+      let current = tocSections[0];
+      for (const s of tocSections) {
+        if (s.getBoundingClientRect().top + window.scrollY <= scrollY) current = s;
+      }
+      tocLinks.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + current.id);
       });
-    }, { rootMargin: '-30% 0px -60% 0px' });
+    }
 
-    sections.forEach(s => tocObs.observe(s));
+    window.addEventListener('scroll', setActiveToc, { passive: true });
+    setActiveToc();
 
     // COPY LINK
     function copyPageLink(e) {
