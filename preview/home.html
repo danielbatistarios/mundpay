@@ -11,7 +11,7 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
     "@graph": [
       {
         "@type": ["Organization", "FinancialService"],
@@ -24,11 +24,17 @@
         "vatID": "55009285000113",
         "iso6523Code": "0106:55009285000113",
         "naics": "522320",
-        "isicV4": "6612",
+        "isicV4": "6619",
+        "additionalProperty": [
+          { "@type": "PropertyValue", "name": "CNAE Principal", "value": "7490-1/04 — Intermediacao e agenciamento de servicos e negocios em geral" },
+          { "@type": "PropertyValue", "name": "CNAE Secundario", "value": "6619-3/02 — Correspondentes de instituicoes financeiras" },
+          { "@type": "PropertyValue", "name": "CNAE Secundario", "value": "6202-3/00 — Desenvolvimento e licenciamento de programas de computador customizaveis" },
+          { "@type": "PropertyValue", "name": "Natureza Juridica", "value": "206 — Sociedade Empresaria Limitada" }
+        ],
         "description": "Infraestrutura de pagamentos para vendas digitais globais. Checkout internacional, saque D+3, antifraude proativo e Secret Order Bump exclusivo. 190 paises, PJ brasileira fundada em 2024.",
         "slogan": "Venda seu produto digital no mundo todo",
-        "alternateName": ["Mundpay", "Mund Pay", "Gateway Mundpay", "Sell your digital product worldwide"],
-        "additionalType": { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q2639241", "name": "Gateway de Pagamento" },
+        "alternateName": ["Mund Pay", "Gateway Mundpay", "Sell your digital product worldwide"],
+        "additionalType": "https://www.wikidata.org/wiki/Q2639241",
         "logo": {
           "@type": "ImageObject",
           "url": "https://framerusercontent.com/images/912Bk5uKdxMx0IggmgUKAE201Q.svg",
@@ -36,7 +42,7 @@
           "encodingFormat": "image/svg+xml",
           "width": 144, "height": 24,
           "description": "Logo oficial Mundpay",
-          "relatedText": "Mundpay — Gateway de Pagamento Internacional"
+          "caption": "Mundpay — Gateway de Pagamento Internacional"
         },
         "address": {
           "@type": "PostalAddress",
@@ -57,26 +63,41 @@
           "https://www.instagram.com/mundpay/",
           "https://www.tiktok.com/@mundpay",
           "https://www.facebook.com/mundpay/",
-          "https://www.linkedin.com/company/mundpay/"
+          "https://www.linkedin.com/company/mundpay/",
+          "https://www.crunchbase.com/organization/mundpay"
         ],
         "founder": { "@id": "https://mundpay.com/#person-wellington" },
-        "member": [{ "@id": "https://mundpay.com/#person-wellington" }],
+        "employee": [{ "@id": "https://mundpay.com/#person-wellington" }],
         "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
-        "contactPoint": [{
-          "@type": "ContactPoint",
-          "email": "suporte@mundpay.com",
-          "url": "https://mundpay.com/me-ajuda",
-          "contactType": "customer support",
-          "availableLanguage": [
-            { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
-            { "@type": "Language", "name": "English", "alternateName": "en" }
-          ]
-        }],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "email": "suporte@mundpay.com",
+            "url": "https://mundpay.com/me-ajuda",
+            "contactType": "customer support",
+            "availableLanguage": [
+              { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+              { "@type": "Language", "name": "English", "alternateName": "en" }
+            ]
+          },
+          {
+            "@type": "ContactPoint",
+            "telephone": "+55-21-98829-4968",
+            "contactType": "customer support",
+            "availableLanguage": [{ "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" }],
+            "hoursAvailable": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            }
+          }
+        ],
         "knowsAbout": [
-          { "@type": "DefinedTerm", "@id": "https://www.wikidata.org/wiki/Q2639241", "name": "Gateway de Pagamento" },
-          { "@type": "DefinedTerm", "@id": "https://www.wikidata.org/wiki/Q484847", "name": "Comercio Eletronico" },
-          { "@type": "DefinedTerm", "@id": "https://www.wikidata.org/wiki/Q1451528", "name": "Prevencao e Deteccao de Fraude" },
-          { "@type": "DefinedTerm", "@id": "https://www.wikidata.org/wiki/Q16319025", "name": "Tecnologia Financeira" }
+          { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q2639241", "name": "Gateway de Pagamento" },
+          { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q484847", "name": "Comercio Eletronico" },
+          { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q1451528", "name": "Prevencao e Deteccao de Fraude" },
+          { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q16319025", "name": "Tecnologia Financeira" }
         ],
         "priceRange": "A partir de 5,99% por transacao",
         "foundingLocation": {
@@ -94,7 +115,7 @@
           "itemReviewed": { "@id": "https://mundpay.com/#organization" },
           "description": "Nota do Premio Reclame Aqui de Atendimento 2025, baseada em 193 avaliacoes de consumidores."
         },
-        "hasCertification": {
+        "certification": {
           "@type": "Certification",
           "name": "Premio Reclame Aqui de Atendimento 2025",
           "issuedBy": { "@type": "Organization", "name": "Reclame Aqui", "url": "https://www.reclameaqui.com.br" },
@@ -109,7 +130,7 @@
           { "@type": "PaymentMethod", "name": "Apple Pay", "sameAs": "https://www.wikidata.org/wiki/Q17118079" },
           { "@type": "PaymentMethod", "name": "Google Pay", "sameAs": "https://www.wikidata.org/wiki/Q30622009" }
         ],
-        "acceptedCurrency": ["BRL", "USD", "EUR"],
+        "acceptedCurrency": "BRL",
         "award": "Premio Reclame Aqui de Atendimento 2025",
         "availableLanguage": [
           { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
@@ -137,8 +158,7 @@
           "https://mundpay.com/blog"
         ],
         "hasPart": [
-          { "@id": "https://mundpay.com/blog/#blog" },
-          { "@id": "https://mundpay.com/#glossary" }
+          { "@id": "https://mundpay.com/blog/#blog" }
         ]
       },
       {
@@ -151,6 +171,7 @@
           { "@id": "https://mundpay.com/#organization" },
           { "@id": "https://mundpay.com/#faqpage" }
         ],
+        "about": { "@id": "https://mundpay.com/#organization" },
         "publisher": { "@id": "https://mundpay.com/#organization" },
         "isPartOf": { "@id": "https://mundpay.com/#website" },
         "speakableSpecification": {
@@ -173,9 +194,9 @@
         "url": "https://mundpay.com/apresentacao",
         "sameAs": ["https://www.linkedin.com/in/wellington-vicente/"],
         "knowsAbout": [
-          { "@type": "DefinedTerm", "@id": "https://www.wikidata.org/wiki/Q2639241", "name": "Gateway de Pagamento Internacional" },
-          { "@type": "DefinedTerm", "@id": "https://www.wikidata.org/wiki/Q484847", "name": "Comercio Eletronico Global" },
-          { "@type": "DefinedTerm", "@id": "https://www.wikidata.org/wiki/Q16319025", "name": "Tecnologia Financeira" }
+          { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q2639241", "name": "Gateway de Pagamento Internacional" },
+          { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q484847", "name": "Comercio Eletronico Global" },
+          { "@type": "Thing", "@id": "https://www.wikidata.org/wiki/Q16319025", "name": "Tecnologia Financeira" }
         ],
         "description": "Fundador e CEO da Mundpay, plataforma de pagamentos globais para sellers digitais. Criador do Secret Order Bump.",
         "hasOccupation": {
@@ -187,9 +208,12 @@
       {
         "@type": "FAQPage",
         "@id": "https://mundpay.com/#faqpage",
+        "isPartOf": { "@id": "https://mundpay.com/#webpage" },
+        "about": { "@id": "https://mundpay.com/#organization" },
         "mainEntity": [
           {
             "@type": "Question",
+            "@id": "https://mundpay.com/#faq-o-que-e",
             "name": "O que e a Mundpay e como funciona?",
             "about": { "@id": "https://mundpay.com/#term-gateway" },
             "acceptedAnswer": {
@@ -200,6 +224,7 @@
           },
           {
             "@type": "Question",
+            "@id": "https://mundpay.com/#faq-taxas",
             "name": "Quais sao as taxas da Mundpay?",
             "about": { "@id": "https://mundpay.com/#term-retencao-seguranca" },
             "acceptedAnswer": {
@@ -210,6 +235,7 @@
           },
           {
             "@type": "Question",
+            "@id": "https://mundpay.com/#faq-secret-order-bump",
             "name": "O que e o Secret Order Bump da Mundpay?",
             "about": { "@id": "https://mundpay.com/#term-secret-order-bump" },
             "acceptedAnswer": {
@@ -220,6 +246,7 @@
           },
           {
             "@type": "Question",
+            "@id": "https://mundpay.com/#faq-confiavel",
             "name": "A Mundpay e confiavel?",
             "about": { "@id": "https://mundpay.com/#organization" },
             "acceptedAnswer": {
@@ -228,8 +255,7 @@
               "datePublished": "2026-04-27"
             }
           }
-        ],
-        "about": { "@id": "https://mundpay.com/#organization" }
+        ]
       },
       {
         "@type": "SoftwareApplication",
@@ -253,6 +279,7 @@
           },
           "name": "Criar conta gratis na Mundpay"
         },
+        "url": "https://mundpay.com/cadastro/",
         "softwareVersion": "1.0",
         "featureList": [
           "Secret Order Bump pos-checkout (exclusivo Mundpay)",
@@ -263,7 +290,7 @@
           "Upsell e Downsell pos-compra",
           "Webhooks e API REST para integracoes"
         ],
-        "isPartOf": { "@id": "https://mundpay.com/#organization" },
+        "provider": { "@id": "https://mundpay.com/#organization" },
         "publisher": { "@id": "https://mundpay.com/#organization" }
       },
       {
@@ -469,7 +496,7 @@
   </section>
 
   <div class="schema-badge">
-    Schema JSON-LD ativo — DefinedTermSet (15 termos) + hasCertification + acceptedPaymentMethod + isicV4 6612 + PhD fixes aplicados —
+    Schema JSON-LD v3 — P0+P1 aplicados — DefinedTermSet (15 termos) + certification + acceptedPaymentMethod + @language pt-BR + isicV4 6619 —
     <a href="https://search.google.com/test/rich-results?url=file%3A%2F%2F%2FUsers%2Fjrios%2Fmundpay-seo%2Fpreview%2Fhome.html" target="_blank">testar no Rich Results</a>
   </div>
 
