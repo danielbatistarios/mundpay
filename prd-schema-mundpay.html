@@ -657,7 +657,8 @@
         "ratingValue": 9.07,
         "bestRating": 10,
         "worstRating": 0,
-        "reviewCount": 193
+        "ratingCount": 193,
+        "reviewCount": 773
       },
       "award": "Premio Reclame Aqui de Atendimento 2025",
       "certification": {
@@ -688,11 +689,8 @@
       "provider": { "@id": "https://mundpay.com/#organization" },
       "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
       "acceptedPaymentMethod": [
-        { "@type": "PaymentMethod", "name": "Pix", "sameAs": "https://www.wikidata.org/wiki/Q105690833" },
-        { "@type": "PaymentMethod", "name": "Boleto Bancario", "sameAs": "https://www.wikidata.org/wiki/Q2974062" },
-        { "@type": "PaymentMethod", "name": "Cartao de Credito", "sameAs": "https://www.wikidata.org/wiki/Q161380" },
-        { "@type": "PaymentMethod", "name": "Apple Pay", "sameAs": "https://www.wikidata.org/wiki/Q16993456" },
-        { "@type": "PaymentMethod", "name": "Google Pay", "sameAs": "https://www.wikidata.org/wiki/Q16993461" }
+        "https://schema.org/CreditCard",
+        "https://schema.org/DebitCard"
       ],
       "currenciesAccepted": "BRL, USD, EUR",
       "areaServed": {
@@ -819,19 +817,11 @@
       "@type": "SoftwareApplication",
       "@id": "https://mundpay.com/#checkout-app",
       "name": "Mundpay Checkout",
-      "applicationCategory": "FinanceApplication",
+      "applicationCategory": "https://schema.org/FinanceApplication",
       "operatingSystem": "Web",
       "softwareVersion": "1.0",
       "inLanguage": ["pt-BR", "en", "es"],
-      "featureList": [
-        "Secret Order Bump pos-checkout (exclusivo Mundpay)",
-        "Checkout em 190 paises",
-        "Saque D+3 para Pessoa Juridica",
-        "Antifraude inteligente com risco proativo",
-        "Retentativa inteligente de pagamento",
-        "Upsell e Downsell 1-Click",
-        "Webhooks e integracoes via API"
-      ],
+      "featureList": "Secret Order Bump pos-checkout (exclusivo Mundpay), Checkout em 190 paises com traducao automatica de moeda, Saque D+3 para Pessoa Juridica, Antifraude inteligente com risco proativo, Retentativa inteligente de pagamento, Upsell e Downsell pos-compra, Webhooks e API REST para integracoes",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -844,8 +834,8 @@
           "@type": "EntryPoint",
           "urlTemplate": "https://login.mundpay.com/register",
           "actionPlatform": [
-            "http://schema.org/DesktopWebPlatform",
-            "http://schema.org/MobileWebPlatform"
+            "https://schema.org/DesktopWebPlatform",
+            "https://schema.org/MobileWebPlatform"
           ]
         },
         "name": "Criar conta gratis na Mundpay"
@@ -894,7 +884,20 @@
     { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-info-global", "name": "Info Global / Infoproduto Global", "description": "Infoproduto vendido para compradores fora do Brasil. Ticket medio USD 20. Requer checkout em idioma e moeda local." },
     { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-produtor", "name": "Produtor Digital", "description": "Criador e proprietario de produto digital que usa a Mundpay para processar vendas." },
     { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-afiliado", "name": "Afiliado", "description": "Vendedor que divulga produtos de terceiros e recebe comissao por venda via link exclusivo." },
-    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-taxa-aprovacao", "name": "Taxa de Aprovacao", "description": "Percentual de transacoes aprovadas pelo banco emissor. Acima de 80% e considerado bom para vendas internacionais." }
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-taxa-aprovacao", "name": "Taxa de Aprovacao", "description": "Percentual de transacoes aprovadas pelo banco emissor. Acima de 80% e considerado bom para vendas internacionais." },
+
+    {
+      "@type": "PrivacyStatement",
+      "@id": "https://mundpay.com/#privacy",
+      "name": "Politica de Privacidade Mundpay",
+      "url": "https://mundpay.com/politica-de-privacidade",
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "author": { "@id": "https://mundpay.com/#organization" },
+      "datePublished": "2024-05-06",
+      "dateModified": "2026-04-27",
+      "inLanguage": "pt-BR",
+      "text": "A Mundpay coleta dados pessoais necessarios para processamento de pagamentos e cumprimento de obrigacoes regulatorias (BACEN, LGPD). Dados de titulares de cartao sao tratados conforme PCI-DSS. O usuario pode solicitar exclusao de dados via privacy@mundpay.com."
+    }
 
   ]
 }</pre>
@@ -1124,6 +1127,7 @@
       "bestRating": "10",
       "worstRating": "1",
       "ratingCount": "193",
+      "reviewCount": "773",
       "reviewAspect": "Atendimento ao cliente",
       "itemReviewed": { "@id": "https://mundpay.com/#organization" },
       "description": "Nota do Premio Reclame Aqui de Atendimento 2025, baseada em 193 avaliacoes de consumidores."
@@ -1802,8 +1806,8 @@
     <div class="pending-item">
       <div class="pending-dot pending-dot-yellow"></div>
       <div class="pending-text">
-        <strong>Central de Ajuda (/me-ajuda) — Indexação no Google</strong>
-        <span>A página <code>/pt/me-ajuda</code> precisa estar indexada. Verificar: (1) robots.txt não bloqueia o path <code>/me-ajuda</code> nem o widget Crisp; (2) a página tem meta robots <code>index, follow</code> (não <code>noindex</code>); (3) a URL está no sitemap.xml com prioridade adequada; (4) o conteúdo das FAQs é renderizado no HTML (não só via JS do Crisp — Googlebot pode não executar o widget). Se o conteúdo das FAQs estiver somente no JS do Crisp, o dev precisa renderizá-las estaticamente no HTML ou duplicar as principais como HTML visível. O schema FAQPage já está preparado — garantir que ele seja injetado na página.</span>
+        <strong>Central de Ajuda Crisp — Indexação no Google</strong>
+        <span>A central de ajuda está em subdomínio do Crisp: <code>https://mundpay.crisp.help/pt-br/</code> (32 artigos, 12 seções: Comece aqui, Produtos, Upsell, Integrações, Chargeback, Taxas, Reembolsos, Pagamentos, Saques, Personalização, Orderbump). Por estar em domínio externo (<code>crisp.help</code>), os artigos <strong>não contribuem para a autoridade de mundpay.com</strong>. Ações recomendadas: (1) verificar se o Crisp permite domínio customizado (ex: <code>ajuda.mundpay.com</code>) — isso transfere toda a autoridade SEO para o domínio principal; (2) verificar no painel Crisp se o robots.txt do subdomínio está como <code>index, follow</code> para que os artigos ao menos rankeiem por buscas de marca; (3) na página <code>/pt/me-ajuda</code> do site Framer, adicionar link visível para <code>mundpay.crisp.help/pt-br/</code> com anchor text descritivo; (4) adicionar nó <code>potentialAction</code> do tipo <code>SearchAction</code> no schema WebSite e <code>url</code> apontando para a central no nó Organization.</span>
       </div>
     </div>
   </div>
