@@ -350,7 +350,7 @@
       ],
       "image": {
         "@type": "ImageObject",
-        "url": "TODO_SUBSTITUIR_APOS_PUBLICAR",
+        "url": "https://raw.githubusercontent.com/danielbatistarios/mundpay/main/img/wellington-vicente.jpg",
         "width": 400,
         "height": 400,
         "description": "Wellington Vicente da Silva, Founder e CEO da Mundpay"
