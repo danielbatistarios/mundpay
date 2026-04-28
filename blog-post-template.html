@@ -182,164 +182,121 @@
       gap: 16px;
     }
 
-    /* Left pill: logo + nav links */
-    .header-left-pill {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      background: rgba(5,7,0,0.05);
-      border-radius: 40px;
-      padding: 6px 6px 6px 12px;
-      text-decoration: none;
+    /* Right actions */
+    .header-actions { display: flex; align-items: center; gap: 8px; }
+
+    /* Logo pill */
+    .header-logo-pill {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(5,7,0,0.05); border-radius: 40px;
+      padding: 8px 16px 8px 10px; text-decoration: none;
+    }
+    .header-logo-pill .pill-globe {
+      width: 32px; height: 32px; border-radius: 50%; background: #c8d45a;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .header-logo-pill .pill-globe svg { width: 16px; height: 16px; }
+    .header-logo-pill .pill-blog {
+      font-family: 'Space Grotesk', sans-serif; font-size: 15px;
+      font-weight: 500; font-style: italic; color: rgba(5,7,0,0.75);
     }
 
-    .header-left-pill .pill-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      padding-right: 4px;
+    /* Lang selector */
+    .lang-selector { position: relative; display: flex; align-items: center; }
+    .lang-selector-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(5,7,0,0.05); border-radius: 32px;
+      padding: 7px 10px; cursor: pointer; border: none;
+      font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500;
+      color: rgba(5,7,0,0.75); transition: background 150ms;
     }
-
-    .header-left-pill .pill-logo img {
-      width: auto;
-      height: 22px;
-      display: block;
+    .lang-selector-btn:hover { background: rgba(5,7,0,0.09); }
+    .lang-selector-btn img { width: 20px; height: 14px; border-radius: 3px; }
+    .lang-selector-btn .chevron { width: 14px; height: 14px; color: rgba(5,7,0,0.4); transition: transform 200ms; }
+    .lang-selector.open .chevron { transform: rotate(180deg); }
+    .lang-dropdown {
+      display: none; position: absolute; top: calc(100% + 8px); right: 0;
+      background: var(--color-bg); border: 1px solid rgba(5,7,0,0.08);
+      border-radius: 12px; padding: 6px; min-width: 130px;
+      box-shadow: 0 4px 16px rgba(5,7,0,0.08); z-index: 200;
     }
-
-    .header-left-pill .pill-sep {
-      width: 1px;
-      height: 18px;
-      background: rgba(5,7,0,0.12);
-      margin: 0 4px;
-      flex-shrink: 0;
+    .lang-selector.open .lang-dropdown { display: block; }
+    .lang-dropdown a, .lang-dropdown span {
+      display: flex; align-items: center; gap: 8px; padding: 8px 10px;
+      border-radius: 8px; font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px; font-weight: 500; color: rgba(5,7,0,0.65);
+      transition: background 150ms; text-decoration: none; cursor: pointer;
     }
+    .lang-dropdown a:hover { background: rgba(5,7,0,0.05); color: rgba(5,7,0,0.9); }
+    .lang-dropdown a.active { color: rgba(5,7,0,0.9); font-weight: 600; }
+    .lang-dropdown span { opacity: 0.4; cursor: not-allowed; }
+    .lang-dropdown img { width: 20px; height: 14px; border-radius: 3px; }
 
-    .header-left-pill nav {
-      display: flex;
-      align-items: center;
+    /* Hamburger */
+    .header-burger {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(5,7,0,0.05); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; transition: background 150ms;
     }
+    .header-burger:hover { background: rgba(5,7,0,0.09); }
+    .header-burger svg { width: 18px; height: 18px; color: rgba(5,7,0,0.75); }
 
-    .header-left-pill nav a {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: rgba(5,7,0,0.65);
-      text-decoration: none;
-      padding: 6px 14px;
-      border-radius: 32px;
-      white-space: nowrap;
-      transition: color 300ms ease, background 300ms ease;
+    /* Mobile menu overlay */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: var(--color-bg); flex-direction: column;
     }
-
-    .header-left-pill nav a:hover {
-      color: rgba(5,7,0,0.9);
-      background: rgba(5,7,0,0.05);
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 20px; border-bottom: 1px solid rgba(5,7,0,0.07);
     }
-
-    /* Right actions — no pill background */
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 6px;
+    .mobile-menu-close {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(5,7,0,0.05); border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
     }
-
-    .lang-switcher {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-      background: rgba(5,7,0,0.05);
-      border-radius: 32px;
-      padding: 4px;
+    .mobile-menu-close svg { width: 18px; height: 18px; color: rgba(5,7,0,0.7); }
+    .mobile-menu-body {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px; padding: 40px 24px;
     }
-
-    .lang-btn {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 5px 10px;
-      border-radius: 24px;
-      text-decoration: none;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(5,7,0,0.5);
-      letter-spacing: 0.03em;
-      transition: background 200ms ease, color 200ms ease;
-      white-space: nowrap;
+    .mobile-nav-link {
+      font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500;
+      color: rgba(5,7,0,0.75); text-decoration: none; padding: 8px 0;
     }
-
-    .lang-btn img { width: 18px; height: 13px; border-radius: 2px; display: block; }
-
-    .lang-btn:hover { background: rgba(5,7,0,0.07); color: rgba(5,7,0,0.8); }
-
-    .lang-btn.active {
-      background: rgba(5,7,0,0.09);
-      color: rgba(5,7,0,0.9);
+    .mobile-nav-link:hover { color: rgba(5,7,0,1); }
+    .mobile-menu-divider { width: 100%; height: 1px; background: rgba(5,7,0,0.07); margin: 8px 0; }
+    .mobile-app-label {
+      font-family: 'Space Grotesk', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase; color: rgba(5,7,0,0.35);
     }
-
-    .lang-btn.disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      pointer-events: none;
+    .mobile-app-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .mobile-btn-app {
+      display: flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 32px;
+      border: 1px solid rgba(5,7,0,0.1); background: transparent;
+      font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600;
+      color: rgba(5,7,0,0.75); text-decoration: none; transition: background 150ms;
     }
-
-    .btn-login {
-      display: inline-flex;
-      align-items: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(5,7,0,0.75);
-      text-decoration: none;
-      padding: 8px 14px;
-      border-radius: 32px;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      transition: color 300ms ease;
+    .mobile-btn-app:hover { background: rgba(5,7,0,0.05); }
+    .mobile-btn-app svg { width: 16px; height: 16px; }
+    .mobile-btn-login {
+      font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600;
+      color: rgba(5,7,0,0.75); text-decoration: none; padding: 10px 0;
     }
-
-    .btn-login:hover { color: rgba(5,7,0,1); }
-
-    .btn-start {
-      display: inline-flex;
-      align-items: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(5,7,0,0.85);
-      text-decoration: none;
-      padding: 8px 16px;
-      border-radius: 32px;
-      white-space: nowrap;
-      letter-spacing: 0.02em;
-      background: rgba(5,7,0,0.08);
-      border: 1px solid rgba(5,7,0,0.1);
-      transition: background 300ms ease, color 300ms ease;
+    .mobile-btn-login:hover { color: rgba(5,7,0,1); }
+    .mobile-btn-start {
+      width: 100%; max-width: 320px; text-align: center;
+      font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 700;
+      letter-spacing: 0.04em; text-transform: uppercase; color: rgba(5,7,0,0.85);
+      padding: 16px 24px; border-radius: 32px;
+      background: rgba(5,7,0,0.07); border: 1px solid rgba(5,7,0,0.1);
+      text-decoration: none; transition: background 150ms;
     }
+    .mobile-btn-start:hover { background: rgba(5,7,0,0.12); }
 
-    .btn-start:hover {
-      background: rgba(5,7,0,0.13);
-      color: rgba(5,7,0,1);
-    }
-
-    /* Burger (mobile) */
-    .burger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .burger span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--color-text);
-      border-radius: 2px;
-      transition: all 300ms ease;
-    }
+    /* Burger kept for legacy — hidden */
+    .burger { display: none; }
 
     /* Kept for article body CTAs */
     .btn-primary {
@@ -1627,9 +1584,6 @@
     }
 
     @media (max-width: 900px) {
-      .header-nav-pill { display: none; }
-      .burger { display: flex; }
-
       .blog-layout {
         grid-template-columns: 1fr;
       }
@@ -1666,12 +1620,6 @@
       .page-container { padding: 0 20px; }
       .header-inner { padding: 0 16px; }
 
-
-      .header-logo-pill { padding: 7px 14px; }
-      .header-actions-pill { padding: 6px 6px 6px 8px; }
-      .btn-find-order { display: none; }
-      .btn-create { font-size: 12px; padding: 8px 12px; }
-      .btn-login { display: none; }
 
       .blog-layout { padding: var(--space-md) 0 var(--space-2xl); }
 
@@ -1712,44 +1660,72 @@
   <!-- ============ HEADER ============ -->
   <header class="site-header" role="banner">
     <div class="header-inner">
-
-      <!-- Left pill: logo + Blog + Meet Mundpay -->
-      <div class="header-left-pill">
-        <a href="https://mundpay.com/" class="pill-logo">
-          <img src="https://framerusercontent.com/images/aJXI6DyfzPccRM0LDUyyVGolauw.svg" alt="mundpay">
-        </a>
-        <div class="pill-sep"></div>
-        <nav aria-label="Menu principal">
-          <a href="https://mundpay.com/blog">Blog</a>
-          <a href="https://mundpay.com/#benefits">Meet Mundpay</a>
-        </nav>
-      </div>
-
-      <!-- Right actions -->
+      <a href="https://mundpay.com/pt/blog" class="header-logo-pill" aria-label="mundpay Blog">
+        <span class="pill-globe" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(5,7,0,0.75)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </span>
+        <span class="pill-blog">Blog</span>
+      </a>
       <div class="header-actions">
-
-        <!-- Language switcher — cada botão navega para a URL real da versão traduzida -->
-        <div class="lang-switcher" role="navigation" aria-label="Idioma">
-          <a class="lang-btn" href="https://mundpay.com/blog/payment-approval-rate" hreflang="en" title="English">
-            <img src="https://flagcdn.com/us.svg" alt="EN">
-            <span>EN</span>
-          </a>
-          <a class="lang-btn active" href="https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais" hreflang="pt-BR" title="Português" aria-current="true">
-            <img src="https://flagcdn.com/br.svg" alt="PT">
-            <span>PT</span>
-          </a>
-          <span class="lang-btn disabled" title="Español — em breve" aria-disabled="true">
-            <img src="https://flagcdn.com/es.svg" alt="ES">
-            <span>ES</span>
-          </span>
+        <div class="lang-selector" id="langSelector">
+          <button class="lang-selector-btn" aria-label="Selecionar idioma" aria-expanded="false" aria-haspopup="listbox">
+            <img src="https://flagcdn.com/br.svg" alt="PT-BR">
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="lang-dropdown" role="listbox">
+            <a href="https://mundpay.com/blog/payment-approval-rate" hreflang="en" role="option"><img src="https://flagcdn.com/us.svg" alt="">EN — English</a>
+            <a href="https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais" hreflang="pt-BR" role="option" class="active" aria-selected="true"><img src="https://flagcdn.com/br.svg" alt="">PT — Português</a>
+            <span role="option" aria-disabled="true"><img src="https://flagcdn.com/es.svg" alt="">ES — Español</span>
+          </div>
         </div>
-
-        <a href="https://login.mundpay.com/login" class="btn-login">LOG IN</a>
-        <a href="https://login.mundpay.com/register" class="btn-start">START NOW</a>
+        <button class="header-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu" id="burgerBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
       </div>
-
     </div>
   </header>
+
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
+    <div class="mobile-menu-header">
+      <a href="https://mundpay.com/pt/blog" class="header-logo-pill" aria-label="mundpay Blog">
+        <span class="pill-globe" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(5,7,0,0.75)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </span>
+        <span class="pill-blog">Blog</span>
+      </a>
+      <button class="mobile-menu-close" aria-label="Fechar menu" id="menuClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu-body">
+      <a href="https://mundpay.com/#benefits" class="mobile-nav-link">Conheça a Mundpay</a>
+      <div class="mobile-menu-divider"></div>
+      <span class="mobile-app-label">Baixe nosso App</span>
+      <div class="mobile-app-btns">
+        <a href="https://apps.apple.com/br/app/mundpay-mobile/id6744820317" target="_blank" rel="noopener" class="mobile-btn-app">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.mundpay.mundpay" target="_blank" rel="noopener" class="mobile-btn-app">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 0 0 2.08-.22l11.45-6.61-2.84-2.84zM.54 1.32A2 2 0 0 0 0 2.75v18.5a2 2 0 0 0 .54 1.43L.66 22.8l10.37-10.37v-.24L.66 1.2zM20.4 10.4l-3.25-1.88-3.17 3.17 3.17 3.17 3.27-1.89a2 2 0 0 0 0-2.57zM5.26.46 16.72 7.07l-2.84 2.84z"/></svg>
+          Play Store
+        </a>
+      </div>
+      <div class="mobile-menu-divider"></div>
+      <a href="https://login.mundpay.com/login" class="mobile-btn-login">ENTRAR</a>
+      <a href="https://login.mundpay.com/register" class="mobile-btn-start">COMECE AGORA</a>
+    </div>
+  </div>
 
   <!-- ============ MAIN CONTENT ============ -->
   <main>
@@ -2422,6 +2398,28 @@ Mundpay enables digital sellers to scale globally with higher payment approval r
     </div>
   </div>
 
+  <script>
+    const langSelector = document.getElementById('langSelector');
+    const langSelectorBtn = langSelector.querySelector('.lang-selector-btn');
+    langSelectorBtn.addEventListener('click', e => {
+      e.stopPropagation();
+      const open = langSelector.classList.toggle('open');
+      langSelectorBtn.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', () => {
+      langSelector.classList.remove('open');
+      langSelectorBtn.setAttribute('aria-expanded', 'false');
+    });
+
+    const burgerBtn = document.getElementById('burgerBtn');
+    const menuClose = document.getElementById('menuClose');
+    const mobileMenu = document.getElementById('mobileMenu');
+    function openMenu() { mobileMenu.classList.add('open'); burgerBtn.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function closeMenu() { mobileMenu.classList.remove('open'); burgerBtn.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
+    burgerBtn.addEventListener('click', openMenu);
+    menuClose.addEventListener('click', closeMenu);
+    document.addEventListener('keydown', e => { if (e.key==='Escape') closeMenu(); });
+  </script>
 
 </body>
 </html>
