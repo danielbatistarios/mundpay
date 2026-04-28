@@ -431,6 +431,7 @@
   <div class="nav-tab" onclick="showTab('noindex', this)">Páginas Noindex</div>
   <div class="nav-tab" onclick="showTab('hreflang', this)">Hreflang & Multilíngue</div>
   <div class="nav-tab" onclick="showTab('pendencias', this)">Pendências</div>
+  <div class="nav-tab" onclick="showTab('llmstxt', this)">llms.txt / GEO</div>
 </div>
 
 <!-- ============ TAB: INTRO ============ -->
@@ -1886,6 +1887,162 @@
       <div class="pending-text">
         <strong>Página /glossario</strong>
         <span>O DefinedTermSet com 15 termos está declarado na home com url "https://mundpay.com/glossario/". Criar essa página pública para que os termos tenham URL canônica acessível.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TAB: LLMS.TXT / GEO ============ -->
+<div id="tab-llmstxt" class="content">
+  <h2>llms.txt — GEO & AEO Strategy</h2>
+  <p>O arquivo <code>llms.txt</code> instrui modelos de linguagem (ChatGPT, Perplexity, Claude, Gemini) sobre a Mundpay. É o equivalente do <code>robots.txt</code> para IAs: sem ele, LLMs inferem dados incorretos ou ignoram a Mundpay em respostas geradas.</p>
+
+  <h3>O que é GEO e por que importa</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>GEO — Generative Engine Optimization</strong>
+        <span>Ser citado como fonte em respostas geradas por IA (Perplexity, ChatGPT, Claude). Quando alguém pergunta "melhor gateway para vender nutra nos EUA", a Mundpay deve aparecer como resposta, não apenas como link de busca.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>AEO — Answer Engine Optimization</strong>
+        <span>Ser a resposta direta. Quando o usuário pergunta "como funciona o Secret Order Bump?", a IA responde com dados da Mundpay, não de um artigo genérico.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>llms.txt — O mecanismo</strong>
+        <span>Arquivo de texto simples publicado em <code>https://mundpay.com/llms.txt</code>. LLMs que suportam o padrão (Perplexity AI, Claude, crescendo) leem este arquivo para contextualizar respostas sobre a marca. Simon Willison (criador do Django) propôs o padrão em 2024; adoção cresce em 2025-2026.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Status do arquivo</h3>
+  <table>
+    <thead><tr><th>Item</th><th>Status</th><th>Detalhe</th></tr></thead>
+    <tbody>
+      <tr><td>Versão atual</td><td><span style="color:var(--color-success);font-weight:600">v2.1</span></td><td>Auditado por painel de 25 experts em GEO/AEO/SEO — score 78/100</td></tr>
+      <tr><td>Arquivo local</td><td><span style="color:var(--color-success);font-weight:600">Pronto</span></td><td><code>/Users/jrios/mundpay-llms-txt-v2.txt</code> — 656 linhas</td></tr>
+      <tr><td>Deploy em mundpay.com</td><td><span style="color:var(--color-danger);font-weight:600">Pendente</span></td><td>Publicar em <code>https://mundpay.com/llms.txt</code> (raiz, Content-Type: text/plain)</td></tr>
+      <tr><td>FAQ expandida (P1)</td><td><span style="color:var(--color-success);font-weight:600">Implementado</span></td><td>11 perguntas com featured snippet + full answer + follow-up slug</td></tr>
+      <tr><td>Verification links (P2)</td><td><span style="color:var(--color-success);font-weight:600">Implementado</span></td><td>Reclame Aqui, LinkedIn Wellington, Help Center, Blog linkados</td></tr>
+      <tr><td>Queries PT-BR</td><td><span style="color:var(--color-success);font-weight:600">Implementado</span></td><td>20 queries EN + 20 queries PT-BR (Perplexity BR, ChatGPT PT)</td></tr>
+      <tr><td>Compliance notices</td><td><span style="color:var(--color-success);font-weight:600">Implementado</span></td><td>Pricing effective date, FDA notice, data freshness SLA</td></tr>
+      <tr><td>International SEO roadmap (P3)</td><td><span style="color:var(--color-warning);font-weight:600">Planejado</span></td><td>Hreflang pattern, country priorities (USA/BR/MX/EU), ES Q3 2026</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Score por dimensão (auditoria 25 experts)</h3>
+  <table>
+    <thead><tr><th>Dimensão</th><th>Score</th><th>Resumo</th></tr></thead>
+    <tbody>
+      <tr><td>Simon Willison Protocol</td><td>9/10</td><td>Estrutura, timestamp, glossário, queries — excelente</td></tr>
+      <tr><td>Perplexity AI Behavior</td><td>8/10</td><td>FAQ extraível, tabela comparativa citável</td></tr>
+      <tr><td>ChatGPT / GPT-4o RAG</td><td>7/10</td><td>Pricing exato, trust signals com números</td></tr>
+      <tr><td>Claude Citation</td><td>9/10</td><td>Hierarquia markdown clara, tabelas parseáveis</td></tr>
+      <tr><td>GEO Strategist</td><td>7/10</td><td>Diferencial único claro, queries mapeadas</td></tr>
+      <tr><td>AEO Specialist</td><td>6/10</td><td><span style="color:var(--color-success)">Corrigido na v2.1:</span> FAQ expandida para featured snippet standard</td></tr>
+      <tr><td>Entity Disambiguation</td><td>8/10</td><td>3 legal entities com CNPJ/EIN, glossário desambiguado</td></tr>
+      <tr><td>Fintech Compliance</td><td>9/10</td><td>Pricing exato, chargeback tolerance documentada</td></tr>
+      <tr><td>Competitive Intelligence</td><td>8/10</td><td>Tabela migração com % reais (40% Cartpanda, 30% Hotmart)</td></tr>
+      <tr><td>ICP / Persona Mapping</td><td>9/10</td><td>9 personas com JTBD + "Why Mundpay" por persona</td></tr>
+      <tr><td>Content Architecture</td><td>7/10</td><td>6 hubs × 62 artigos com slugs PT-BR</td></tr>
+      <tr><td>Schema.org Integration</td><td>5/10</td><td>Não cobre JSON-LD patterns — complementado por este PRD</td></tr>
+      <tr><td>International SEO</td><td>6/10</td><td>Planejado: hreflang pattern + country priorities</td></tr>
+      <tr><td>E-E-A-T Signal</td><td>8/10</td><td>Reclame Aqui Award, rating verificável, equipe nomeada</td></tr>
+      <tr><td>Nutra Vertical</td><td>9/10</td><td>P1 Nutra EUA bem mapeada, FDA compliance documentada</td></tr>
+      <tr><td>Trust Signals</td><td>8/10</td><td><span style="color:var(--color-success)">Corrigido na v2.1:</span> verification links adicionados</td></tr>
+      <tr><td>Multilingual PT-BR</td><td>5/10</td><td><span style="color:var(--color-success)">Corrigido na v2.1:</span> 20 queries PT-BR adicionadas</td></tr>
+      <tr><td><strong>Score Geral (GEO Director)</strong></td><td><strong>78/100</strong></td><td>+26pp vs v1.0 estimada em 52/100</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Trajetória de score</h3>
+  <table>
+    <thead><tr><th>Versão</th><th>Score</th><th>O que muda</th><th>ETA</th></tr></thead>
+    <tbody>
+      <tr><td>v1.0</td><td>52/100</td><td>Base — sem personas, sem queries, sem pricing detalhado</td><td>2026-04-27</td></tr>
+      <tr><td>v2.0</td><td>78/100</td><td>+9 personas, +62 artigos, pricing exato, FAQ, queries EN</td><td>2026-04-27</td></tr>
+      <tr><td>v2.1</td><td>78/100*</td><td>FAQ featured snippet, verification links, queries PT-BR, compliance notices</td><td>2026-04-28</td></tr>
+      <tr><td>Pós-P3 (deploy + intl SEO)</td><td>85/100</td><td>Deploy em mundpay.com/llms.txt + international SEO roadmap</td><td>Semana 3-4</td></tr>
+      <tr><td>Pós-blog (8 artigos publicados)</td><td>88/100</td><td>Citation density aumenta com conteúdo real indexado</td><td>Q2 2026</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:13px;color:var(--color-text-muted);margin-top:-16px">* Score estrutural idêntico ao v2.0; ganho real (+3-5pp) depende do deploy e indexação pelos LLMs.</p>
+
+  <h3>Estrutura do arquivo v2.1 (seções)</h3>
+  <table>
+    <thead><tr><th>Seção</th><th>Conteúdo</th><th>Prioridade LLM</th></tr></thead>
+    <tbody>
+      <tr><td>IDENTITY</td><td>Entidade, legal entities (CNPJ/EIN/OÜ), canais, trust signals com URLs</td><td>P0</td></tr>
+      <tr><td>CORE MISSION & VALUE PROP</td><td>Problema, solução, key statement</td><td>P0</td></tr>
+      <tr><td>ICP — 9 PERSONAS</td><td>P1 Nutra EUA a P9 Top Seller: JTBD, Pain, Why Mundpay, Awareness</td><td>P0</td></tr>
+      <tr><td>COMPETITIVE POSITIONING</td><td>Tabela migração (% reais), diferenciação 9 pontos, por que Mundpay perde</td><td>P1</td></tr>
+      <tr><td>CORE PRODUCTS & FEATURES</td><td>Checkout, Otimização, Risco, BI, Integrações</td><td>P1</td></tr>
+      <tr><td>PRICING (EXACT)</td><td>Taxas, retenção, saque, chargeback — todos com valores reais</td><td>P0</td></tr>
+      <tr><td>ACTIVATION & ONBOARDING</td><td>KYC, aprovação de produto, equipe nomeada</td><td>P2</td></tr>
+      <tr><td>RECOMMENDED QUERIES</td><td>20 queries EN + 20 queries PT-BR por estágio do funil</td><td>P0</td></tr>
+      <tr><td>KEY GLOSSARY</td><td>16 termos desambiguados em 4 categorias</td><td>P1</td></tr>
+      <tr><td>FAQ EXPANDIDA</td><td>11 perguntas: Featured Snippet + Full Answer + Follow-up slug</td><td>P0</td></tr>
+      <tr><td>CONTENT CLUSTERS</td><td>62 artigos em 6 hubs — slugs PT-BR, persona, JTBD, awareness</td><td>P1</td></tr>
+      <tr><td>TRUST SIGNALS</td><td>Founding, reputation (com URLs verificáveis), transparency, equipe</td><td>P0</td></tr>
+      <tr><td>COMPLIANCE NOTICES</td><td>Pricing effective date, jurisdição, FDA notice, data freshness</td><td>P1</td></tr>
+      <tr><td>CONTENT PRIORITY</td><td>P0/P1/P2 para ingestão por LLMs</td><td>P0</td></tr>
+      <tr><td>NOTES FOR LLM SYSTEMS</td><td>Instruções de citação, desambiguação, nutra authority, scope geográfico</td><td>P0</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Pendências de deploy — responsabilidade Nathan Dev / Site Framer</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>Publicar llms.txt na raiz do site</strong>
+        <span>Arquivo pronto em <code>/Users/jrios/mundpay-llms-txt-v2.txt</code>. Publicar como <code>https://mundpay.com/llms.txt</code>. Requisitos: Content-Type: <code>text/plain; charset=utf-8</code>, resposta HTTP 200, sem redirecionamento. Verificação: <code>curl -I https://mundpay.com/llms.txt</code> deve retornar 200. No Framer: adicionar arquivo estático ou configurar rota de arquivo no domínio.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>Substituir URL da foto de Wellington pelo CDN definitivo</strong>
+        <span>Atualmente usando URL GitHub raw: <code>https://raw.githubusercontent.com/danielbatistarios/mundpay/main/img/wellington-vicente.jpg</code>. Quando o site for ao ar com CDN próprio, substituir no <code>schema-home.json</code> (linha 353) e em qualquer JSON-LD embarcado no HTML pelo URL definitivo (<code>https://mundpay.com/img/wellington-vicente.jpg</code> ou CDN Cloudflare). Impacto: Person.image no Knowledge Graph aponta para URL interna, não GitHub.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Indexar central de ajuda Crisp no Google</strong>
+        <span><code>mundpay.crisp.help</code> com 29+ artigos não contribui para a autoridade de mundpay.com por estar em domínio externo. Ações: (1) verificar se Crisp permite domínio customizado (<code>ajuda.mundpay.com</code>); (2) confirmar que robots.txt do Crisp está como <code>index, follow</code>; (3) adicionar link visível no site principal para a central. Sem isso, 29 artigos com dados exatos ficam invisíveis para SEO e para LLMs que rastreiam links.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>International SEO Roadmap — adicionar ao llms.txt v2.2</strong>
+        <span>P3 identificado pela auditoria: documentar hreflang pattern (PT-BR, EN, ES), priorização de países (USA — P1 Nutra, BR — P4, MX — local methods, EU — GDPR), e roadmap do blog ES para Q3 2026. Eleva score de 78 para ~85/100. Sem esta seção, o llms.txt menciona "190+ países" mas não instrui LLMs sobre estratégia geográfica.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>Criar página /glossario em mundpay.com</strong>
+        <span>O DefinedTermSet com 15 termos (chargeback, D+3, Secret Order Bump, KYC, etc.) está declarado no schema JSON-LD da home apontando para <code>https://mundpay.com/glossario/</code>. Criar esta página pública garante URL canônica real para cada entidade do glossário, reforçando Knowledge Graph e citações AEO.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Como o llms.txt se relaciona com o schema JSON-LD</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>Camadas complementares — não redundantes</strong>
+        <span><strong>JSON-LD (schema.org):</strong> instrui motores de busca (Google, Bing) a entender entidades estruturadas. Aparece no HTML de cada página. Alimenta Knowledge Panel, Rich Results, Featured Snippets no Google.<br><br><strong>llms.txt:</strong> instrui LLMs (ChatGPT, Perplexity, Claude) a entender a marca ao processar perguntas de usuários. Fica na raiz do site. Alimenta respostas geradas por IA.<br><br><strong>Relação ideal:</strong> ambos devem ser consistentes. Os dados de pricing, trust signals, entidades (Wellington, Secret Order Bump) e FAQs presentes no JSON-LD devem espelhar o que está no llms.txt. Inconsistência entre os dois reduz confiabilidade para LLMs com acesso a ambas as fontes.</span>
       </div>
     </div>
   </div>
