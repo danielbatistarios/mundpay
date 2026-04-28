@@ -429,6 +429,7 @@
   <div class="nav-tab" onclick="showTab('meajuda', this)">Me Ajuda</div>
   <div class="nav-tab" onclick="showTab('blog', this)">Blog Hub</div>
   <div class="nav-tab" onclick="showTab('noindex', this)">Páginas Noindex</div>
+  <div class="nav-tab" onclick="showTab('hreflang', this)">Hreflang & Multilíngue</div>
   <div class="nav-tab" onclick="showTab('pendencias', this)">Pendências</div>
 </div>
 
@@ -1512,6 +1513,199 @@
       <div class="page-card-reason">Se o conteúdo é idêntico ao /me-ajuda, desindexar E configurar redirect 301 para /me-ajuda. Duplicate content prejudica o rankeamento de ambas as páginas.</div>
     </div>
     <div class="page-card-action">301 &rarr; /me-ajuda</div>
+  </div>
+</div>
+
+<!-- ============ TAB: HREFLANG & MULTILÍNGUE ============ -->
+<div id="tab-hreflang" class="content">
+  <h2>Hreflang &amp; Multilíngue — Diagnóstico e Correções</h2>
+  <p>Diagnóstico realizado via <code>curl</code> direto no HTML do servidor em 2026-04-27. As correções abaixo devem ser aplicadas no Framer pelo dev.</p>
+
+  <h3>Estrutura Atual (verificada ao vivo)</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot" style="background:#22c55e"></div>
+      <div class="pending-text">
+        <strong>✅ hreflang implementado e recíproco</strong>
+        <span>O Framer já injeta os hreflang corretamente em ambas as páginas. Cada página declara as duas variantes, garantindo reciprocidade exigida pelo Google.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:#22c55e"></div>
+      <div class="pending-text">
+        <strong>✅ lang attribute correto por página</strong>
+        <span><code>mundpay.com/</code> serve <code>&lt;html lang="en"&gt;</code> e <code>mundpay.com/pt/</code> serve <code>&lt;html lang="pt-BR"&gt;</code>. Sinal correto para Google e screen readers.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:#22c55e"></div>
+      <div class="pending-text">
+        <strong>✅ canonical declarado por página</strong>
+        <span><code>/</code> aponta canonical para si mesma. <code>/pt/</code> aponta canonical para si mesma. Sem conflito de duplicate content entre as versões.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Problemas Encontrados — Corrigir</h3>
+  <div class="pending-box">
+
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>P0 — x-default aponta para versão EN, deveria apontar para PT-BR</strong>
+        <span>
+          O <code>x-default</code> indica ao Google qual versão servir quando não é possível determinar o idioma/país do usuário. Hoje está apontando para <code>mundpay.com/</code> (EN). Como 99,5% das operações são brasileiras e o mercado principal é o Brasil, o correto é apontar para <code>mundpay.com/pt/</code>.<br><br>
+          <strong>Hoje (incorreto):</strong><br>
+          <code>&lt;link rel="alternate" href="https://mundpay.com/" hreflang="x-default"&gt;</code><br><br>
+          <strong>Correto:</strong><br>
+          <code>&lt;link rel="alternate" href="https://mundpay.com/pt/" hreflang="x-default"&gt;</code><br><br>
+          <strong>Onde corrigir:</strong> Framer &gt; Site Settings &gt; Locales &gt; configurar PT-BR como locale padrão (default). O Framer vai atualizar o x-default automaticamente.
+        </span>
+      </div>
+    </div>
+
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>P0 — Meta description da home EN está em português</strong>
+        <span>
+          A página <code>mundpay.com/</code> tem <code>&lt;html lang="en"&gt;</code> e title em inglês, mas a meta description está em português:<br><br>
+          <code>"Transforme seu talento em um curso digital e venda para o mundo. Na Mundpay você cria seu curso digital e vende para o mundo de forma fácil e rápida."</code><br><br>
+          Isso confunde o Google sobre o idioma da página e reduz o CTR para usuários anglófonos nos resultados de busca.<br><br>
+          <strong>Corrigir para:</strong><br>
+          <code>"The complete payment infrastructure to scale digital products, courses, and SaaS worldwide. Accept payments in 190+ countries with automatic currency conversion."</code><br><br>
+          <strong>Onde corrigir:</strong> Framer &gt; selecionar a página raiz (<code>/</code>) &gt; Page Settings &gt; SEO Description.
+        </span>
+      </div>
+    </div>
+
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>P0 — Nenhum schema JSON-LD declarado em nenhuma página</strong>
+        <span>
+          Verificado via <code>curl</code>: nenhuma das páginas atuais (<code>/</code>, <code>/pt/</code>) contém <code>application/ld+json</code>. Todo o PRD de schema desta documentação está pendente de implementação.<br><br>
+          <strong>Como implementar no Framer:</strong><br>
+          1. Abrir o Framer &gt; selecionar a página<br>
+          2. Page Settings &gt; Custom Code &gt; seção <code>&lt;head&gt;</code><br>
+          3. Colar o bloco <code>&lt;script type="application/ld+json"&gt;...&lt;/script&gt;</code> correspondente a cada página (ver demais tabs deste PRD)<br><br>
+          <strong>Prioridade de implementação:</strong> Home PT-BR (<code>/pt/</code>) primeiro, depois <code>/pagamentos-e-taxas</code>, depois <code>/apresentacao</code>.
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+  <h3>Estrutura de URL Recomendada (atual vs ideal)</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>P1 — Avaliar inversão da estrutura de URL com Wellington</strong>
+        <span>
+          A estrutura atual coloca a versão EN na raiz e PT-BR em subdiretório. Isso significa que todos os backlinks externos que apontam para <code>mundpay.com</code> reforçam a versão inglês.<br><br>
+          <strong>Estrutura atual:</strong><br>
+          <code>mundpay.com/</code> → EN (raiz, mais autoridade)<br>
+          <code>mundpay.com/pt/</code> → PT-BR (subdiretório)<br><br>
+          <strong>Estrutura recomendada para mercado principal BR:</strong><br>
+          <code>mundpay.com/</code> → PT-BR (raiz, x-default)<br>
+          <code>mundpay.com/en/</code> → EN<br>
+          <code>mundpay.com/es/</code> → ES (futuro)<br><br>
+          <strong>Como migrar:</strong> redirect 301 de <code>/pt/</code> para <code>/</code> no Framer ou Cloudflare Rules. Fazer apenas após decisão estratégica com Wellington — a migração é simples mas deve ser planejada.<br><br>
+          <strong>Quando NÃO migrar:</strong> se a estratégia for posicionar a Mundpay como marca global primeiro (raiz EN como face internacional da empresa), a estrutura atual pode ser mantida.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Como Adicionar Espanhol (ES) no Futuro</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>P2 — Criar locale ES-419 no Framer</strong>
+        <span>
+          Quando a versão em espanhol for criada, adicionar como novo locale no Framer usando o código <code>es-419</code> (espanhol América Latina — padrão BCP 47). Não usar <code>es</code> genérico (inclui Espanha) nem <code>es-MX</code> (exclui outros países LATAM).<br><br>
+          O Framer vai injetar automaticamente o hreflang para ES em todas as páginas que tiverem equivalente traduzido. Cada artigo do blog em ES deve ter:<br><br>
+          <code>&lt;link rel="alternate" href="https://mundpay.com/pt/blog/slug-pt/" hreflang="pt-BR"&gt;</code><br>
+          <code>&lt;link rel="alternate" href="https://mundpay.com/en/blog/slug-en/" hreflang="en"&gt;</code><br>
+          <code>&lt;link rel="alternate" href="https://mundpay.com/es/blog/slug-es/" hreflang="es-419"&gt;</code><br>
+          <code>&lt;link rel="alternate" href="https://mundpay.com/pt/blog/slug-pt/" hreflang="x-default"&gt;</code>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Schema por Idioma — Regras para Implementação</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Regra 1 — @id da Organization é único para todos os idiomas</strong>
+        <span>
+          O nó <code>Organization</code> com <code>"@id": "https://mundpay.com/#organization"</code> é declarado uma única vez, na home PT-BR. As versões EN e ES <strong>não redeclaram</strong> o Organization completo — apenas referenciam pelo @id. Isso garante que o Google trate todas as versões como a mesma entidade.
+        </span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Regra 2 — inLanguage obrigatório em cada WebPage e BlogPosting</strong>
+        <span>
+          Toda página e artigo de blog deve declarar <code>"inLanguage"</code> no schema:<br><br>
+          PT-BR: <code>"inLanguage": "pt-BR"</code><br>
+          EN: <code>"inLanguage": "en-US"</code><br>
+          ES: <code>"inLanguage": "es-419"</code><br><br>
+          Sem isso, o Google pode servir o artigo em português para buscas em inglês e vice-versa.
+        </span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Regra 3 — Schema mínimo para home EN e home ES</strong>
+        <span>
+          As homes EN e ES não precisam do schema completo — apenas referenciam a entidade central:<br><br>
+<pre style="background:var(--color-surface-2);padding:12px;border-radius:6px;font-size:0.8em;overflow:auto;">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "inLanguage": "en-US",
+  "url": "https://mundpay.com/",
+  "isPartOf": { "@id": "https://mundpay.com/#website" },
+  "about": { "@id": "https://mundpay.com/#organization" }
+}</pre>
+          FAQPage EN pode ser adicionada separadamente com perguntas pesquisadas em inglês (não traduzidas do PT-BR).
+        </span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Regra 4 — datePublished por idioma, não por artigo original</strong>
+        <span>
+          Se um artigo foi publicado em PT-BR em 2026-05-01 e a versão EN foi publicada em 2026-07-01, o <code>datePublished</code> da versão EN deve ser <code>2026-07-01</code> — não copiar a data do original PT-BR. O Google usa essa data para avaliar frescor de conteúdo por versão de idioma.
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Checklist de Verificação — Para o Dev</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>Verificar após cada deploy</strong>
+        <span>
+          Rodar no terminal para confirmar que hreflang, canonical e schema estão corretos:<br><br>
+          <code>curl -s https://mundpay.com/ | grep -iE '(hreflang|canonical|ld\+json)'</code><br>
+          <code>curl -s https://mundpay.com/pt/ | grep -iE '(hreflang|canonical|ld\+json)'</code><br><br>
+          O output deve mostrar:<br>
+          1. <code>rel="canonical"</code> apontando para a própria URL<br>
+          2. <code>hreflang="en"</code>, <code>hreflang="pt-BR"</code> e <code>hreflang="x-default"</code> em ambas<br>
+          3. <code>application/ld+json</code> presente após implementação dos schemas
+        </span>
+      </div>
+    </div>
   </div>
 </div>
 
