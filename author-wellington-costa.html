@@ -198,10 +198,11 @@
     }
 
     .author-hero-inner {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--space-2xl);
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-xl);
     }
 
     .author-meta-label {
@@ -214,9 +215,11 @@
       margin-bottom: 14px;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
     }
 
+    .author-meta-label::before,
     .author-meta-label::after {
       content: '';
       display: block;
@@ -247,7 +250,7 @@
       font-size: 17px;
       line-height: 1.65;
       color: rgba(5,7,0,0.7);
-      max-width: 580px;
+      max-width: 620px;
       margin-bottom: var(--space-lg);
     }
 
@@ -255,6 +258,7 @@
       display: flex;
       gap: var(--space-lg);
       margin-bottom: var(--space-lg);
+      justify-content: center;
     }
 
     .author-stat {
@@ -289,6 +293,7 @@
     .author-social {
       display: flex;
       gap: 8px;
+      justify-content: center;
     }
 
     .author-social a {
@@ -319,12 +324,13 @@
       flex-direction: column;
       align-items: center;
       gap: 14px;
+      order: -1;
     }
 
     .author-avatar {
-      width: 180px;
-      height: 180px;
-      border-radius: 24px;
+      width: 240px;
+      height: 240px;
+      border-radius: 28px;
       background: var(--color-bg-deep);
       border: 1px solid var(--color-divider);
       overflow: hidden;
@@ -336,9 +342,9 @@
 
     .author-avatar-initials {
       font-family: var(--font-meta);
-      font-size: 52px;
+      font-size: 72px;
       font-weight: 600;
-      color: rgba(5,7,0,0.15);
+      color: rgba(5,7,0,0.12);
       line-height: 1;
       letter-spacing: -0.02em;
     }
@@ -423,7 +429,7 @@
       top: 80px;
       display: flex;
       flex-direction: column;
-      gap: var(--space-lg);
+      gap: var(--space-md);
     }
 
     .bio-card {
@@ -633,6 +639,108 @@
     .read-more-link:hover { gap: 8px; }
 
     /* =============================================
+       ABOUT EXPANDABLE
+    ============================================= */
+    .about-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px var(--space-3xl);
+    }
+
+    .about-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-divider);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .about-card-header {
+      padding: var(--space-lg) var(--space-xl);
+      border-bottom: 1px solid var(--color-divider);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .about-card-header h2 {
+      font-family: var(--font-meta);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .about-preview {
+      padding: var(--space-xl);
+    }
+
+    .about-preview p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--color-text-muted);
+      max-width: 780px;
+    }
+
+    .about-preview p + p { margin-top: 16px; }
+
+    .about-expand-wrap {
+      padding: 0 var(--space-xl) var(--space-xl);
+    }
+
+    .about-full {
+      display: none;
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .about-full.open { display: block; }
+
+    .about-full p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--color-text-muted);
+      max-width: 780px;
+    }
+
+    .about-full p + p { margin-top: 16px; }
+
+    .about-full h3 {
+      font-family: var(--font-meta);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-top: var(--space-xl);
+      margin-bottom: 14px;
+    }
+
+    .btn-ver-mais {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-meta);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-accent);
+      padding: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: gap var(--transition);
+      margin-top: var(--space-md);
+    }
+
+    .btn-ver-mais:hover { gap: 9px; }
+
+    .btn-ver-mais svg {
+      width: 14px;
+      height: 14px;
+      transition: transform var(--transition);
+    }
+
+    .btn-ver-mais.open svg { transform: rotate(180deg); }
+
+    /* =============================================
        FOOTER (same as blog-index)
     ============================================= */
     .site-footer { background: var(--color-bg); overflow: hidden; }
@@ -755,10 +863,8 @@
     }
 
     @media (max-width: 768px) {
-      .author-hero-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
-      .author-avatar-wrap { flex-direction: row; align-items: center; }
-      .author-avatar { width: 100px; height: 100px; border-radius: 16px; }
-      .author-avatar-initials { font-size: 30px; }
+      .author-avatar { width: 160px; height: 160px; }
+      .author-avatar-initials { font-size: 48px; }
       .author-stats { gap: var(--space-md); flex-wrap: wrap; }
       .author-content { grid-template-columns: 1fr; }
       .bio-sidebar { position: static; }
@@ -1101,7 +1207,59 @@
 
     </div>
 
+    <!-- SOBRE O AUTOR -->
+    <section class="about-section" aria-labelledby="about-title">
+      <div class="about-card">
+
+        <div class="about-card-header">
+          <h2 id="about-title">Sobre Wellington Costa</h2>
+        </div>
+
+        <div class="about-preview">
+          <p>Wellington Costa e especialista em pagamentos globais com cinco anos de experiencia acompanhando operadores digitais que escalam vendas internacionais. Na Mundpay, trabalha diretamente com infoprodutores, afiliados e creators que vendem para mais de 40 paises, ajudando a resolver os principais gargalos de quem opera no digital: chargeback fora de controle, checkout com baixa conversao e bloqueios por falta de compliance.</p>
+          <p>Seus artigos partem sempre de dados reais de operacoes ativas, sem teoria generica ou linguagem de plataforma. A ideia e simples: se voce leu ate o fim e nao aprendeu algo que pode aplicar hoje, o artigo falhou.</p>
+        </div>
+
+        <div class="about-expand-wrap">
+          <div class="about-full" id="aboutFull" aria-hidden="true">
+            <p>Antes de chegar ao setor de pagamentos, Wellington passou por operacoes de e-commerce e marketing de performance, o que moldou uma visao diferente sobre conversao. Ele nao pensa no checkout como um formulario, mas como o ultimo metro antes da linha de chegada. E ali, qualquer friccao custa dinheiro.</p>
+
+            <p>Em 2021, entrou para a Mundpay no momento em que a empresa comecava sua expansao para mercados fora do Brasil. Desde entao, acompanhou de perto como infoprodutores brasileiros constroem operacoes solidas nos Estados Unidos, Europa e America Latina, e o que diferencia quem escala de quem trava.</p>
+
+            <h3>Metodologia</h3>
+
+            <p>Cada artigo passa por um processo de verificacao com dados internos da Mundpay, benchmarks de bandeiras e conversas com operadores ativos. Wellington nao escreve sobre o que deveria funcionar em teoria. Escreve sobre o que funciona na pratica, com os numeros para provar.</p>
+
+            <p>Quando o assunto e chargeback, cita os thresholds atuais do Visa Dispute Monitoring Program e do Mastercard Excessive Chargeback Program. Quando o assunto e checkout, usa dados reais de taxa de aprovacao e abandono de carrinho. Nada de especulacao.</p>
+
+            <h3>Fora do trabalho</h3>
+
+            <p>Wellington vive no Rio de Janeiro. Nas horas livres, acompanha o mercado de cripto e fintech globais com a mesma atencao que dedica ao trabalho. Acredita que os proximos cinco anos vao redefinir como o dinheiro se move entre fronteiras, e quer estar no meio disso.</p>
+          </div>
+
+          <button class="btn-ver-mais" id="btnVerMais" onclick="toggleAbout()" aria-controls="aboutFull" aria-expanded="false">
+            Ver mais
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
   </main>
+
+  <script>
+    function toggleAbout() {
+      const full = document.getElementById('aboutFull');
+      const btn  = document.getElementById('btnVerMais');
+      const open = full.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      btn.setAttribute('aria-expanded', open);
+      btn.childNodes[0].textContent = open ? 'Ver menos ' : 'Ver mais ';
+    }
+  </script>
 
   <!-- FOOTER -->
   <footer class="site-footer">
