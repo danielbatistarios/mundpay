@@ -432,6 +432,7 @@
   <div class="nav-tab" onclick="showTab('hreflang', this)">Hreflang & Multilíngue</div>
   <div class="nav-tab" onclick="showTab('pendencias', this)">Pendências</div>
   <div class="nav-tab" onclick="showTab('llmstxt', this)">llms.txt / GEO</div>
+  <div class="nav-tab" onclick="showTab('sitemap', this)">Sitemap</div>
 </div>
 
 <!-- ============ TAB: INTRO ============ -->
@@ -2060,6 +2061,232 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ============ TAB: SITEMAP ============ -->
+<div id="tab-sitemap" class="content">
+  <h2>Auditoria de Sitemap — mundpay.com</h2>
+  <p>Auditoria realizada em 2026-04-28 nos arquivos <code>sitemap.xml</code> (índice), <code>sitemap_en.xml</code> (36 URLs) e <code>sitemap_pt-BR.xml</code> (37 URLs). Score atual: <strong style="color:var(--color-danger)">31/100</strong>. Problemas críticos impedem indexação correta do conteúdo multilíngue.</p>
+
+  <h3>Diagnóstico — bugs encontrados</h3>
+  <table>
+    <thead><tr><th>Prioridade</th><th>Problema</th><th>Impacto</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span style="background:var(--color-danger);color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P0</span></td>
+        <td><strong>Hreflang ausente nos dois sitemaps</strong><br><code>sitemap_en.xml</code> e <code>sitemap_pt-BR.xml</code> existem mas não têm tags <code>&lt;xhtml:link rel="alternate" hreflang=""&gt;</code>. Google não sabe que <code>/blog/guia-definitivo</code> e <code>/pt/blog/guia-definitivo</code> são a mesma página em idiomas diferentes.</td>
+        <td>Canibalização garantida EN vs PT-BR para todas as queries. Ambas as versões competem entre si. Esforço editorial do blog desperdiçado.</td>
+      </tr>
+      <tr>
+        <td><span style="background:var(--color-danger);color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P0</span></td>
+        <td><strong><code>/404</code> indexada em ambos os sitemaps</strong><br><code>https://mundpay.com/404</code> e <code>https://mundpay.com/pt/404</code> estão listadas. Página de erro nunca deve constar no sitemap.</td>
+        <td>Sinal de baixa qualidade do sitemap para o Googlebot. Pode comprometer a confiança no arquivo inteiro.</td>
+      </tr>
+      <tr>
+        <td><span style="background:var(--color-danger);color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P0</span></td>
+        <td><strong>Slugs de blog com acentos URL-encoded</strong><br>Ex: <code>mundpay-%C3%A9-campe%C3%A3-do-pr%C3%AAmio...</code>. O sitemap deve conter URLs decodificadas em UTF-8 (<code>mundpay-é-campeã</code>) ou slugs sem acento. Se o servidor retorna 301 para a versão decodificada, o Google contabiliza dois URLs distintos.</td>
+        <td>Potencial duplicidade de conteúdo. Crawl budget fragmentado. Canonical incorreto.</td>
+      </tr>
+      <tr>
+        <td><span style="background:var(--color-danger);color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P0</span></td>
+        <td><strong>Zero metadados em todas as URLs</strong><br>Nenhuma URL tem <code>lastmod</code>, <code>changefreq</code> ou <code>priority</code>. Sem <code>lastmod</code>, o Googlebot decide sozinho quando recrawlear — podendo levar semanas para indexar artigos novos.</td>
+        <td>Indexação lenta de novo conteúdo. Artigos de blog publicados hoje podem demorar 2-4 semanas para aparecer no Google.</td>
+      </tr>
+      <tr>
+        <td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P1</span></td>
+        <td><strong><code>/espera/espera-obrigado</code> no sitemap</strong><br>Página de confirmação pós-formulário. Sem valor SEO, não deve ser indexada.</td>
+        <td>Crawl budget desperdiçado. Provavelmente retorna conteúdo thin.</td>
+      </tr>
+      <tr>
+        <td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P1</span></td>
+        <td><strong><code>/afb25</code>, <code>/apresentacao</code>, <code>/espera</code> no sitemap</strong><br>Páginas de afiliado, apresentação interna e waitlist. Sem valor SEO, provavelmente acessos restritos ou conteúdo thin.</td>
+        <td>Diluição do crawl budget. Sinal de baixa curadoria para o Google.</td>
+      </tr>
+      <tr>
+        <td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P1</span></td>
+        <td><strong>Mix de idiomas dentro de cada sitemap</strong><br><code>sitemap_en.xml</code> contém <code>/me-ajuda</code> (slug PT). <code>sitemap_pt-BR.xml</code> contém <code>/pt/prohibited-products</code> (slug EN). Cada sitemap deve ter só URLs do seu idioma.</td>
+        <td>Confusão de idioma para o Googlebot. Afeta detecção automática de língua e targeting geográfico.</td>
+      </tr>
+      <tr>
+        <td><span style="background:#f59e0b;color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P1</span></td>
+        <td><strong>8 páginas legais no sitemap principal com crawl budget alto</strong><br><code>termos-de-uso</code>, <code>aup</code>, <code>codigo-de-etica</code>, <code>programa-geral-de-compliance</code>, <code>politicas-de-prevencao-a-lavagem-de-dinheiro</code>, <code>canal-de-denuncias</code>, <code>seller-agreement</code>, <code>refund-policy</code>. Páginas legais não rankeiam para queries comerciais.</td>
+        <td>Crawl budget reduzido para páginas que importam (home, blog, produtos). Dilui autoridade temática.</td>
+      </tr>
+      <tr>
+        <td><span style="background:#6b7280;color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P2</span></td>
+        <td><strong><code>/pt/blog</code> duplicada no sitemap PT-BR</strong><br>A URL aparece duas vezes (linhas 19 e 24) no <code>sitemap_pt-BR.xml</code>.</td>
+        <td>Sinal de má qualidade do arquivo de sitemap.</td>
+      </tr>
+      <tr>
+        <td><span style="background:#6b7280;color:#fff;padding:2px 8px;border-radius:4px;font-size:.75rem;font-weight:700">P2</span></td>
+        <td><strong>Slugs de blog muito longos</strong><br>Ex: <code>guia-definitivo-para-vender-seu-infoproduto-globalmente</code> (56 chars só o slug). Boas práticas: slug até 50 chars, 3-5 palavras-chave principais.</td>
+        <td>CTR menor em SERP. Slugs longos tendem a ser truncados em compartilhamentos.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Estrutura ideal — sitemap em 3 arquivos</h3>
+  <p>A solução correta para um site multilíngue com conteúdo variado é separar em 3 sitemaps especializados + 1 índice:</p>
+
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>sitemap.xml — índice mestre (manter, corrigir)</strong>
+        <span>Aponta para os 3 sitemaps filhos. Correto ter um índice. Problema atual: só aponta para EN e PT-BR, sem <code>lastmod</code> nas referências.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>sitemap_en.xml — páginas EN com hreflang</strong>
+        <span>Conteúdo: <code>/</code> (home EN), <code>/blog</code>, artigos de blog EN, <code>/help</code>, <code>/prohibited-products</code>, <code>/pagamentos-e-taxas</code>, <code>/seller-agreement</code>, <code>/refund-policy</code>. Cada URL deve ter tag <code>xhtml:link</code> apontando para versão PT alternativa e para <code>x-default</code>.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>sitemap_pt-BR.xml — páginas PT com hreflang</strong>
+        <span>Conteúdo: <code>/pt/</code> (home PT), <code>/pt/blog</code>, artigos de blog PT, <code>/pt/me-ajuda</code>, <code>/pt/produtos-proibidos</code>, <code>/pt/pagamentos-e-taxas</code>, etc. Cada URL com hreflang espelhando o sitemap EN.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:var(--color-accent)"></div>
+      <div class="pending-text">
+        <strong>sitemap_legal.xml — páginas legais isoladas (criar)</strong>
+        <span>Mover para cá: <code>termos-de-uso</code>, <code>termos-de-servicos</code>, <code>aup</code>, <code>codigo-de-etica</code>, <code>programa-geral-de-compliance</code>, <code>politicas-de-prevencao-a-lavagem-de-dinheiro</code>, <code>canal-de-denuncias</code>. Vantagem: o Googlebot pode deprioritizar este sitemap sem afetar crawl de conteúdo comercial.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Como deve ser cada URL no sitemap (modelo correto)</h3>
+  <p>Exemplo de URL com todos os atributos corretos para o sitemap EN:</p>
+  <div class="code-block" style="position:relative">
+    <button class="copy-btn" onclick="copyCode('sitemap-code-en', this)">Copiar</button>
+    <pre id="sitemap-code-en" style="overflow-x:auto;font-size:.8rem;line-height:1.6">&lt;url&gt;
+  &lt;loc&gt;https://mundpay.com/blog/guia-definitivo-vender-infoproduto-global&lt;/loc&gt;
+  &lt;lastmod&gt;2026-04-28&lt;/lastmod&gt;
+  &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;priority&gt;0.8&lt;/priority&gt;
+  &lt;xhtml:link
+    rel="alternate"
+    hreflang="en"
+    href="https://mundpay.com/blog/guia-definitivo-vender-infoproduto-global"/&gt;
+  &lt;xhtml:link
+    rel="alternate"
+    hreflang="pt-BR"
+    href="https://mundpay.com/pt/blog/guia-definitivo-vender-infoproduto-global"/&gt;
+  &lt;xhtml:link
+    rel="alternate"
+    hreflang="x-default"
+    href="https://mundpay.com/blog/guia-definitivo-vender-infoproduto-global"/&gt;
+&lt;/url&gt;</pre>
+  </div>
+
+  <p style="margin-top:1rem">E o cabeçalho do arquivo deve declarar o namespace xhtml:</p>
+  <div class="code-block" style="position:relative">
+    <button class="copy-btn" onclick="copyCode('sitemap-code-ns', this)">Copiar</button>
+    <pre id="sitemap-code-ns" style="overflow-x:auto;font-size:.8rem;line-height:1.6">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"&gt;</pre>
+  </div>
+
+  <h3>Tabela de prioridade por tipo de página</h3>
+  <table>
+    <thead><tr><th>Tipo de página</th><th>priority</th><th>changefreq</th><th>Incluir no sitemap?</th></tr></thead>
+    <tbody>
+      <tr><td>Home (<code>/</code>, <code>/pt/</code>)</td><td>1.0</td><td>weekly</td><td>Sim — sitemap_en / sitemap_pt</td></tr>
+      <tr><td>Blog index (<code>/blog</code>, <code>/pt/blog</code>)</td><td>0.9</td><td>weekly</td><td>Sim — sitemap_en / sitemap_pt</td></tr>
+      <tr><td>Artigos de blog</td><td>0.8</td><td>monthly</td><td>Sim — sitemap_en / sitemap_pt</td></tr>
+      <tr><td>Páginas comerciais (<code>/pagamentos-e-taxas</code>, <code>/seller-agreement</code>)</td><td>0.7</td><td>monthly</td><td>Sim — sitemap_en / sitemap_pt</td></tr>
+      <tr><td>Ajuda / suporte (<code>/help</code>, <code>/me-ajuda</code>)</td><td>0.6</td><td>monthly</td><td>Sim — sitemap_en / sitemap_pt</td></tr>
+      <tr><td>Páginas legais (<code>termos</code>, <code>aup</code>, <code>compliance</code>)</td><td>0.3</td><td>yearly</td><td>Sim — apenas sitemap_legal</td></tr>
+      <tr><td>Página 404</td><td>—</td><td>—</td><td><strong>Nunca</strong></td></tr>
+      <tr><td>Confirmações (<code>/espera-obrigado</code>)</td><td>—</td><td>—</td><td><strong>Nunca</strong> — adicionar noindex na página</td></tr>
+      <tr><td>Afiliado (<code>/afb25</code>), waitlist (<code>/espera</code>)</td><td>—</td><td>—</td><td><strong>Nunca</strong> — adicionar noindex na página</td></tr>
+      <tr><td>Apresentação interna (<code>/apresentacao</code>)</td><td>—</td><td>—</td><td><strong>Nunca</strong> — adicionar noindex na página</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Plano de ação — Nathan Dev</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>[P0] Adicionar noindex nas páginas que não devem ser indexadas</strong>
+        <span>Adicionar <code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code> nas páginas: <code>/404</code>, <code>/pt/404</code>, <code>/espera/espera-obrigado</code>, <code>/pt/espera/espera-obrigado</code>, <code>/afb25</code>, <code>/pt/afb25</code>, <code>/apresentacao</code>, <code>/pt/apresentacao</code>, <code>/espera</code>, <code>/pt/espera</code>. No Framer: Page Settings → SEO → "Exclude from search engines".</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>[P0] Remover URLs não-indexáveis dos sitemaps</strong>
+        <span>Após adicionar noindex, remover as URLs acima de <code>sitemap_en.xml</code> e <code>sitemap_pt-BR.xml</code>. URLs com noindex no sitemap = sinal de inconsistência para o Google (a página diz "não me indexe" mas o sitemap diz "indexe aqui").</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>[P0] Adicionar namespace xhtml e hreflang em ambos os sitemaps</strong>
+        <span>Adicionar <code>xmlns:xhtml="http://www.w3.org/1999/xhtml"</code> na tag <code>&lt;urlset&gt;</code> e para cada URL adicionar os três <code>&lt;xhtml:link&gt;</code>: <code>hreflang="en"</code> (URL EN), <code>hreflang="pt-BR"</code> (URL PT) e <code>hreflang="x-default"</code> (URL EN como padrão). O hreflang deve ser recíproco: se EN aponta para PT, PT deve apontar para EN na mesma URL.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>[P0] Corrigir slugs URL-encoded nos artigos de blog</strong>
+        <span>Verificar se os artigos com acentos nos slugs (<code>%C3%A9</code>, <code>%C3%A3</code>) têm canonical definido. A prática recomendada é: slugs sem acento (ex: <code>mundpay-campea-premio-reclame-aqui-2025</code>). Se os slugs já estão publicados e indexados com acento, manter e garantir que o sitemap usa a versão decodificada UTF-8, não a URL-encoded.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>[P0] Adicionar lastmod em todas as URLs</strong>
+        <span>No Framer, o sitemap gerado automaticamente pode ser configurado. Se não houver opção nativa: gerar o sitemap manualmente com <code>lastmod</code> na data de publicação de cada artigo e na data de última edição das páginas principais. Formato: <code>YYYY-MM-DD</code>. Home e blog index: data de hoje. Artigos: data de publicação.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>[P1] Criar sitemap_legal.xml e mover páginas legais</strong>
+        <span>Criar terceiro sitemap com as 7-8 páginas legais, adicionar ao índice <code>sitemap.xml</code>. Retirar essas URLs dos sitemaps EN e PT-BR. Isso concentra o crawl budget do Googlebot nas páginas comerciais e editoriais que realmente importam para SEO.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>[P1] Limpar mix de idiomas em cada sitemap</strong>
+        <span>Remover de <code>sitemap_en.xml</code>: <code>/me-ajuda</code> (mover para PT). Remover de <code>sitemap_pt-BR.xml</code>: <code>/pt/prohibited-products</code> (slug EN — verificar se existe versão PT <code>/pt/produtos-proibidos</code> e usar ela). Remover duplicata de <code>/pt/blog</code> que aparece duas vezes.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>[P1] Submeter sitemaps corrigidos no Google Search Console</strong>
+        <span>Após correções: acessar GSC → Sitemaps → Adicionar novo sitemap. Submeter os 3 arquivos: <code>sitemap.xml</code>, <code>sitemap_en.xml</code>, <code>sitemap_pt-BR.xml</code>. Verificar se não há erros reportados em 24-48h. Solicitar reindexação das URLs principais via GSC → URL Inspection → Solicitar indexação.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot" style="background:#6b7280"></div>
+      <div class="pending-text">
+        <strong>[P2] Normalizar slugs de blog para no máximo 50 caracteres</strong>
+        <span>Para artigos futuros: usar slug curto com 3-4 palavras-chave (ex: <code>vender-infoproduto-global</code> em vez de <code>guia-definitivo-para-vender-seu-infoproduto-globalmente</code>). Para artigos já publicados e indexados: não alterar os slugs existentes (301 redirect causa perda de crawl budget e pode apagar histórico de indexação).</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Score antes vs depois</h3>
+  <table>
+    <thead><tr><th>Dimensão</th><th>Agora</th><th>Após P0</th><th>Após P0+P1</th></tr></thead>
+    <tbody>
+      <tr><td>Hreflang correto</td><td style="color:var(--color-danger)">0/20</td><td style="color:var(--color-success)">20/20</td><td style="color:var(--color-success)">20/20</td></tr>
+      <tr><td>URLs indexáveis apenas</td><td style="color:var(--color-danger)">5/20</td><td style="color:var(--color-success)">18/20</td><td style="color:var(--color-success)">20/20</td></tr>
+      <tr><td>Metadados (lastmod)</td><td style="color:var(--color-danger)">0/20</td><td style="color:var(--color-success)">18/20</td><td style="color:var(--color-success)">20/20</td></tr>
+      <tr><td>Consistência de idioma</td><td style="color:var(--color-danger)">8/20</td><td>12/20</td><td style="color:var(--color-success)">20/20</td></tr>
+      <tr><td>Estrutura e organização</td><td style="color:#f59e0b">18/20</td><td>18/20</td><td style="color:var(--color-success)">20/20</td></tr>
+      <tr><td><strong>Total</strong></td><td style="color:var(--color-danger)"><strong>31/100</strong></td><td><strong>86/100</strong></td><td style="color:var(--color-success)"><strong>100/100</strong></td></tr>
+    </tbody>
+  </table>
 </div>
 
 <script>
