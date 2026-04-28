@@ -1583,7 +1583,57 @@
       }
     }
 
+    /* Mobile TOC accordion — shown only below 900px */
+    .mobile-toc {
+      display: none;
+      margin-bottom: var(--space-lg);
+    }
+
+    .mobile-toc-details {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .mobile-toc-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      cursor: pointer;
+      list-style: none;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      user-select: none;
+    }
+
+    .mobile-toc-summary::-webkit-details-marker { display: none; }
+
+    .mobile-toc-summary .toc-chevron {
+      width: 16px;
+      height: 16px;
+      color: var(--color-text-faint);
+      transition: transform 200ms ease;
+      flex-shrink: 0;
+    }
+
+    .mobile-toc-details[open] .toc-chevron {
+      transform: rotate(180deg);
+    }
+
+    .mobile-toc-body {
+      padding: 4px 16px 14px;
+      border-top: 1px solid var(--color-divider);
+    }
+
     @media (max-width: 900px) {
+      .mobile-toc { display: block; }
+
       .blog-layout {
         grid-template-columns: 1fr;
       }
@@ -1593,10 +1643,9 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--space-sm);
-        order: -1;
       }
 
-      .sidebar-widget.toc-widget { grid-column: 1 / -1; }
+      .sidebar-widget.toc-widget { display: none; }
       .sidebar-cta { grid-column: 1 / -1; display: none; }
 
       .footer-grid {
@@ -1783,6 +1832,28 @@
               </div>
             </div>
           </header>
+
+          <!-- MOBILE TOC (visible only below 900px; desktop uses sidebar) -->
+          <div class="mobile-toc">
+            <details class="mobile-toc-details">
+              <summary class="mobile-toc-summary">
+                Neste artigo
+                <svg class="toc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </summary>
+              <nav class="mobile-toc-body" aria-label="Sumário do artigo">
+                <ul class="toc-list">
+                  <li><a href="#problema-real"><span class="toc-num">01</span>O problema real</a></li>
+                  <li><a href="#causas-recusa"><span class="toc-num">02</span>Por que os pagamentos sao recusados</a></li>
+                  <li><a href="#como-resolver"><span class="toc-num">03</span>Como resolver na pratica</a></li>
+                  <li><a href="#comparativo"><span class="toc-num">04</span>Comparativo de plataformas</a></li>
+                  <li><a href="#secret-order-bump"><span class="toc-num">05</span>Secret Order Bump</a></li>
+                  <li><a href="#conclusao"><span class="toc-num">06</span>Conclusao</a></li>
+                </ul>
+              </nav>
+            </details>
+          </div>
 
           <!-- E-E-A-T CALLOUT -->
           <div class="eeat-callout" data-reveal>
@@ -2324,6 +2395,16 @@
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') setView('human');
     });
+
+    // MOBILE TOC — close accordion when a link is clicked
+    const mobileTocDetails = document.querySelector('.mobile-toc-details');
+    if (mobileTocDetails) {
+      mobileTocDetails.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          mobileTocDetails.removeAttribute('open');
+        });
+      });
+    }
   </script>
 
   <!-- Machine modal — AEO/LLM content -->
