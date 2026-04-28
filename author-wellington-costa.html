@@ -199,9 +199,9 @@
 
     .author-hero-inner {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: auto 1fr;
       gap: var(--space-2xl);
-      align-items: start;
+      align-items: center;
     }
 
     .author-meta-label {
@@ -322,8 +322,8 @@
     }
 
     .author-avatar {
-      width: 240px;
-      height: 240px;
+      width: 280px;
+      height: 280px;
       border-radius: 28px;
       background: var(--color-bg-deep);
       border: 1px solid var(--color-divider);
@@ -336,7 +336,7 @@
 
     .author-avatar-initials {
       font-family: var(--font-meta);
-      font-size: 72px;
+      font-size: 80px;
       font-weight: 600;
       color: rgba(5,7,0,0.12);
       line-height: 1;
@@ -932,6 +932,19 @@
     <section class="author-hero" aria-labelledby="author-name">
       <div class="author-hero-inner">
 
+        <!-- Avatar -->
+        <div class="author-avatar-wrap">
+          <div class="author-avatar" aria-hidden="true">
+            <span class="author-avatar-initials">WC</span>
+          </div>
+          <div class="author-verified-badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Autor verificado
+          </div>
+        </div>
+
         <div class="author-info">
           <p class="author-meta-label">Autor do Blog</p>
 
@@ -962,7 +975,6 @@
 
           <nav class="author-social" aria-label="Redes de Wellington Costa">
             <a href="https://www.linkedin.com/in/wellington-costa-mundpay/" target="_blank" rel="noopener" aria-label="LinkedIn de Wellington Costa">
-              <!-- LinkedIn -->
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -971,14 +983,12 @@
               LinkedIn
             </a>
             <a href="https://twitter.com/mundpay" target="_blank" rel="noopener" aria-label="X / Twitter de Wellington Costa">
-              <!-- X / Twitter -->
               <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
               </svg>
               X
             </a>
             <a href="mailto:wellington@mundpay.com" aria-label="E-mail de Wellington Costa">
-              <!-- Mail -->
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/>
                 <path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
@@ -986,19 +996,6 @@
               E-mail
             </a>
           </nav>
-        </div>
-
-        <!-- Avatar -->
-        <div class="author-avatar-wrap">
-          <div class="author-avatar" aria-hidden="true">
-            <span class="author-avatar-initials">WC</span>
-          </div>
-          <div class="author-verified-badge">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Autor verificado
-          </div>
         </div>
 
       </div>
