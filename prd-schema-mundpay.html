@@ -585,7 +585,7 @@
       <button class="copy-btn" onclick="copyCode('code-home', this)">Copiar</button>
     </div>
     <pre id="code-home">{
-  "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
+  "@context": "https://schema.org",
   "@graph": [
 
     {
@@ -649,7 +649,7 @@
             { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
             { "@type": "Language", "name": "English", "alternateName": "en" }
           ],
-          "url": "https://mundpay.com/me-ajuda"
+          "url": "https://mundpay.com/pt/me-ajuda"
         }
       ],
       "aggregateRating": {
@@ -716,16 +716,13 @@
       "url": "https://mundpay.com/",
       "name": "Mundpay",
       "publisher": { "@id": "https://mundpay.com/#organization" },
-      "inLanguage": [
-        { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
-        { "@type": "Language", "name": "English", "alternateName": "en" }
-      ]
+      "inLanguage": ["pt-BR", "en", "es"]
     },
 
     {
       "@type": "WebPage",
-      "@id": "https://mundpay.com/#webpage",
-      "url": "https://mundpay.com/",
+      "@id": "https://mundpay.com/pt/#webpage",
+      "url": "https://mundpay.com/pt/",
       "name": "Mundpay — Gateway de Pagamento Internacional para Infoprodutores e Sellers Digitais",
       "description": "Checkout global com alta taxa de aprovacao, saque D+3, Secret Order Bump exclusivo e antifraude proativo. 190 paises.",
       "mainEntity": [
@@ -734,7 +731,7 @@
       ],
       "publisher": { "@id": "https://mundpay.com/#organization" },
       "isPartOf": { "@id": "https://mundpay.com/#website" },
-      "inLanguage": { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+      "inLanguage": "pt-BR",
       "speakableSpecification": {
         "@type": "SpeakableSpecification",
         "cssSelector": ["h1", ".hero__subtitle", ".faq__answer", "h2"]
@@ -825,11 +822,7 @@
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web",
       "softwareVersion": "1.0",
-      "inLanguage": [
-        { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
-        { "@type": "Language", "name": "English", "alternateName": "en" },
-        { "@type": "Language", "name": "Spanish", "alternateName": "es" }
-      ],
+      "inLanguage": ["pt-BR", "en", "es"],
       "featureList": [
         "Secret Order Bump pos-checkout (exclusivo Mundpay)",
         "Checkout em 190 paises",
