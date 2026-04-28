@@ -1085,21 +1085,65 @@
     }
 
     @media (max-width: 768px) {
-      .posts-grid { grid-template-columns: 1fr; gap: 16px; }
-      .newsletter-inner { flex-direction: column; align-items: flex-start; }
+      /* Header */
+      .lang-switcher { display: none; }
+      .btn-login { display: none; }
+      .header-inner { padding: 0 20px; }
+
+      /* Hero */
+      .blog-hero { padding: var(--space-xl) 20px var(--space-lg); }
+      .blog-hero h1 { font-size: clamp(30px, 8vw, 48px); }
+      .blog-hero-desc { font-size: 16px; }
+
+      /* Featured */
+      .featured-section { padding: 0 20px var(--space-xl); border-bottom: none; margin-bottom: 0; }
+      .featured-body { padding: 28px 24px; }
+
+      /* Posts grid */
+      .posts-grid { grid-template-columns: 1fr; gap: 14px; padding: 0 20px var(--space-2xl); }
+
+      /* Cluster */
+      .cluster-section { padding: 0 20px var(--space-2xl); }
+
+      /* Newsletter */
+      .newsletter-inner { flex-direction: column; align-items: flex-start; padding: var(--space-xl) 20px; }
       .newsletter-form { width: 100%; max-width: 100%; }
+
+      /* Footer */
       .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
       .footer-entities { grid-template-columns: 1fr; }
-      .blog-hero { padding-top: var(--space-xl); }
-      .blog-hero h1 { font-size: clamp(32px, 8vw, 48px); }
-      .header-left-pill nav a:nth-child(2) { display: none; }
-      .featured-section { border-bottom: none; margin-bottom: 0; }
+      .footer-inner { padding: var(--space-lg) 20px; }
     }
 
     @media (max-width: 480px) {
-      .lang-switcher { display: none; }
-      .featured-body { padding: 24px 20px; }
-      .blog-hero h1 { font-size: 32px; }
+      /* Header */
+      .header-inner { padding: 0 16px; }
+      .header-left-pill nav a:nth-child(2) { display: none; }
+      .btn-start { font-size: 13px; padding: 7px 12px; }
+
+      /* Hero */
+      .blog-hero { padding: var(--space-lg) 16px; }
+      .blog-hero h1 { font-size: 28px; }
+      .blog-hero-desc { font-size: 15px; }
+
+      /* Featured */
+      .featured-section { padding: 0 16px var(--space-lg); }
+      .featured-body { padding: 20px 16px; }
+
+      /* Posts */
+      .posts-grid { padding: 0 16px var(--space-xl); gap: 12px; }
+      .post-card-body { padding: 16px 16px 14px; }
+
+      /* Cluster */
+      .cluster-section { padding: 0 16px var(--space-xl); }
+
+      /* Newsletter */
+      .newsletter-inner { padding: var(--space-lg) 16px; }
+      .newsletter-form input { font-size: 14px; }
+
+      /* Footer */
+      .footer-inner { padding: var(--space-lg) 16px; }
+      .footer-app-btns { flex-direction: row; flex-wrap: wrap; }
     }
   </style>
 </head>
