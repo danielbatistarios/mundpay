@@ -1799,6 +1799,15 @@
     </div>
   </div>
 
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Central de Ajuda (/me-ajuda) — Indexação no Google</strong>
+        <span>A página <code>/pt/me-ajuda</code> precisa estar indexada. Verificar: (1) robots.txt não bloqueia o path <code>/me-ajuda</code> nem o widget Crisp; (2) a página tem meta robots <code>index, follow</code> (não <code>noindex</code>); (3) a URL está no sitemap.xml com prioridade adequada; (4) o conteúdo das FAQs é renderizado no HTML (não só via JS do Crisp — Googlebot pode não executar o widget). Se o conteúdo das FAQs estiver somente no JS do Crisp, o dev precisa renderizá-las estaticamente no HTML ou duplicar as principais como HTML visível. O schema FAQPage já está preparado — garantir que ele seja injetado na página.</span>
+      </div>
+    </div>
+  </div>
+
   <h3>Médias — Implementar em seguida</h3>
   <div class="pending-box">
     <div class="pending-item">
