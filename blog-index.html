@@ -831,86 +831,106 @@
        NEWSLETTER STRIP
     ============================================= */
     .newsletter-strip {
-      background: rgba(5,7,0,0.03);
-      border-top: 1px solid var(--color-divider);
-      border-bottom: 1px solid var(--color-divider);
+      background: #A2D035;
       margin: var(--space-2xl) 0 0;
     }
 
     .newsletter-inner {
-      max-width: 1280px;
+      max-width: 680px;
       margin: 0 auto;
-      padding: var(--space-xl) 24px;
+      padding: 72px 24px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      gap: 32px;
+      text-align: center;
+      gap: 28px;
+    }
+
+    .newsletter-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(5,7,0,0.55);
+    }
+    .newsletter-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: rgba(5,7,0,0.4);
     }
 
     .newsletter-text h3 {
-      font-size: 21px;
+      font-size: 32px;
       font-weight: 700;
-      letter-spacing: -0.01em;
-      margin-bottom: 6px;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: rgba(5,7,0,0.9);
+      margin-bottom: 8px;
     }
 
     .newsletter-text p {
-      font-size: 14px;
-      color: var(--color-text-muted);
-    }
-
-    .newsletter-disclaimer {
-      font-size: 12px;
-      color: rgba(5,7,0,0.42);
-      margin-top: 5px;
-      display: block;
+      font-size: 16px;
+      color: rgba(5,7,0,0.62);
+      line-height: 1.55;
     }
 
     .newsletter-form {
       display: flex;
-      gap: 10px;
-      flex-shrink: 0;
-      min-width: 280px;
-      max-width: 420px;
+      gap: 0;
+      width: 100%;
+      max-width: 440px;
+      background: rgba(5,7,0,0.08);
+      border-radius: 40px;
+      padding: 5px 5px 5px 20px;
+      border: 1.5px solid rgba(5,7,0,0.12);
+      transition: border-color 200ms, box-shadow 200ms;
+    }
+    .newsletter-form:focus-within {
+      border-color: rgba(5,7,0,0.35);
+      box-shadow: 0 0 0 3px rgba(5,7,0,0.08);
     }
 
     .newsletter-input {
       font-family: var(--font-meta);
       font-size: 15px;
-      padding: 11px 18px;
-      border-radius: 32px;
-      border: 1.5px solid rgba(5,7,0,0.12);
-      background: var(--color-bg);
-      color: var(--color-text);
-      flex: 1;
-      min-width: 180px;
+      background: transparent;
+      border: none;
       outline: none;
-      transition: border-color 200ms, box-shadow 200ms;
+      color: rgba(5,7,0,0.88);
+      flex: 1;
+      min-width: 0;
     }
-
-    .newsletter-input:focus {
-      border-color: var(--color-accent);
-      box-shadow: 0 0 0 3px var(--color-accent-s);
-    }
-    .newsletter-input::placeholder { color: var(--color-text-faint); }
+    .newsletter-input::placeholder { color: rgba(5,7,0,0.4); }
 
     .newsletter-submit {
       font-family: var(--font-meta);
-      font-size: 15px;
-      font-weight: 600;
-      padding: 11px 22px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 10px 22px;
       border-radius: 32px;
       border: none;
-      background: var(--color-accent);
-      color: #fff;
+      background: rgba(5,7,0,0.85);
+      color: #A2D035;
       cursor: pointer;
-      transition: background 200ms, transform 120ms;
       white-space: nowrap;
       flex-shrink: 0;
+      transition: background 180ms, transform 120ms;
     }
-
-    .newsletter-submit:hover { background: var(--color-accent-h); transform: translateY(-1px); }
+    .newsletter-submit:hover { background: rgba(5,7,0,1); transform: translateY(-1px); }
     .newsletter-submit:active { transform: translateY(0); }
+
+    .newsletter-disclaimer {
+      font-size: 12px;
+      color: rgba(5,7,0,0.45);
+      display: block;
+    }
 
     /* =============================================
        FOOTER
@@ -1303,8 +1323,9 @@
       .cluster-section { padding: 0 20px var(--space-2xl); }
 
       /* Newsletter */
-      .newsletter-inner { flex-direction: column; align-items: flex-start; padding: var(--space-xl) 20px; }
-      .newsletter-form { width: 100%; max-width: 100%; }
+      .newsletter-inner { padding: 56px 20px; }
+      .newsletter-text h3 { font-size: 26px; }
+      .newsletter-form { max-width: 100%; }
 
       /* Footer */
       .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
@@ -1333,8 +1354,9 @@
       .cluster-section { padding: 0 16px var(--space-xl); }
 
       /* Newsletter */
-      .newsletter-inner { padding: var(--space-lg) 16px; }
-      .newsletter-form input { font-size: 14px; }
+      .newsletter-inner { padding: 48px 16px; }
+      .newsletter-text h3 { font-size: 22px; }
+      .newsletter-input { font-size: 14px; }
 
       /* Footer */
       .footer-inner { padding: var(--space-lg) 16px; }
@@ -1639,16 +1661,17 @@
     <!-- NEWSLETTER STRIP -->
     <div class="newsletter-strip" role="complementary" aria-label="Newsletter">
       <div class="newsletter-inner">
+        <span class="newsletter-eyebrow">Newsletter</span>
         <div class="newsletter-text">
           <h3>Receba os proximos artigos</h3>
-          <p>Estrategias de pagamentos globais direto no seu email.</p>
-          <small class="newsletter-disclaimer">Sem spam. 1 a 2 emails por semana, so conteudo relevante.</small>
+          <p>Estrategias de pagamentos globais, conversao e chargeback direto no seu email.</p>
         </div>
         <form class="newsletter-form" onsubmit="handleNewsletter(event)" aria-label="Formulario de newsletter">
           <label for="newsletterEmail" class="sr-only">Seu email</label>
           <input type="email" id="newsletterEmail" class="newsletter-input" placeholder="seu@email.com" required autocomplete="email">
           <button type="submit" class="newsletter-submit">Assinar</button>
         </form>
+        <small class="newsletter-disclaimer">Sem spam. 1-2 emails por semana, so conteudo relevante.</small>
       </div>
     </div>
 
