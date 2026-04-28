@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellington Costa — Especialista em Pagamentos Globais | Blog Mundpay</title>
+  <meta name="description" content="Wellington Costa escreve sobre pagamentos internacionais, chargeback e conversão no checkout. Especialista em infraestrutura de pagamentos para infoprodutores e creators.">
+  <link rel="canonical" href="https://mundpay.com/pt/blog/author/wellington-costa/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg:           #eaede4;
+      --color-bg-card:      #e2e5da;
+      --color-bg-deep:      #d8dbd2;
+      --color-text:         rgba(5,7,0,0.88);
+      --color-text-muted:   rgba(5,7,0,0.58);
+      --color-text-faint:   rgba(5,7,0,0.3);
+      --color-accent:       #859933;
+      --color-accent-h:     #6e7f28;
+      --color-accent-s:     rgba(133,153,51,0.07);
+      --color-accent-sm:    rgba(133,153,51,0.16);
+      --color-accent-border:rgba(133,153,51,0.22);
+      --color-divider:      rgba(5,7,0,0.09);
+
+      --font-main: 'Rethink Sans', sans-serif;
+      --font-meta: 'Space Grotesk', sans-serif;
+
+      --space-xs:  8px;
+      --space-sm:  16px;
+      --space-md:  24px;
+      --space-lg:  32px;
+      --space-xl:  40px;
+      --space-2xl: 56px;
+      --space-3xl: 80px;
+
+      --radius:    6px;
+      --radius-lg: 10px;
+      --transition: 160ms cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-divider);
+      padding: 10px 0;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left-pill {
+      display: flex;
+      align-items: center;
+      background: rgba(5,7,0,0.05);
+      border-radius: 40px;
+      padding: 6px 6px 6px 12px;
+    }
+
+    .header-left-pill .pill-logo {
+      display: flex;
+      align-items: center;
+      padding-right: 4px;
+    }
+
+    .header-left-pill .pill-logo img { height: 22px; width: auto; }
+
+    .pill-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(5,7,0,0.12);
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+
+    .header-left-pill nav { display: flex; align-items: center; }
+
+    .header-left-pill nav a {
+      font-family: var(--font-meta);
+      font-size: 14px;
+      color: rgba(5,7,0,0.65);
+      padding: 6px 14px;
+      border-radius: 32px;
+      transition: color 200ms, background 200ms;
+    }
+
+    .header-left-pill nav a:hover,
+    .header-left-pill nav a.active {
+      color: rgba(5,7,0,0.9);
+      background: rgba(5,7,0,0.05);
+    }
+
+    .header-actions { display: flex; align-items: center; gap: 6px; }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(5,7,0,0.05);
+      border-radius: 32px;
+      padding: 4px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 24px;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.5);
+      transition: background 200ms, color 200ms;
+    }
+
+    .lang-btn img { width: 18px; height: 13px; border-radius: 2px; }
+    .lang-btn:hover { background: rgba(5,7,0,0.07); color: rgba(5,7,0,0.8); }
+    .lang-btn.active { background: rgba(5,7,0,0.09); color: rgba(5,7,0,0.9); }
+    .lang-btn.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+
+    .btn-login {
+      font-family: var(--font-meta);
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.75);
+      padding: 8px 14px;
+      border-radius: 32px;
+      transition: color 200ms;
+    }
+    .btn-login:hover { color: rgba(5,7,0,1); }
+
+    .btn-start {
+      font-family: var(--font-meta);
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.85);
+      padding: 8px 16px;
+      border-radius: 32px;
+      background: rgba(5,7,0,0.08);
+      border: 1px solid rgba(5,7,0,0.1);
+      transition: background 200ms;
+    }
+    .btn-start:hover { background: rgba(5,7,0,0.13); }
+
+    /* =============================================
+       BREADCRUMB
+    ============================================= */
+    .breadcrumb-bar {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--space-md) 24px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      color: var(--color-text-faint);
+    }
+
+    .breadcrumb-bar a { color: var(--color-text-faint); transition: color var(--transition); }
+    .breadcrumb-bar a:hover { color: var(--color-text-muted); }
+    .breadcrumb-bar span { color: var(--color-text-muted); }
+
+    /* =============================================
+       AUTHOR HERO
+    ============================================= */
+    .author-hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: var(--space-2xl) 24px var(--space-xl);
+    }
+
+    .author-hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+
+    .author-meta-label {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .author-meta-label::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--color-accent);
+      opacity: 0.5;
+    }
+
+    .author-name {
+      font-family: var(--font-main);
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--color-text);
+      margin-bottom: 12px;
+    }
+
+    .author-role {
+      font-size: 16px;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+      font-weight: 400;
+    }
+
+    .author-bio-short {
+      font-size: 17px;
+      line-height: 1.65;
+      color: rgba(5,7,0,0.7);
+      max-width: 580px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .author-stats {
+      display: flex;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-lg);
+    }
+
+    .author-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .author-stat-value {
+      font-family: var(--font-meta);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--color-text);
+      line-height: 1;
+    }
+
+    .author-stat-label {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      color: var(--color-text-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .author-stat-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--color-divider);
+      align-self: center;
+    }
+
+    .author-social {
+      display: flex;
+      gap: 8px;
+    }
+
+    .author-social a {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-meta);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      padding: 8px 14px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-divider);
+      transition: color var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .author-social a:hover {
+      color: var(--color-text);
+      border-color: rgba(5,7,0,0.18);
+      background: rgba(5,7,0,0.04);
+    }
+
+    .author-social svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* Avatar */
+    .author-avatar-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 180px;
+      height: 180px;
+      border-radius: 24px;
+      background: var(--color-bg-deep);
+      border: 1px solid var(--color-divider);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .author-avatar-initials {
+      font-family: var(--font-meta);
+      font-size: 52px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.15);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+
+    .author-verified-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--color-accent);
+      background: var(--color-accent-s);
+      border: 1px solid var(--color-accent-border);
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+
+    .author-verified-badge svg { width: 12px; height: 12px; }
+
+    /* =============================================
+       EXPERTISE TAGS
+    ============================================= */
+    .expertise-section {
+      border-top: 1px solid var(--color-divider);
+      border-bottom: 1px solid var(--color-divider);
+      padding: var(--space-lg) 0;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .expertise-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .expertise-label {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      flex-shrink: 0;
+    }
+
+    .expertise-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .expertise-tag {
+      font-family: var(--font-meta);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      background: rgba(5,7,0,0.05);
+      border: 1px solid var(--color-divider);
+      padding: 5px 12px;
+      border-radius: 20px;
+    }
+
+    /* =============================================
+       LAYOUT (bio + articles)
+    ============================================= */
+    .author-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px var(--space-3xl);
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: var(--space-2xl);
+      align-items: start;
+    }
+
+    /* =============================================
+       BIO SIDEBAR
+    ============================================= */
+    .bio-sidebar {
+      position: sticky;
+      top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .bio-card {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-divider);
+      border-radius: 14px;
+      padding: var(--space-lg);
+    }
+
+    .bio-card h3 {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-bottom: 14px;
+    }
+
+    .bio-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+    }
+
+    .bio-card p + p { margin-top: 12px; }
+
+    .bio-credentials {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bio-credentials li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    .bio-credentials li svg {
+      width: 15px;
+      height: 15px;
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* =============================================
+       ARTICLES COLUMN
+    ============================================= */
+    .articles-column {}
+
+    .articles-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    .articles-header h2 {
+      font-family: var(--font-meta);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text);
+    }
+
+    .articles-count {
+      font-family: var(--font-meta);
+      font-size: 12px;
+      color: var(--color-text-faint);
+    }
+
+    /* Post card — same as blog-index */
+    .post-card {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      background: linear-gradient(135deg, var(--color-bg-card) 0%, rgba(232,235,230,1) 100%);
+      border: 1px solid var(--color-divider);
+      border-radius: 14px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color 200ms;
+      margin-bottom: 12px;
+    }
+
+    .post-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(5,7,0,0.07);
+      border-color: rgba(5,7,0,0.14);
+    }
+
+    .post-card-img {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 16/10;
+      display: block;
+      background: var(--color-bg-deep);
+      flex-shrink: 0;
+    }
+
+    .post-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 400ms ease;
+    }
+
+    .post-card:hover .post-card-img img { transform: scale(1.04); }
+
+    .post-card-img-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-faint);
+    }
+
+    .post-card-img-placeholder svg { width: 28px; height: 28px; }
+
+    .post-card-category-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-family: var(--font-meta);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(5,7,0,0.55);
+      color: rgba(255,255,255,0.92);
+    }
+
+    .post-card[data-category="chargeback"] .post-card-category-badge { background: rgba(192,57,43,0.78); }
+    .post-card[data-category="conversao"]  .post-card-category-badge { background: rgba(133,153,51,0.82); }
+    .post-card[data-category="plataforma"] .post-card-category-badge { background: rgba(74,122,155,0.82); }
+    .post-card[data-category="tutorial"]   .post-card-category-badge { background: rgba(108,92,231,0.78); }
+    .post-card[data-category="global"]     .post-card-category-badge { background: rgba(22,160,133,0.82); }
+
+    .post-card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 4px 0;
+    }
+
+    .post-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.4;
+      margin-bottom: 8px;
+      transition: color var(--transition);
+    }
+
+    .post-card:hover .post-card-title { color: var(--color-accent-h); }
+
+    .post-card-excerpt {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      color: var(--color-text-faint);
+    }
+
+    .meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--color-text-faint);
+      flex-shrink: 0;
+    }
+
+    .read-more-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-accent);
+      transition: gap var(--transition);
+      margin-top: 4px;
+    }
+
+    .read-more-link:hover { gap: 8px; }
+
+    /* =============================================
+       FOOTER (same as blog-index)
+    ============================================= */
+    .site-footer { background: var(--color-bg); overflow: hidden; }
+    .footer-outer { padding: var(--space-2xl) 0 0; }
+
+    .footer-wordmark {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 24px 0;
+    }
+
+    .footer-wordmark-mask {
+      width: min(860px, 88%);
+      aspect-ratio: 172 / 29;
+      background-color: rgba(5,7,0,0.1);
+      -webkit-mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') center / contain no-repeat;
+      mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') center / contain no-repeat;
+    }
+
+    .footer-divider { border: none; border-top: 1px solid var(--color-divider); margin: 0; }
+
+    .footer-inner { max-width: 1280px; margin: 0 auto; padding: var(--space-xl) 24px; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr 1fr;
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer-logo-img { height: 29px; width: auto; max-width: 180px; margin-bottom: 16px; }
+
+    .footer-social { display: flex; gap: 8px; margin-top: 14px; }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid var(--color-divider);
+      color: var(--color-text-muted);
+      transition: color var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .footer-social a:hover { color: var(--color-text); background: rgba(5,7,0,0.05); border-color: rgba(5,7,0,0.14); }
+    .footer-social svg { width: 17px; height: 17px; }
+
+    .footer-link-col h5 {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      margin-bottom: 14px;
+    }
+
+    .footer-link-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-link-col ul a { font-size: 14px; color: var(--color-text-muted); transition: color var(--transition); }
+    .footer-link-col ul a:hover { color: var(--color-text); }
+
+    .footer-app-btns { display: flex; flex-direction: column; gap: 8px; margin-top: 20px; }
+
+    .btn-app-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-text-muted);
+      padding: 9px 13px;
+      border-radius: var(--radius);
+      border: 1px solid var(--color-divider);
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+      line-height: 1;
+    }
+
+    .btn-app-store:hover { border-color: rgba(5,7,0,0.2); color: var(--color-text); background: rgba(5,7,0,0.03); }
+    .btn-app-store svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-app-store-label { display: flex; flex-direction: column; gap: 1px; }
+    .btn-app-store-sub { font-size: 10px; opacity: 0.55; font-weight: 400; }
+    .btn-app-store-name { font-size: 13px; font-weight: 600; }
+
+    .footer-entities {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--color-divider);
+      font-style: normal;
+    }
+
+    .footer-entity { display: flex; align-items: flex-start; gap: 8px; }
+    .footer-entity-flag { font-size: 18px; flex-shrink: 0; line-height: 1.4; }
+    .footer-entity p { font-size: 11px; line-height: 1.6; color: var(--color-text-faint); }
+    .footer-entity strong { display: block; color: var(--color-text-muted); font-size: 11px; margin-bottom: 2px; }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: var(--space-md) 0;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      color: var(--color-text-faint);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1024px) {
+      .author-content { grid-template-columns: 260px 1fr; gap: var(--space-xl); }
+    }
+
+    @media (max-width: 768px) {
+      .author-hero-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .author-avatar-wrap { flex-direction: row; align-items: center; }
+      .author-avatar { width: 100px; height: 100px; border-radius: 16px; }
+      .author-avatar-initials { font-size: 30px; }
+      .author-stats { gap: var(--space-md); flex-wrap: wrap; }
+      .author-content { grid-template-columns: 1fr; }
+      .bio-sidebar { position: static; }
+      .post-card { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-entities { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .author-name { font-size: clamp(28px, 8vw, 40px); }
+      .author-social { flex-wrap: wrap; }
+      .expertise-inner { gap: var(--space-sm); }
+      .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
+      .footer-entities { grid-template-columns: 1fr; }
+      .header-left-pill nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-left-pill">
+        <a href="https://mundpay.com/" class="pill-logo" aria-label="Mundpay">
+          <img src="https://framerusercontent.com/images/aJXI6DyfzPccRM0LDUyyVGolauw.svg" alt="mundpay" height="22">
+        </a>
+        <div class="pill-sep" aria-hidden="true"></div>
+        <nav aria-label="Menu principal">
+          <a href="https://mundpay.com/#global">Global Sales</a>
+          <a href="https://mundpay.com/#taxas">Fees</a>
+          <a href="https://mundpay.com/pt/blog" class="active">Blog</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <div class="lang-switcher" role="group" aria-label="Idioma">
+          <button class="lang-btn active">
+            <img src="https://flagcdn.com/br.svg" alt="PT"> PT
+          </button>
+          <button class="lang-btn disabled">
+            <img src="https://flagcdn.com/us.svg" alt="EN"> EN
+          </button>
+          <button class="lang-btn disabled">
+            <img src="https://flagcdn.com/es.svg" alt="ES"> ES
+          </button>
+        </div>
+        <a href="https://app.mundpay.com/login" class="btn-login">Entrar</a>
+        <a href="https://app.mundpay.com/register" class="btn-start">Criar conta</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+      <a href="https://mundpay.com/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://mundpay.com/pt/blog">Blog</a>
+      <span aria-hidden="true">/</span>
+      <a href="https://mundpay.com/pt/blog/authors">Autores</a>
+      <span aria-hidden="true">/</span>
+      <span aria-current="page">Wellington Costa</span>
+    </nav>
+
+    <!-- AUTHOR HERO -->
+    <section class="author-hero" aria-labelledby="author-name">
+      <div class="author-hero-inner">
+
+        <div class="author-info">
+          <p class="author-meta-label">Autor do Blog</p>
+
+          <h1 class="author-name" id="author-name">Wellington Costa</h1>
+
+          <p class="author-role">Especialista em Pagamentos Globais, Mundpay</p>
+
+          <p class="author-bio-short">
+            Escreve sobre infraestrutura de pagamentos, conversao no checkout e reducao de chargeback. Trabalha diretamente com infoprodutores, afiliados e creators que vendem para mais de 40 paises na Mundpay.
+          </p>
+
+          <div class="author-stats" aria-label="Numeros de Wellington Costa">
+            <div class="author-stat">
+              <span class="author-stat-value">12+</span>
+              <span class="author-stat-label">Artigos</span>
+            </div>
+            <div class="author-stat-divider" aria-hidden="true"></div>
+            <div class="author-stat">
+              <span class="author-stat-value">40+</span>
+              <span class="author-stat-label">Paises atendidos</span>
+            </div>
+            <div class="author-stat-divider" aria-hidden="true"></div>
+            <div class="author-stat">
+              <span class="author-stat-value">5 anos</span>
+              <span class="author-stat-label">No setor de pagamentos</span>
+            </div>
+          </div>
+
+          <nav class="author-social" aria-label="Redes de Wellington Costa">
+            <a href="https://www.linkedin.com/in/wellington-costa-mundpay/" target="_blank" rel="noopener" aria-label="LinkedIn de Wellington Costa">
+              <!-- LinkedIn -->
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.8"/>
+              </svg>
+              LinkedIn
+            </a>
+            <a href="https://twitter.com/mundpay" target="_blank" rel="noopener" aria-label="X / Twitter de Wellington Costa">
+              <!-- X / Twitter -->
+              <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              X
+            </a>
+            <a href="mailto:wellington@mundpay.com" aria-label="E-mail de Wellington Costa">
+              <!-- Mail -->
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M2 7l10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              E-mail
+            </a>
+          </nav>
+        </div>
+
+        <!-- Avatar -->
+        <div class="author-avatar-wrap">
+          <div class="author-avatar" aria-hidden="true">
+            <span class="author-avatar-initials">WC</span>
+          </div>
+          <div class="author-verified-badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Autor verificado
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXPERTISE STRIP -->
+    <div class="expertise-section" aria-label="Areas de especialidade">
+      <div class="expertise-inner">
+        <span class="expertise-label">Especialidades</span>
+        <div class="expertise-tags">
+          <span class="expertise-tag">Pagamentos internacionais</span>
+          <span class="expertise-tag">Chargeback e fraude</span>
+          <span class="expertise-tag">Conversao no checkout</span>
+          <span class="expertise-tag">Nutra global</span>
+          <span class="expertise-tag">Infoprodutos</span>
+          <span class="expertise-tag">Compliance de bandeiras</span>
+          <span class="expertise-tag">Migracao de plataforma</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTENT: BIO + ARTICLES -->
+    <div class="author-content">
+
+      <!-- BIO SIDEBAR -->
+      <aside aria-label="Sobre Wellington Costa">
+
+        <div class="bio-card">
+          <h3>Sobre</h3>
+          <p>Wellington atua na area de pagamentos globais ha cinco anos, com foco em infoprodutores e creators que escalam vendas internacionais. Na Mundpay, acompanha de perto os principais gargalos de operadores digitais: chargeback fora de controle, checkout com baixa conversao e bloqueios de conta por falta de compliance.</p>
+          <p>Seus artigos partem de dados reais de operacoes ativas, sem teoria generica ou copy de plataforma.</p>
+        </div>
+
+        <div class="bio-card">
+          <h3>Credenciais</h3>
+          <ul class="bio-credentials">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Especialista em infraestrutura de pagamentos para vendas digitais globais
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Experiencia com operacoes de Nutra, Info e Micro-SaaS em mais de 40 paises
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Acompanha as regras de compliance Visa, Mastercard e Amex em tempo real
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Equipe Mundpay, desde 2021
+            </li>
+          </ul>
+        </div>
+
+        <div class="bio-card">
+          <h3>Publicado em</h3>
+          <ul class="bio-credentials">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Blog Mundpay — 12 artigos
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Newsletter semanal Mundpay
+            </li>
+          </ul>
+        </div>
+
+      </aside>
+
+      <!-- ARTICLES -->
+      <section aria-labelledby="articles-title">
+        <div class="articles-header">
+          <h2 id="articles-title">Artigos de Wellington Costa</h2>
+          <span class="articles-count">12 artigos publicados</span>
+        </div>
+
+        <!-- Article 1 -->
+        <article class="post-card" data-category="chargeback">
+          <a href="#" class="post-card-img" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=75" alt="Chargeback alto" loading="lazy" width="600" height="338">
+            <span class="post-card-category-badge">Chargeback</span>
+          </a>
+          <div class="post-card-body">
+            <div>
+              <a href="#">
+                <h3 class="post-card-title">Chargeback alto: como resolver antes que bloqueiem sua conta</h3>
+              </a>
+              <p class="post-card-excerpt">Entenda os limites de tolerancia das bandeiras e o passo a passo para reduzir disputas antes que virem um problema real.</p>
+            </div>
+            <div>
+              <div class="post-card-meta">
+                <time datetime="2026-04-20">20 abr 2026</time>
+                <span class="meta-dot"></span>
+                <span>6 min de leitura</span>
+              </div>
+              <a href="#" class="read-more-link">Ler artigo <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="post-card" data-category="global">
+          <a href="#" class="post-card-img" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&q=75" alt="Pagamentos internacionais" loading="lazy" width="600" height="338">
+            <span class="post-card-category-badge">Global</span>
+          </a>
+          <div class="post-card-body">
+            <div>
+              <a href="#">
+                <h3 class="post-card-title">Por que seu produto digital nao converte fora do Brasil e como mudar isso</h3>
+              </a>
+              <p class="post-card-excerpt">Os 5 bloqueios mais comuns em operacoes cross-border: moeda, metodo de pagamento, checkout localizado e confianca do comprador.</p>
+            </div>
+            <div>
+              <div class="post-card-meta">
+                <time datetime="2026-04-08">8 abr 2026</time>
+                <span class="meta-dot"></span>
+                <span>8 min de leitura</span>
+              </div>
+              <a href="#" class="read-more-link">Ler artigo <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="post-card" data-category="conversao">
+          <a href="#" class="post-card-img" tabindex="-1" aria-hidden="true">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=75" alt="Conversao checkout" loading="lazy" width="600" height="338">
+            <span class="post-card-category-badge">Conversao</span>
+          </a>
+          <div class="post-card-body">
+            <div>
+              <a href="#">
+                <h3 class="post-card-title">O checkout mata mais vendas do que o preco: 7 erros criticos para corrigir agora</h3>
+              </a>
+              <p class="post-card-excerpt">Da quantidade de campos ao posicionamento do botao de compra: auditoria dos pontos que fazem compradores abandonarem na ultima etapa.</p>
+            </div>
+            <div>
+              <div class="post-card-meta">
+                <time datetime="2026-03-22">22 mar 2026</time>
+                <span class="meta-dot"></span>
+                <span>7 min de leitura</span>
+              </div>
+              <a href="#" class="read-more-link">Ler artigo <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 4 -->
+        <article class="post-card" data-category="global">
+          <a href="#" class="post-card-img" tabindex="-1" aria-hidden="true">
+            <div class="post-card-img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span class="post-card-category-badge">Global</span>
+          </a>
+          <div class="post-card-body">
+            <div>
+              <a href="#">
+                <h3 class="post-card-title">Nutra global: quais paises tem maior taxa de aprovacao e menor risco de disputa</h3>
+              </a>
+              <p class="post-card-excerpt">Mapeamento de 20 mercados com dados de aprovacao, chargeback medio e metodos de pagamento preferidos por regiao.</p>
+            </div>
+            <div>
+              <div class="post-card-meta">
+                <time datetime="2026-03-10">10 mar 2026</time>
+                <span class="meta-dot"></span>
+                <span>9 min de leitura</span>
+              </div>
+              <a href="#" class="read-more-link">Ler artigo <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Article 5 -->
+        <article class="post-card" data-category="chargeback">
+          <a href="#" class="post-card-img" tabindex="-1" aria-hidden="true">
+            <div class="post-card-img-placeholder">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span class="post-card-category-badge">Chargeback</span>
+          </a>
+          <div class="post-card-body">
+            <div>
+              <a href="#">
+                <h3 class="post-card-title">Visa Dispute Monitoring Program: o que e e como sair antes da suspensao</h3>
+              </a>
+              <p class="post-card-excerpt">Entenda os thresholds do VDMP, o prazo de remediacao e as acoes que a Mundpay toma junto com voce para retirar sua conta do programa.</p>
+            </div>
+            <div>
+              <div class="post-card-meta">
+                <time datetime="2026-02-18">18 fev 2026</time>
+                <span class="meta-dot"></span>
+                <span>10 min de leitura</span>
+              </div>
+              <a href="#" class="read-more-link">Ler artigo <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </article>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+  <div class="footer-outer">
+
+    <div class="footer-wordmark" aria-hidden="true">
+      <div class="footer-wordmark-mask"></div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-inner">
+      <div class="footer-grid">
+
+        <div class="footer-brand-col">
+          <a href="https://mundpay.com/" aria-label="mundpay">
+            <img class="footer-logo-img" src="https://framerusercontent.com/images/aJXI6DyfzPccRM0LDUyyVGolauw.svg" alt="mundpay">
+          </a>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/mundpay/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/mundpay/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@mundpay" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.96-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" stroke="currentColor" stroke-width="1.8"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-link-col">
+          <h5>Legal &amp; Compliance</h5>
+          <ul>
+            <li><a href="https://mundpay.com/pagamentos-e-taxas">Payments and Fees</a></li>
+            <li><a href="https://mundpay.com/termos-de-uso">Terms and Conditions</a></li>
+            <li><a href="https://mundpay.com/politica-de-privacidade">Privacy Policy</a></li>
+            <li><a href="#">Reporting Channel</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-link-col">
+          <h5>Canais de Contato</h5>
+          <ul>
+            <li><a href="https://mundpay.com/me-ajuda">Help me</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=%2B5521988294968" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:suporte@mundpay.com">E-mail</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-link-col">
+          <h5>Site</h5>
+          <ul>
+            <li><a href="https://mundpay.com/">Home</a></li>
+            <li><a href="https://mundpay.com/#global">Global Sales</a></li>
+            <li><a href="https://mundpay.com/#taxas">Taxes</a></li>
+            <li><a href="https://mundpay.com/pt/blog">Blog</a></li>
+          </ul>
+          <div class="footer-app-btns">
+            <a href="https://apps.apple.com/br/app/mundpay-mobile/id6744820317" target="_blank" rel="noopener" class="btn-app-store">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <span class="btn-app-store-label">
+                <span class="btn-app-store-sub">Download on the</span>
+                <span class="btn-app-store-name">App Store</span>
+              </span>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.mundpay.mundpay" target="_blank" rel="noopener" class="btn-app-store">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M3.18 23.76c.42.23.9.23 1.32 0l11.63-6.71L13 14l-9.82 9.76z" fill="#EA4335"/><path d="M21.54 10.27L18.96 8.8 15.75 12l3.21 3.2 2.6-1.5a1.6 1.6 0 0 0 0-3.43z" fill="#FBBC04"/><path d="M3.18.24A1.6 1.6 0 0 0 2.4 1.6v20.8c0 .56.3 1.07.78 1.36L13 14 3.18.24z" fill="#4285F4"/><path d="M3.18.24 13 14l3.13-3.2L4.5.24A1.6 1.6 0 0 0 3.18.24z" fill="#34A853"/></svg>
+              <span class="btn-app-store-label">
+                <span class="btn-app-store-sub">Get it on</span>
+                <span class="btn-app-store-name">Google Play</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <address class="footer-entities">
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇧🇷</span>
+          <p><strong>MUNDPAY PAGAMENTOS INTERNACIONAIS LTDA</strong>CNPJ: 55.009.285/0001-13<br>Av Alfredo Balthazar da Silveira 580, Recreio dos Bandeirantes, Rio de Janeiro, Brasil</p>
+        </div>
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇺🇸</span>
+          <p><strong>MUND USA LLC</strong>EIN: 32-0819366<br>1160 Heron Sound Dr Ste 50, Apopka, FL 32703</p>
+        </div>
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇺🇸</span>
+          <p><strong>MUNDPAY LLC</strong>EIN: 36-5099929<br>169 Madison Avenue, New York, NY 10016</p>
+        </div>
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇪🇪</span>
+          <p><strong>MundP Tech OÜ</strong>17270502<br>Harju maakond, Tallinn, Lasnamae linnaosa, Ruunaoja tn 3, 11415</p>
+        </div>
+      </address>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <span>©2025</span>
+        <span>・︎</span>
+        <span>MUNDPAY</span>
+        <span>・︎</span>
+        <span>All rights reserved</span>
+      </div>
+    </div>
+
+  </div>
+  </footer>
+
+</body>
+</html>
