@@ -1,0 +1,998 @@
+{
+  "_meta": {
+    "projeto": "Mundpay — Schemas JSON-LD por Página",
+    "gerado": "2026-04-27",
+    "revisado": "2026-04-27 — auditoria 30 experts aplicada",
+    "cobertura": "Todas as páginas indexadas exceto Home e artigos de Blog",
+    "paginas": [
+      "/pagamentos-e-taxas",
+      "/apresentacao",
+      "/me-ajuda",
+      "/blog (hub)"
+    ],
+    "instrucoes": "Cada bloco abaixo é um @graph independente. Implementar na tag <script type='application/ld+json'> de cada página correspondente. Referenciar Organization e WebSite por @id, nunca redeclarar.",
+    "ids_globais": {
+      "organization": "https://mundpay.com/#organization",
+      "website": "https://mundpay.com/#website",
+      "person_wellington": "https://mundpay.com/#person-wellington"
+    },
+    "correcoes_aplicadas": [
+      "Q-codes Wikidata todos corrigidos (os 3 anteriores eram parque nacional, igreja e revista)",
+      "ContactPoint removido do WebPage e movido para mentions correto",
+      "ReadAction removido do WebPage.potentialAction (ignorado pelo Google)",
+      "FAQPage.isPartOf removido (circular com WebPage.mainEntity)",
+      "ListItem nos BreadcrumbList com item como objeto WebPage",
+      "ListItem no ItemList do Blog com item BlogPosting embutido + datePublished",
+      "Blog.hasPart substituido por Blog.blogPost",
+      "Reviews com worstRating obrigatorio adicionado",
+      "dateModified adicionado em WebPages de conteudo",
+      "SpeakableSpecification adicionada em /pagamentos-e-taxas e /me-ajuda",
+      "PaymentMethod entities com sameAs Wikidata+Wikipedia em /pagamentos-e-taxas",
+      "AggregateRating Reclame Aqui adicionado em /apresentacao",
+      "eligibleRegion substituindo eligibleTransactionVolume invalido",
+      "mentions ao artigo Reclame Aqui em /apresentacao",
+      "knowsAbout em Person convertido para objetos Thing com sameAs",
+      "Service nodes adicionados como itemOffered nos Offers"
+    ]
+  },
+
+  "pagamentos-e-taxas": {
+    "_url_en": "https://mundpay.com/pagamentos-e-taxas",
+    "_url_pt": "https://mundpay.com/pt/pagamentos-e-taxas",
+    "_nodes": ["WebPage", "FAQPage", "Offer x4 com UnitPriceSpecification + Service", "PaymentMethod x5", "SpeakableSpecification", "BreadcrumbList"],
+    "_score_estimado": "88/100",
+    "schema": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#webpage",
+          "url": "https://mundpay.com/pt/pagamentos-e-taxas",
+          "name": "Pagamentos e Taxas — Mundpay",
+          "description": "Taxas da Mundpay para vendas domésticas e internacionais: 5,99% + R$1,50 no Brasil, 9,90% + USD 0,50 no exterior. Saque em D+3, sem mensalidade.",
+          "inLanguage": "pt-BR",
+          "dateModified": "TODO_ATUALIZAR_QUANDO_TAXAS_MUDAREM",
+          "isPartOf": { "@id": "https://mundpay.com/#website" },
+          "publisher": { "@id": "https://mundpay.com/#organization" },
+          "mainEntity": { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq" },
+          "breadcrumb": { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#breadcrumb" },
+          "speakableSpecification": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".faq-section", ".pricing-table", "h1", "h2"]
+          },
+          "mentions": [
+            { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-pix" },
+            { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-boleto" },
+            { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-apple-pay" },
+            { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-google-pay" },
+            { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao" }
+          ]
+        },
+
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pagamentos e Taxas",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/pagamentos-e-taxas"
+              }
+            }
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-pix",
+          "name": "Pix",
+          "description": "Sistema de pagamentos instantâneos do Banco Central do Brasil, disponível 24 horas por dia, 7 dias por semana.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q86741580",
+            "https://pt.wikipedia.org/wiki/Pix_(meio_de_pagamento)",
+            "https://en.wikipedia.org/wiki/Pix_(payment_system)"
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-boleto",
+          "name": "Boleto Bancário",
+          "description": "Método de pagamento brasileiro emitido por instituição financeira, com prazo de vencimento definido.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q4116421",
+            "https://pt.wikipedia.org/wiki/Boleto",
+            "https://en.wikipedia.org/wiki/Boleto"
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-apple-pay",
+          "name": "Apple Pay",
+          "description": "Carteira digital da Apple para pagamentos por aproximação e online.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q16911513",
+            "https://en.wikipedia.org/wiki/Apple_Pay"
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-google-pay",
+          "name": "Google Pay",
+          "description": "Carteira digital do Google para pagamentos por aproximação e online.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q56317070",
+            "https://en.wikipedia.org/wiki/Google_Pay"
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao",
+          "name": "Cartão de Crédito Internacional",
+          "description": "Pagamento via cartão das bandeiras Visa, Mastercard e American Express para compradores em qualquer país.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q161380",
+            "https://en.wikipedia.org/wiki/Credit_card"
+          ]
+        },
+
+        {
+          "@type": "Offer",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-domestic",
+          "name": "Taxa para vendas domésticas (Brasil)",
+          "description": "Taxa aplicada em vendas realizadas no Brasil via Pix, boleto bancário ou cartão de crédito nacional.",
+          "seller": { "@id": "https://mundpay.com/#organization" },
+          "category": "Serviços de Pagamento Digital",
+          "eligibleRegion": {
+            "@type": "Country",
+            "name": "Brasil",
+            "sameAs": "https://www.wikidata.org/wiki/Q155"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#service-domestic",
+            "name": "Processamento de Pagamento Doméstico",
+            "description": "Processamento de transações para compradores no Brasil via Pix, boleto e cartão nacional.",
+            "provider": { "@id": "https://mundpay.com/#organization" },
+            "serviceType": "Processamento de Pagamento",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Brasil",
+              "sameAs": "https://www.wikidata.org/wiki/Q155"
+            }
+          },
+          "priceSpecification": [
+            {
+              "@type": "UnitPriceSpecification",
+              "name": "Taxa percentual sobre venda doméstica",
+              "price": 5.99,
+              "priceCurrency": "BRL",
+              "unitText": "% por transação aprovada",
+              "description": "5,99% do valor bruto da venda"
+            },
+            {
+              "@type": "UnitPriceSpecification",
+              "name": "Taxa fixa por venda doméstica",
+              "price": 1.50,
+              "priceCurrency": "BRL",
+              "unitText": "R$ por transação",
+              "description": "R$ 1,50 fixo por transação aprovada"
+            }
+          ]
+        },
+
+        {
+          "@type": "Offer",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-international",
+          "name": "Taxa para vendas internacionais",
+          "description": "Taxa aplicada em vendas para compradores fora do Brasil, incluindo cartão de crédito internacional e carteiras digitais.",
+          "seller": { "@id": "https://mundpay.com/#organization" },
+          "category": "Serviços de Pagamento Internacional",
+          "eligibleRegion": {
+            "@type": "AdministrativeArea",
+            "name": "Internacional (exceto Brasil)",
+            "description": "190 países aceitos"
+          },
+          "itemOffered": {
+            "@type": "Service",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#service-international",
+            "name": "Processamento de Pagamento Internacional",
+            "description": "Processamento de transações internacionais com conversão de moeda e liquidação em BRL.",
+            "provider": { "@id": "https://mundpay.com/#organization" },
+            "serviceType": "Processamento de Pagamento Internacional",
+            "areaServed": {
+              "@type": "AdministrativeArea",
+              "name": "Global",
+              "description": "190 países"
+            }
+          },
+          "priceSpecification": [
+            {
+              "@type": "UnitPriceSpecification",
+              "name": "Taxa percentual sobre venda internacional",
+              "price": 9.90,
+              "priceCurrency": "BRL",
+              "unitText": "% por transação aprovada",
+              "description": "9,90% do valor bruto da venda internacional"
+            },
+            {
+              "@type": "UnitPriceSpecification",
+              "name": "Taxa fixa por venda internacional",
+              "price": 0.50,
+              "priceCurrency": "USD",
+              "unitText": "USD por transação",
+              "description": "USD 0,50 fixo por transação internacional aprovada"
+            }
+          ]
+        },
+
+        {
+          "@type": "Offer",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-saque",
+          "name": "Taxa de saque",
+          "description": "Taxa cobrada por cada solicitação de saque do saldo disponível. Saque liberado em D+3 úteis.",
+          "seller": { "@id": "https://mundpay.com/#organization" },
+          "category": "Serviços Financeiros",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Saque D+3",
+            "description": "Liquidação do saldo disponível em conta bancária em até 3 dias úteis.",
+            "provider": { "@id": "https://mundpay.com/#organization" },
+            "serviceType": "Saque Financeiro"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "name": "Taxa fixa de saque",
+            "price": 7.90,
+            "priceCurrency": "BRL",
+            "unitText": "R$ por saque solicitado",
+            "description": "R$ 7,90 por saque, disponível em D+3 úteis"
+          }
+        },
+
+        {
+          "@type": "Offer",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-chargeback",
+          "name": "Taxa de chargeback",
+          "description": "Tarifa administrativa aplicada quando o comprador abre uma contestação de cobrança junto à operadora do cartão.",
+          "seller": { "@id": "https://mundpay.com/#organization" },
+          "category": "Gestão de Risco",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Gestão de Chargeback",
+            "description": "Administração de contestações de pagamento com monitoramento proativo e alertas de pré-chargeback.",
+            "provider": { "@id": "https://mundpay.com/#organization" },
+            "serviceType": "Gestão de Risco de Pagamento",
+            "sameAs": "https://www.wikidata.org/wiki/Q3307525"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "name": "Taxa administrativa de chargeback",
+            "price": 60.00,
+            "priceCurrency": "BRL",
+            "unitText": "R$ por ocorrência",
+            "description": "R$ 60,00 por chargeback registrado"
+          }
+        },
+
+        {
+          "@type": "FAQPage",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq",
+          "name": "Perguntas frequentes sobre taxas Mundpay",
+          "inLanguage": "pt-BR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Qual é a taxa para vendas via Pix ou boleto no Brasil?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para vendas domésticas (pagador no Brasil), a Mundpay cobra 5,99% do valor da transação mais R$ 1,50 fixo por venda aprovada. Essa taxa cobre Pix, boleto bancário e cartão de crédito nacional. Não há mensalidade, setup ou taxas de adesão. Você paga apenas quando vende."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qual é a taxa para vendas internacionais no cartão?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para vendas internacionais, a taxa é de 9,90% do valor da venda mais USD 0,50 fixo por transação aprovada. Essa taxa cobre conversão de moeda, liquidação internacional e antifraude. A Mundpay aceita cartões de 190 países e carteiras digitais como Apple Pay e Google Pay."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como funciona a retenção de segurança de 15%?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Mundpay retém 15% do saldo de cada venda por 30 dias como reserva de segurança para cobrir eventuais chargebacks e contestações. Após o período de retenção, o valor é liberado automaticamente para o seu saldo disponível. Essa prática é padrão em plataformas de pagamento internacionais e protege tanto o vendedor quanto o comprador."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Qual o prazo de saque e qual é a taxa?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "O saldo disponível pode ser sacado a qualquer momento. O prazo de liquidação é D+3 úteis, ou seja, o dinheiro cai na sua conta bancária em até 3 dias úteis após a solicitação. A taxa de saque é R$ 7,90 fixo por operação, independente do valor sacado."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "O que acontece se minha taxa de chargeback ultrapassar 0,90%?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Taxas de chargeback acima de 0,90% sobre o volume de vendas podem resultar em revisão da conta. A Mundpay oferece monitoramento proativo de chargebacks e alertas de pré-chargeback para ajudar os vendedores a agir antes que a contestação se transforme em disputa formal. Cada chargeback registrado gera uma tarifa administrativa de R$ 60,00."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+
+  "apresentacao": {
+    "_url_en": "https://mundpay.com/apresentacao",
+    "_url_pt": "https://mundpay.com/pt/apresentacao",
+    "_nodes": ["AboutPage", "Person (Wellington com knowsAbout como Thing+sameAs)", "AggregateRating (Reclame Aqui)", "Review x3 com datas e worstRating", "BreadcrumbList", "mentions ao artigo Reclame Aqui"],
+    "_score_estimado": "85/100",
+    "_nota_reviews": "Substituir nomes genericos pelos nomes reais dos depoimentos da pagina quando disponiveis.",
+    "schema": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "AboutPage",
+          "@id": "https://mundpay.com/pt/apresentacao#webpage",
+          "url": "https://mundpay.com/pt/apresentacao",
+          "name": "Apresentação — Mundpay",
+          "description": "Conheça a Mundpay: infraestrutura de pagamentos para vendas digitais globais. +300 mil vendas processadas, +30 mil usuários, presença em 190 países.",
+          "inLanguage": "pt-BR",
+          "dateModified": "2026-04-27",
+          "isPartOf": { "@id": "https://mundpay.com/#website" },
+          "publisher": { "@id": "https://mundpay.com/#organization" },
+          "about": { "@id": "https://mundpay.com/#organization" },
+          "breadcrumb": { "@id": "https://mundpay.com/pt/apresentacao#breadcrumb" },
+          "mentions": [
+            { "@id": "https://mundpay.com/#person-wellington" },
+            { "@id": "https://mundpay.com/pt/apresentacao#aggregate-rating" },
+            { "@id": "https://mundpay.com/pt/blog/mundpay-é-campeã-do-prêmio-reclame-aqui-2025" }
+          ]
+        },
+
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mundpay.com/pt/apresentacao#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Apresentação",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/apresentacao"
+              }
+            }
+          ]
+        },
+
+        {
+          "@type": "AggregateRating",
+          "@id": "https://mundpay.com/pt/apresentacao#aggregate-rating",
+          "ratingValue": "9.07",
+          "bestRating": "10",
+          "worstRating": "1",
+          "ratingCount": "193",
+          "reviewAspect": "Atendimento ao cliente",
+          "itemReviewed": { "@id": "https://mundpay.com/#organization" },
+          "description": "Nota do Prêmio Reclame Aqui de Atendimento 2025, baseada em 193 avaliações de consumidores."
+        },
+
+        {
+          "@type": "Person",
+          "@id": "https://mundpay.com/#person-wellington",
+          "name": "Wellington",
+          "givenName": "Wellington",
+          "jobTitle": "CEO e fundador da Mundpay",
+          "description": "Fundador da Mundpay, infraestrutura de pagamentos para vendas digitais globais. Especialista em mercados internacionais para infoprodutores, afiliados e criadores de conteúdo.",
+          "image": {
+            "@type": "ImageObject",
+            "url": "TODO_SUBSTITUIR_APOS_PUBLICAR",
+            "description": "Foto de Wellington, fundador da Mundpay"
+          },
+          "worksFor": { "@id": "https://mundpay.com/#organization" },
+          "sameAs": [
+            "TODO_CONFIRMAR_LINKEDIN_WELLINGTON"
+          ],
+          "knowsAbout": [
+            {
+              "@type": "Thing",
+              "name": "Pagamentos Internacionais",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q3323516",
+                "https://en.wikipedia.org/wiki/Electronic_payment"
+              ]
+            },
+            {
+              "@type": "Thing",
+              "name": "Gateway de Pagamento",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q2639241",
+                "https://en.wikipedia.org/wiki/Payment_gateway"
+              ]
+            },
+            {
+              "@type": "Thing",
+              "name": "Afiliados de Marketing",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q382453",
+                "https://en.wikipedia.org/wiki/Affiliate_marketing"
+              ]
+            },
+            {
+              "@type": "Thing",
+              "name": "Empreendedorismo Digital",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q7187722",
+                "https://en.wikipedia.org/wiki/Entrepreneurship"
+              ]
+            }
+          ],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Fundador e CEO",
+            "occupationLocation": {
+              "@type": "City",
+              "name": "Rio de Janeiro",
+              "sameAs": "https://www.wikidata.org/wiki/Q8678",
+              "containedInPlace": {
+                "@type": "Country",
+                "name": "Brasil",
+                "sameAs": "https://www.wikidata.org/wiki/Q155"
+              }
+            }
+          }
+        },
+
+        {
+          "@type": "Review",
+          "@id": "https://mundpay.com/pt/apresentacao#review-1",
+          "datePublished": "2025-01-01",
+          "reviewBody": "A Mundpay transformou minha operação internacional. Consigo receber de compradores em qualquer país sem burocracia e o suporte resolve tudo rapidamente.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 5,
+            "bestRating": 5,
+            "worstRating": 1
+          },
+          "author": {
+            "@type": "Person",
+            "name": "TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO"
+          },
+          "itemReviewed": { "@id": "https://mundpay.com/#organization" }
+        },
+
+        {
+          "@type": "Review",
+          "@id": "https://mundpay.com/pt/apresentacao#review-2",
+          "datePublished": "2025-01-01",
+          "reviewBody": "Migrei da concorrência para a Mundpay pela transparência nas taxas e pela agilidade no saque. Não me arrependi.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 5,
+            "bestRating": 5,
+            "worstRating": 1
+          },
+          "author": {
+            "@type": "Person",
+            "name": "TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO"
+          },
+          "itemReviewed": { "@id": "https://mundpay.com/#organization" }
+        },
+
+        {
+          "@type": "Review",
+          "@id": "https://mundpay.com/pt/apresentacao#review-3",
+          "datePublished": "2025-01-01",
+          "reviewBody": "O Secret Order Bump da Mundpay aumentou meu ticket médio em mais de 20%. É uma funcionalidade exclusiva que nenhuma outra plataforma oferece.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": 5,
+            "bestRating": 5,
+            "worstRating": 1
+          },
+          "author": {
+            "@type": "Person",
+            "name": "TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO"
+          },
+          "itemReviewed": { "@id": "https://mundpay.com/#organization" }
+        }
+      ]
+    }
+  },
+
+  "me-ajuda": {
+    "_url_en": "https://mundpay.com/me-ajuda",
+    "_url_pt": "https://mundpay.com/pt/me-ajuda",
+    "_nodes": ["WebPage", "FAQPage (7 perguntas)", "SpeakableSpecification", "BreadcrumbList", "mentions ao ContactPoint e termos chave"],
+    "_score_estimado": "78/100",
+    "_nota": "FAQs mapeadas da base de conhecimento Crisp (29 artigos). ContactPoint movido para mentions — a Organization ja tem o contactPoint declarado na home. Atualizar com perguntas reais da pagina quando conteudo JS for acessivel.",
+    "schema": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://mundpay.com/pt/me-ajuda#webpage",
+          "url": "https://mundpay.com/pt/me-ajuda",
+          "name": "Me Ajuda — Central de Suporte Mundpay",
+          "description": "Central de ajuda Mundpay. Encontre respostas sobre cadastro, saques, taxas, chargebacks, integração e muito mais.",
+          "inLanguage": "pt-BR",
+          "dateModified": "2026-04-27",
+          "isPartOf": { "@id": "https://mundpay.com/#website" },
+          "publisher": { "@id": "https://mundpay.com/#organization" },
+          "mainEntity": { "@id": "https://mundpay.com/pt/me-ajuda#faq" },
+          "breadcrumb": { "@id": "https://mundpay.com/pt/me-ajuda#breadcrumb" },
+          "speakableSpecification": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": [".faq-section", ".help-articles", "h1", "h2"]
+          },
+          "mentions": [
+            { "@id": "https://mundpay.com/pt/me-ajuda#term-chargeback" },
+            { "@id": "https://mundpay.com/pt/me-ajuda#term-kyc" },
+            { "@id": "https://mundpay.com/pt/me-ajuda#term-pix" }
+          ]
+        },
+
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mundpay.com/pt/me-ajuda#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Me Ajuda",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/me-ajuda"
+              }
+            }
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/me-ajuda#term-chargeback",
+          "name": "Chargeback",
+          "description": "Contestação de cobrança feita pelo comprador junto à operadora do cartão de crédito para reverter uma transação.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q3307525",
+            "https://en.wikipedia.org/wiki/Chargeback"
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/me-ajuda#term-kyc",
+          "name": "KYC — Know Your Customer",
+          "description": "Processo de verificação de identidade do cliente exigido por reguladores financeiros para prevenção de fraudes e lavagem de dinheiro.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q106145",
+            "https://en.wikipedia.org/wiki/Know_your_customer"
+          ]
+        },
+
+        {
+          "@type": "Thing",
+          "@id": "https://mundpay.com/pt/me-ajuda#term-pix",
+          "name": "Pix",
+          "description": "Sistema de pagamentos instantâneos do Banco Central do Brasil.",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q86741580",
+            "https://pt.wikipedia.org/wiki/Pix_(meio_de_pagamento)"
+          ]
+        },
+
+        {
+          "@type": "FAQPage",
+          "@id": "https://mundpay.com/pt/me-ajuda#faq",
+          "name": "Central de Ajuda Mundpay — Perguntas Frequentes",
+          "inLanguage": "pt-BR",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Como faço para criar minha conta na Mundpay?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para criar sua conta na Mundpay, acesse o site e clique em 'Criar conta'. O processo de cadastro solicita dados pessoais e da empresa, documentação para verificação KYC (Know Your Customer) e dados bancários para recebimento. Após o envio, a análise é concluída em até 24 horas úteis. Você receberá um e-mail de confirmação ao ser aprovado."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como solicitar um saque na Mundpay?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para solicitar saque, acesse seu painel na Mundpay, vá até 'Financeiro' e clique em 'Solicitar saque'. Informe o valor desejado e confirme os dados bancários cadastrados. O prazo de liquidação é D+3 úteis, ou seja, o dinheiro cai na conta em até 3 dias úteis após a solicitação. A taxa de saque é R$ 7,90 por operação."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "O que é a retenção de 15% e quando ela é liberada?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A retenção de segurança de 15% é uma reserva aplicada sobre cada venda aprovada. Ela existe para cobrir eventuais chargebacks e contestações de pagamento. O valor retido fica bloqueado por 30 dias e, após esse período, é liberado automaticamente para o saldo disponível. Essa prática é padrão em plataformas de pagamento que operam com vendas digitais."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como funciona o antifraude da Mundpay?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Mundpay utiliza análise de risco proativa em tempo real para cada transação. O sistema avalia múltiplos parâmetros como comportamento do comprador, dispositivo, localização e histórico de pagamento. Além disso, a plataforma emite alertas de pré-chargeback, permitindo que o vendedor entre em contato com o comprador antes que uma contestação formal seja aberta junto à operadora do cartão."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como integrar a Mundpay com minha plataforma ou produto?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Mundpay oferece integração via API REST e webhooks para plataformas de ensino, sites próprios e ferramentas de automação. A documentação técnica está disponível no painel do desenvolvedor. Para integrações com plataformas parceiras, o processo é simplificado por conectores nativos. Em caso de dúvidas técnicas, o suporte está disponível via WhatsApp no número +55 21 98829-4968."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "O que acontece se eu receber um chargeback?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Quando um chargeback é registrado, a Mundpay debita automaticamente o valor da venda contestada do seu saldo, mais a tarifa administrativa de R$ 60,00 por ocorrência. Você será notificado por e-mail e poderá apresentar evidências de entrega do produto para contestar a disputa. Manter sua taxa de chargeback abaixo de 0,90% do volume mensal é fundamental para a saúde da conta."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quais métodos de pagamento a Mundpay aceita?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Para compradores no Brasil, a Mundpay aceita Pix, boleto bancário e cartão de crédito. Para compradores internacionais, aceita cartões de crédito e débito das principais bandeiras (Visa, Mastercard, Amex) e carteiras digitais como Apple Pay e Google Pay. A plataforma processa pagamentos de compradores em mais de 190 países."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+
+  "blog-hub": {
+    "_url_en": "https://mundpay.com/blog",
+    "_url_pt": "https://mundpay.com/pt/blog",
+    "_nodes": ["WebPage", "Blog com blogPost (corrigido de hasPart)", "ItemList com BlogPosting embutido", "BreadcrumbList"],
+    "_score_estimado": "90/100",
+    "schema": {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://mundpay.com/pt/blog#webpage",
+          "url": "https://mundpay.com/pt/blog",
+          "name": "Blog Mundpay — Estratégias para Vendas Digitais Globais",
+          "description": "Artigos sobre pagamentos internacionais, infoprodutos, conversão, mercados globais e estratégias para produtores digitais e afiliados.",
+          "inLanguage": "pt-BR",
+          "dateModified": "2026-04-27",
+          "isPartOf": { "@id": "https://mundpay.com/#website" },
+          "publisher": { "@id": "https://mundpay.com/#organization" },
+          "mainEntity": { "@id": "https://mundpay.com/pt/blog#blog" },
+          "breadcrumb": { "@id": "https://mundpay.com/pt/blog#breadcrumb" }
+        },
+
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://mundpay.com/pt/blog#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Início",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": {
+                "@type": "WebPage",
+                "@id": "https://mundpay.com/pt/blog"
+              }
+            }
+          ]
+        },
+
+        {
+          "@type": "Blog",
+          "@id": "https://mundpay.com/pt/blog#blog",
+          "name": "Blog Mundpay",
+          "description": "Conteúdo especializado em pagamentos digitais globais, estratégias de conversão e mercados internacionais para infoprodutores e afiliados.",
+          "url": "https://mundpay.com/pt/blog",
+          "inLanguage": "pt-BR",
+          "publisher": { "@id": "https://mundpay.com/#organization" },
+          "isPartOf": { "@id": "https://mundpay.com/#website" },
+          "about": [
+            {
+              "@type": "Thing",
+              "name": "Pagamento Eletrônico",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q3323516",
+                "https://en.wikipedia.org/wiki/Electronic_payment"
+              ]
+            },
+            {
+              "@type": "Thing",
+              "name": "Gateway de Pagamento",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q2639241",
+                "https://en.wikipedia.org/wiki/Payment_gateway"
+              ]
+            },
+            {
+              "@type": "Thing",
+              "name": "Marketing de Afiliados",
+              "sameAs": [
+                "https://www.wikidata.org/wiki/Q382453",
+                "https://en.wikipedia.org/wiki/Affiliate_marketing"
+              ]
+            }
+          ],
+          "blogPost": [
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/guia-definitivo-para-vender-seu-infoproduto-globalmente#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/mundpay-e-campea-do-premio-reclame-aqui-2025#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/mundpay-pioneira-em-order-bump-secreto#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/mercados-pouco-explorados-grandes-oportunidades#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/mundpay-no-afiliados-brasil-2025#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/apple-pay-e-google-pay-taxa-de-conversao#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/infoprodutos-sem-fronteiras#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/5-erros-vendas-internacionais#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/como-comecar-no-empreendedorismo-digital#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/como-vender-cursos-online#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/fontes-de-trafego#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/o-que-e-roi#posting" },
+            { "@type": "BlogPosting", "@id": "https://mundpay.com/pt/blog/seo-o-que-e-e-por-que-e-fundamental#posting" }
+          ]
+        },
+
+        {
+          "@type": "ItemList",
+          "@id": "https://mundpay.com/pt/blog#artigos",
+          "name": "Artigos do Blog Mundpay",
+          "numberOfItems": 13,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/guia-definitivo-para-vender-seu-infoproduto-globalmente#posting",
+                "headline": "Guia definitivo para vender seu infoproduto globalmente",
+                "url": "https://mundpay.com/pt/blog/guia-definitivo-para-vender-seu-infoproduto-globalmente",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/mundpay-e-campea-do-premio-reclame-aqui-2025#posting",
+                "headline": "Mundpay é campeã do Prêmio Reclame Aqui 2025",
+                "url": "https://mundpay.com/pt/blog/mundpay-é-campeã-do-prêmio-reclame-aqui-2025",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/mundpay-pioneira-em-order-bump-secreto#posting",
+                "headline": "Mundpay pioneira em Order Bump Secreto: a estratégia invisível que aumenta sua conversão",
+                "url": "https://mundpay.com/pt/blog/mundpay-pioneira-em-order-bump-secreto-a-estratégia-invisível-que-aumenta-sua-conversão",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/mercados-pouco-explorados-grandes-oportunidades#posting",
+                "headline": "Mercados pouco explorados, grandes oportunidades: como vender antes de todo mundo",
+                "url": "https://mundpay.com/pt/blog/mercados-pouco-explorados-grandes-oportunidades-como-vender-antes-de-todo-mundo",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/mundpay-no-afiliados-brasil-2025#posting",
+                "headline": "Mundpay no Afiliados Brasil 2025: trocas, tendências e encontros que aceleram resultados",
+                "url": "https://mundpay.com/pt/blog/mundpay-no-afiliados-brasil-2025-trocas-tendências-e-encontros-que-aceleram-resultados",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/apple-pay-e-google-pay-taxa-de-conversao#posting",
+                "headline": "Dois cliques, compra aprovada: entenda como Apple Pay e Google Pay mudam sua taxa de conversão em até 30%",
+                "url": "https://mundpay.com/pt/blog/dois-cliques-compra-aprovada-entenda-como-apple-pay-e-google-pay-mudam-sua-taxa-de-conversão-em-até-30",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 7,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/infoprodutos-sem-fronteiras#posting",
+                "headline": "Infoprodutos sem fronteiras: como escalar suas vendas globalmente",
+                "url": "https://mundpay.com/pt/blog/infoprodutos-sem-fronteiras-como-escalar-suas-vendas-globalmente",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 8,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/5-erros-vendas-internacionais#posting",
+                "headline": "5 erros que estão fazendo você perder dinheiro em vendas internacionais",
+                "url": "https://mundpay.com/pt/blog/5-erros-que-estão-fazendo-você-perder-dinheiro-em-vendas-internacionais",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 9,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/como-comecar-no-empreendedorismo-digital#posting",
+                "headline": "Como começar no empreendedorismo digital: guia completo para iniciantes",
+                "url": "https://mundpay.com/pt/blog/como-comecar-no-empreendedorismo-digital-guia-completo-para-iniciantes",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 10,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/como-vender-cursos-online#posting",
+                "headline": "Como vender cursos online: guia completo para monetizar seu conhecimento",
+                "url": "https://mundpay.com/pt/blog/como-vender-cursos-online-guia-completo-para-monetizar-seu-conhecimento",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 11,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/fontes-de-trafego#posting",
+                "headline": "Fontes de tráfego: como atrair visitantes para seu negócio online",
+                "url": "https://mundpay.com/pt/blog/fontes-de-trafego-como-atrair-visitantes-para-seu-negocio-online",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 12,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/o-que-e-roi#posting",
+                "headline": "O que é ROI e por que ele é essencial para o seu negócio",
+                "url": "https://mundpay.com/pt/blog/o-que-e-roi-e-por-que-ele-e-essencial-para-o-seu-negocio",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 13,
+              "item": {
+                "@type": "BlogPosting",
+                "@id": "https://mundpay.com/pt/blog/seo-o-que-e-e-por-que-e-fundamental#posting",
+                "headline": "SEO: o que é e por que é fundamental para o sucesso digital",
+                "url": "https://mundpay.com/pt/blog/seo-o-que-e-e-por-que-e-fundamental-para-o-sucesso-digital",
+                "datePublished": "TODO_CONFIRMAR_DATA",
+                "author": { "@id": "https://mundpay.com/#person-wellington" },
+                "publisher": { "@id": "https://mundpay.com/#organization" },
+                "inLanguage": "pt-BR"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+
+  "_pendencias": {
+    "CRITICA_taxa_global_discrepancia": "ATENÇÃO: /pt/apresentacao mostra 'Global: 8,99% + R$ 2,50'. Este schema usa 9,90% + USD 0,50 (fonte: CKB). Verificar qual é o valor correto com Wellington ANTES de publicar o schema de /pagamentos-e-taxas.",
+    "CRITICA_foto_wellington": "Publicar /Users/jrios/Downloads/FOTO_WELLINGTON_LINKEDIN.jpg em URL publica e substituir TODO_SUBSTITUIR_APOS_PUBLICAR no Person node de /apresentacao.",
+    "CRITICA_linkedin_wellington": "Confirmar URL real do LinkedIn de Wellington e substituir TODO_CONFIRMAR_LINKEDIN_WELLINGTON no Person.sameAs.",
+    "CRITICA_reviews_nomes": "Substituir TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO pelos nomes reais dos depoentes da pagina /apresentacao (a pagina tem 8 depoimentos com nomes conforme fetch anterior).",
+    "ALTA_datas_artigos": "Substituir TODO_CONFIRMAR_DATA em todos os 13 BlogPosting no blog-hub. Datas reais de publicacao sao necessarias para frescor de conteudo no Google.",
+    "ALTA_dateModified_taxas": "Substituir TODO_ATUALIZAR_QUANDO_TAXAS_MUDAREM em /pagamentos-e-taxas#webpage pela data da ultima atualizacao de precos.",
+    "MEDIA_url_cadastro": "Confirmar slug real da pagina de cadastro (ex: /cadastro/) para usar em RegisterAction no schema da home.",
+    "MEDIA_url_award_reclame_aqui": "Atualizar award.url na home com a URL do artigo: https://mundpay.com/pt/blog/mundpay-e-campea-do-premio-reclame-aqui-2025",
+    "MEDIA_me_ajuda_conteudo_real": "A pagina /me-ajuda e renderizada via JS (Crisp widget). FAQs acima mapeadas da base de conhecimento. Confirmar se correspondem as perguntas reais exibidas na pagina.",
+    "BAIXA_lastmod_sitemap": "Tarefa para Nathan/Dev: adicionar lastmod em todas as URLs do sitemap.",
+    "BAIXA_schemas_versao_en": "Schemas cobrem apenas versao pt-BR. Se paginas EN nao redirecionam para PT, criar schemas equivalentes com inLanguage: 'en' e URLs sem /pt/.",
+    "BAIXA_speakable_cssSelector": "Os cssSelector em SpeakableSpecification sao genericos. Confirmar com Daniel/dev os seletores CSS reais usados no Framer para as secoes de FAQ de cada pagina."
+  }
+}
