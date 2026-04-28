@@ -1,0 +1,2425 @@
+<!DOCTYPE html>
+<!--
+  TEMPLATE MULTILÍNGUE — MUNDPAY BLOG
+  Idioma desta versão : PT-BR  →  mundpay.com/pt/blog/[slug]/
+  Versão EN (padrão)  :         →  mundpay.com/blog/[slug]/
+  Versão ES           :         →  mundpay.com/es/blog/[slug]/
+  Ao criar nova versão: copiar este arquivo, trocar lang, canonical, hreflang self-ref, og:locale e inLanguage no schema.
+-->
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Como Aumentar sua Taxa de Aprovação de Pagamentos Internacionais — Mundpay</title>
+  <meta name="description" content="Descubra por que sua taxa de aprovação internacional está baixa e como estruturas de checkout inteligentes podem recuperar até 30% das vendas perdidas.">
+
+  <!-- Canonical — aponta para a URL desta versão de idioma -->
+  <link rel="canonical" href="https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais">
+
+  <!-- hreflang — todas as versões se referenciam mutuamente -->
+  <link rel="alternate" hreflang="pt-BR"   href="https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais">
+  <link rel="alternate" hreflang="en"      href="https://mundpay.com/blog/payment-approval-rate">
+  <link rel="alternate" hreflang="es"      href="https://mundpay.com/es/blog/tasa-de-aprobacion-de-pagos">
+  <link rel="alternate" hreflang="x-default" href="https://mundpay.com/blog/payment-approval-rate">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Como Aumentar sua Taxa de Aprovação de Pagamentos Internacionais">
+  <meta property="og:description" content="Descubra por que sua taxa de aprovação internacional está baixa e como estruturas de checkout inteligentes podem recuperar até 30% das vendas perdidas.">
+  <meta property="og:image" content="https://mundpay.com/blog/og-taxa-aprovacao.jpg">
+  <meta property="og:url" content="https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Schema JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BlogPosting",
+        "@id": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais#posting",
+        "headline": "Como Aumentar sua Taxa de Aprovação de Pagamentos Internacionais",
+        "description": "Descubra por que sua taxa de aprovação internacional está baixa e como estruturas de checkout inteligentes podem recuperar até 30% das vendas perdidas.",
+        "inLanguage": "pt-BR",
+        "url": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais",
+        "datePublished": "2026-04-27",
+        "dateModified": "2026-04-27",
+        "author": { "@id": "https://mundpay.com/#person-wellington" },
+        "publisher": { "@id": "https://mundpay.com/#organization" },
+        "isPartOf": { "@id": "https://mundpay.com/#website" },
+        "mainEntityOfPage": { "@id": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais#webpage" },
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://mundpay.com/blog/og-taxa-aprovacao.jpg",
+          "width": 1200,
+          "height": 630
+        },
+        "keywords": ["taxa de aprovacao", "pagamentos internacionais", "checkout global", "gateway de pagamento", "infoprodutos"],
+        "articleSection": "Pagamentos Internacionais"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais#webpage",
+        "url": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais",
+        "name": "Como Aumentar sua Taxa de Aprovação de Pagamentos Internacionais — Mundpay",
+        "description": "Descubra por que sua taxa de aprovação internacional está baixa e como estruturas de checkout inteligentes podem recuperar até 30% das vendas perdidas.",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://mundpay.com/#organization" },
+        "isPartOf": { "@id": "https://mundpay.com/#website" },
+        "mainEntity": { "@id": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais#posting" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais#breadcrumb",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mundpay.com/pt/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://mundpay.com/pt/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Taxa de Aprovação", "item": "https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais" }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS — MUNDPAY BLOG SYSTEM
+    ============================================= */
+    :root {
+      --color-bg:          #eaede4;
+      --color-bg-card:     #e2e5da;
+      --color-bg-deep:     #d8dbd2;
+      --color-text:        rgba(5, 7, 0, 0.88);
+      --color-text-muted:  rgba(5, 7, 0, 0.52);
+      --color-text-faint:  rgba(5, 7, 0, 0.3);
+      --color-accent:      #859933;
+      --color-accent-h:    #6e7f28;
+      --color-accent-s:    rgba(133, 153, 51, 0.09);
+      --color-accent-sm:   rgba(133, 153, 51, 0.18);
+      --color-accent-md:   rgba(133, 153, 51, 0.28);
+      --color-divider:     rgba(5, 7, 0, 0.09);
+
+      --font-main:  'Rethink Sans', sans-serif;
+      --font-meta:  'Space Grotesk', sans-serif;
+
+      --space-xs:  8px;
+      --space-sm:  16px;
+      --space-md:  24px;
+      --space-lg:  32px;
+      --space-xl:  40px;
+      --space-2xl: 56px;
+      --space-3xl: 80px;
+
+      --radius:    6px;
+      --radius-lg: 10px;
+      --shadow:    0 16px 32px rgba(0, 0, 0, 0.3);
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.2);
+      --transition: 150ms ease-in-out;
+    }
+
+    /* =============================================
+       RESET + BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: var(--font-main);
+      font-size: 1rem;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--color-accent); text-decoration: none; }
+
+    /* =============================================
+       READING PROGRESS BAR
+    ============================================= */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--color-accent);
+      width: 0%;
+      z-index: 9999;
+      transition: width 80ms linear;
+    }
+
+    /* =============================================
+       HEADER
+    ============================================= */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-bg);
+      border-bottom: 1px solid rgba(5,7,0,0.07);
+      padding: 10px 0;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    /* Left pill: logo + nav links */
+    .header-left-pill {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: rgba(5,7,0,0.05);
+      border-radius: 40px;
+      padding: 6px 6px 6px 12px;
+      text-decoration: none;
+    }
+
+    .header-left-pill .pill-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      padding-right: 4px;
+    }
+
+    .header-left-pill .pill-logo img {
+      width: auto;
+      height: 22px;
+      display: block;
+    }
+
+    .header-left-pill .pill-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(5,7,0,0.12);
+      margin: 0 4px;
+      flex-shrink: 0;
+    }
+
+    .header-left-pill nav {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-left-pill nav a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(5,7,0,0.65);
+      text-decoration: none;
+      padding: 6px 14px;
+      border-radius: 32px;
+      white-space: nowrap;
+      transition: color 300ms ease, background 300ms ease;
+    }
+
+    .header-left-pill nav a:hover {
+      color: rgba(5,7,0,0.9);
+      background: rgba(5,7,0,0.05);
+    }
+
+    /* Right actions — no pill background */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      background: rgba(5,7,0,0.05);
+      border-radius: 32px;
+      padding: 4px;
+    }
+
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 10px;
+      border-radius: 24px;
+      text-decoration: none;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.5);
+      letter-spacing: 0.03em;
+      transition: background 200ms ease, color 200ms ease;
+      white-space: nowrap;
+    }
+
+    .lang-btn img { width: 18px; height: 13px; border-radius: 2px; display: block; }
+
+    .lang-btn:hover { background: rgba(5,7,0,0.07); color: rgba(5,7,0,0.8); }
+
+    .lang-btn.active {
+      background: rgba(5,7,0,0.09);
+      color: rgba(5,7,0,0.9);
+    }
+
+    .lang-btn.disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .btn-login {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.75);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 32px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      transition: color 300ms ease;
+    }
+
+    .btn-login:hover { color: rgba(5,7,0,1); }
+
+    .btn-start {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.85);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 32px;
+      white-space: nowrap;
+      letter-spacing: 0.02em;
+      background: rgba(5,7,0,0.08);
+      border: 1px solid rgba(5,7,0,0.1);
+      transition: background 300ms ease, color 300ms ease;
+    }
+
+    .btn-start:hover {
+      background: rgba(5,7,0,0.13);
+      color: rgba(5,7,0,1);
+    }
+
+    /* Burger (mobile) */
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--color-text);
+      border-radius: 2px;
+      transition: all 300ms ease;
+    }
+
+    /* Kept for article body CTAs */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: #050700;
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-family: var(--font-main);
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-accent-h);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(162,208,53,0.35);
+      color: #050700;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(162,208,53,0.02);
+      color: var(--color-text);
+      padding: 10px 22px;
+      border-radius: 40px;
+      font-family: var(--font-main);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: 1px solid rgba(5,7,0,0.12);
+      white-space: nowrap;
+    }
+
+    .btn-outline:hover {
+      background: rgba(5,7,0,0.05);
+      border-color: rgba(5,7,0,0.22);
+    }
+
+    /* =============================================
+       PAGE WRAPPER
+    ============================================= */
+    .page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* =============================================
+       BREADCRUMB
+    ============================================= */
+    .breadcrumb {
+      padding: var(--space-lg) 0 0;
+    }
+
+    .breadcrumb ol {
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      gap: 6px;
+      align-items: center;
+      font-family: var(--font-meta);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: var(--color-accent);
+      transition: opacity var(--transition);
+    }
+
+    .breadcrumb a:hover { opacity: 0.75; }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '/';
+      margin-left: 6px;
+      color: var(--color-text-faint);
+    }
+
+    .breadcrumb li:last-child {
+      color: var(--color-text-muted);
+    }
+
+    /* =============================================
+       LAYOUT GRID — ARTICLE + SIDEBAR
+    ============================================= */
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr 288px;
+      gap: var(--space-2xl);
+      padding: var(--space-lg) 0 var(--space-3xl);
+      align-items: start;
+    }
+
+    /* =============================================
+       ARTICLE
+    ============================================= */
+    article {
+      min-width: 0;
+    }
+
+    /* HERO */
+    .article-hero {
+      padding-bottom: var(--space-2xl);
+      border-bottom: 1px solid var(--color-divider);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .article-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--color-accent-s);
+      border: 1px solid var(--color-accent-sm);
+      color: var(--color-accent);
+      font-family: var(--font-meta);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 99px;
+      margin-bottom: var(--space-md);
+    }
+
+    .article-category svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .article-hero h1 {
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+    }
+
+    .article-lead {
+      font-size: 18px;
+      line-height: 1.65;
+      color: rgba(5, 7, 0, 0.62);
+      margin-bottom: var(--space-lg);
+      max-width: 640px;
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-family: var(--font-meta);
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+    }
+
+    .meta-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .meta-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, #5a8000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      color: #050700;
+      flex-shrink: 0;
+      font-family: var(--font-main);
+    }
+
+    .meta-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--color-text-faint);
+    }
+
+    .meta-label {
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .article-hero-image {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-divider);
+      background: linear-gradient(135deg, #0d1400 0%, #1a2200 50%, #0a0f00 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Placeholder hero image */
+    .hero-img-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-divider);
+      background: linear-gradient(135deg, #d8dcd0 0%, #d2d6c8 40%, #cdd1c4 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-img-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 70% 50%, rgba(133, 153, 51, 0.14) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 30% at 20% 80%, rgba(133, 153, 51, 0.07) 0%, transparent 60%);
+    }
+
+    .hero-img-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-img-icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+      filter: grayscale(0.3);
+    }
+
+    .hero-img-caption {
+      font-family: var(--font-meta);
+      font-size: 13px;
+      color: var(--color-text-muted);
+    }
+
+    /* EEAT CALLOUT */
+    .eeat-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      background: var(--color-accent-s);
+      border-left: 3px solid var(--color-accent);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: var(--space-2xl);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--color-text-muted);
+    }
+
+    .eeat-callout svg {
+      width: 16px;
+      height: 16px;
+      color: var(--color-accent);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .eeat-callout strong {
+      color: var(--color-text);
+      font-weight: 500;
+    }
+
+    /* ARTICLE BODY TYPOGRAPHY */
+    .article-body h2 {
+      font-size: clamp(22px, 3vw, 30px);
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+      color: var(--color-text);
+      margin-top: var(--space-2xl);
+      margin-bottom: var(--space-md);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-divider);
+      scroll-margin-top: 100px;
+    }
+
+    .article-body h2:first-child {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    .article-body h3 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--color-accent);
+      margin-top: var(--space-lg);
+      margin-bottom: var(--space-sm);
+      scroll-margin-top: 100px;
+    }
+
+    .article-body p {
+      margin-bottom: var(--space-md);
+      color: var(--color-text);
+    }
+
+    .article-body strong {
+      font-weight: 600;
+      color: rgba(5, 7, 0, 0.95);
+    }
+
+    .article-body em {
+      font-style: italic;
+      color: rgba(5, 7, 0, 0.72);
+    }
+
+    .article-body a {
+      color: var(--color-accent);
+      border-bottom: 1px solid transparent;
+      transition: border-color var(--transition);
+    }
+
+    .article-body a:hover {
+      border-bottom-color: var(--color-accent);
+    }
+
+    /* LISTS */
+    .article-body ul,
+    .article-body ol {
+      padding-left: var(--space-lg);
+      margin-bottom: var(--space-md);
+    }
+
+    .article-body li {
+      margin-bottom: 10px;
+      color: var(--color-text);
+    }
+
+    .article-body ul li::marker {
+      color: var(--color-accent);
+    }
+
+    .article-body ol li::marker {
+      color: var(--color-accent);
+      font-weight: 600;
+    }
+
+    /* BLOCKQUOTE */
+    .article-body blockquote {
+      margin: var(--space-lg) 0;
+      padding: var(--space-md) var(--space-lg);
+      border-left: 3px solid var(--color-accent);
+      background: var(--color-accent-s);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .article-body blockquote p {
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.65;
+      color: rgba(5, 7, 0, 0.72);
+      margin-bottom: 8px;
+    }
+
+    .article-body blockquote p:last-child { margin-bottom: 0; }
+
+    .article-body blockquote cite {
+      display: block;
+      font-size: 13px;
+      font-style: normal;
+      font-family: var(--font-meta);
+      color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    /* CALLOUT BOXES */
+    .callout {
+      display: flex;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: var(--radius);
+      margin: var(--space-lg) 0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .callout-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .callout-content strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .callout-content p { margin: 0; font-size: 14px; }
+
+    .callout.note {
+      background: var(--color-accent-s);
+      border-left: 3px solid var(--color-accent);
+    }
+
+    .callout.note .callout-icon,
+    .callout.note strong { color: var(--color-accent); }
+
+    .callout.warning {
+      background: rgba(255, 160, 50, 0.08);
+      border-left: 3px solid rgba(255, 160, 50, 0.7);
+    }
+
+    .callout.warning .callout-icon,
+    .callout.warning strong { color: rgba(180, 90, 0, 0.9); }
+
+    .callout.tip {
+      background: rgba(0, 130, 200, 0.07);
+      border-left: 3px solid rgba(0, 130, 200, 0.4);
+    }
+
+    .callout.tip .callout-icon,
+    .callout.tip strong { color: rgba(0, 110, 180, 0.9); }
+
+    /* STAT BLOCKS */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: var(--space-sm);
+      margin: var(--space-lg) 0;
+    }
+
+    .stat-block {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-accent-sm);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md) var(--space-sm);
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--color-accent);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 6px;
+      font-family: var(--font-meta);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.4;
+    }
+
+    /* TABLE */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: var(--space-lg) 0;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-divider);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    thead tr {
+      background: var(--color-accent-s);
+    }
+
+    th {
+      color: var(--color-accent);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 500;
+      font-family: var(--font-meta);
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 12px 16px;
+      border-top: 1px solid var(--color-divider);
+      color: var(--color-text);
+      vertical-align: top;
+    }
+
+    tbody tr:hover { background: rgba(162, 208, 53, 0.03); }
+
+    .td-check { color: var(--color-accent); font-size: 16px; }
+    .td-cross { color: rgba(5, 7, 0, 0.22); font-size: 16px; }
+    .td-highlight { color: var(--color-accent); font-weight: 600; }
+
+    /* INLINE IMAGE */
+    .article-image {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-divider);
+      overflow: hidden;
+      margin: var(--space-lg) 0;
+    }
+
+    .article-image-placeholder {
+      width: 100%;
+      aspect-ratio: 16 / 8;
+      background: linear-gradient(135deg, #d4d8ca 0%, #cdd1c5 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .article-image-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(133, 153, 51, 0.12) 0%, transparent 70%);
+    }
+
+    .article-image-caption {
+      font-family: var(--font-meta);
+      font-size: 12px;
+      color: var(--color-text-faint);
+      padding: 10px 16px;
+      border-top: 1px solid var(--color-divider);
+      background: var(--color-bg-card);
+      text-align: center;
+    }
+
+    /* CTA INLINE */
+    .cta-banner {
+      background: linear-gradient(135deg, #d6dace 0%, #cdd1c6 100%);
+      border: 1px solid var(--color-accent-sm);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-xl);
+      margin: var(--space-2xl) 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .cta-banner-text p:first-child {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 6px;
+    }
+
+    .cta-banner-text p:last-child {
+      font-size: 14px;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    .btn-primary-lg {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-accent);
+      color: #050700;
+      padding: 13px 24px;
+      border-radius: var(--radius);
+      font-family: var(--font-main);
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      border: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary-lg:hover {
+      background: var(--color-accent-h);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(162, 208, 53, 0.4);
+      color: #050700;
+    }
+
+    /* AUTHOR BIO */
+    .author-bio {
+      display: flex;
+      gap: var(--space-md);
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-accent-sm);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin-top: var(--space-2xl);
+    }
+
+    .author-bio-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-accent) 0%, #3d6000 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 700;
+      color: #050700;
+      flex-shrink: 0;
+      font-family: var(--font-main);
+      text-decoration: none;
+      transition: opacity 200ms ease;
+    }
+
+    .author-bio-avatar:hover { opacity: 0.85; }
+
+    .author-bio-label {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+    }
+
+    .author-bio-name {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 3px;
+      text-decoration: none;
+    }
+
+    .author-bio-name:hover { text-decoration: underline; }
+
+    .author-bio-title {
+      font-family: var(--font-meta);
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .author-bio-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(5, 7, 0, 0.58);
+      margin-bottom: 14px;
+    }
+
+    .author-socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .author-socials a {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--color-accent-s);
+      border: 1px solid var(--color-accent-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-accent);
+      transition: all var(--transition);
+    }
+
+    .author-socials a:hover {
+      background: var(--color-accent);
+      color: #050700;
+      border-color: var(--color-accent);
+    }
+
+    .author-socials svg { width: 14px; height: 14px; }
+
+    /* RELATED POSTS */
+    .related-posts {
+      margin-top: var(--space-2xl);
+      padding-top: var(--space-2xl);
+      border-top: 1px solid var(--color-divider);
+    }
+
+    .related-posts-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-family: var(--font-meta);
+      margin-bottom: var(--space-md);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .related-card {
+      display: block;
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      transition: all 200ms ease-out;
+      text-decoration: none;
+    }
+
+    .related-card:hover {
+      border-color: var(--color-accent-sm);
+      box-shadow: var(--shadow-sm);
+      transform: translateY(-3px);
+    }
+
+    .related-card-category {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 8px;
+    }
+
+    .related-card-title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-text);
+      line-height: 1.4;
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .related-card-meta {
+      font-family: var(--font-meta);
+      font-size: 12px;
+      color: var(--color-text-faint);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .related-card-meta .dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--color-text-faint);
+    }
+
+    /* =============================================
+       SIDEBAR
+    ============================================= */
+    .sidebar {
+      position: sticky;
+      top: 88px;
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .sidebar-widget {
+      background: var(--color-bg-card);
+      border: 1px solid var(--color-divider);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+    }
+
+    .sidebar-widget-title {
+      font-family: var(--font-meta);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-sm);
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-divider);
+    }
+
+    /* TOC */
+    .toc-list {
+      list-style: none;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .toc-list li {
+      position: relative;
+    }
+
+    .toc-list a {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 6px 0 6px 14px;
+      color: var(--color-text-muted);
+      font-family: var(--font-meta);
+      transition: color var(--transition);
+      border-left: 2px solid transparent;
+      position: relative;
+      left: -2px;
+    }
+
+    .toc-list a:hover { color: var(--color-text); }
+
+    .toc-list a.active {
+      color: var(--color-accent);
+      border-left-color: var(--color-accent);
+      font-weight: 500;
+    }
+
+    .toc-list a .toc-num {
+      color: var(--color-text-faint);
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* SIDEBAR CTA */
+    .sidebar-cta {
+      background: linear-gradient(160deg, #d6dace 0%, #cfd3c8 100%);
+      border: 1px solid var(--color-accent-sm);
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      text-align: center;
+    }
+
+    .sidebar-cta-icon {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-cta h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-text);
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+    }
+
+    .sidebar-cta p {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+      margin-bottom: var(--space-sm);
+    }
+
+    .sidebar-cta .btn-primary {
+      width: 100%;
+      justify-content: center;
+      font-size: 13px;
+      padding: 10px 16px;
+    }
+
+    /* SHARE WIDGET */
+    .share-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .share-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: var(--radius);
+      border: 1px solid var(--color-divider);
+      font-family: var(--font-meta);
+      font-size: 13px;
+      color: var(--color-text-muted);
+      transition: all var(--transition);
+    }
+
+    .share-link:hover {
+      background: var(--color-accent-s);
+      border-color: var(--color-accent-sm);
+      color: var(--color-text);
+    }
+
+    .share-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .ai-explore-divider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 16px 0 10px;
+      font-family: var(--font-meta);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      opacity: 0.5;
+    }
+
+    .ai-explore-divider::before,
+    .ai-explore-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--color-divider);
+    }
+
+    .share-link-ai {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 12px;
+      border-radius: var(--radius);
+      background: rgba(5,7,0,0.06);
+      border: none;
+      font-family: var(--font-meta);
+      font-size: 13px;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: background var(--transition);
+    }
+
+    .share-link-ai:hover { background: rgba(5,7,0,0.11); }
+
+    .share-link-ai .ai-label { flex: 1; }
+
+    .share-link-ai .ai-arrow {
+      font-size: 11px;
+      opacity: 0.4;
+      transition: opacity var(--transition), transform var(--transition);
+    }
+
+    .share-link-ai:hover .ai-arrow { opacity: 0.8; transform: translate(1px, -1px); }
+
+    .share-link-ai img { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    .site-footer {
+      background: #eaede4;
+      margin-top: var(--space-3xl);
+      overflow: hidden;
+    }
+
+    /* Outer wrapper: padding 56px 24px, flex col, gap 32px, centered */
+    .footer-outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      width: 100%;
+      padding: 56px 24px;
+      box-sizing: border-box;
+    }
+
+    /* Giant wordmark */
+    .footer-wordmark {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 24px 0;
+    }
+
+    .footer-wordmark-mask {
+      width: min(860px, 88%);
+      height: auto;
+      aspect-ratio: 172 / 29;
+      background-color: rgba(5,7,0,0.1);
+      -webkit-mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') center center / contain no-repeat;
+      mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') center center / contain no-repeat;
+    }
+
+    /* Main footer body */
+    .footer-inner {
+      max-width: 1120px;
+      width: 100%;
+    }
+
+    .footer-divider {
+      border: none;
+      border-top: 1px solid rgba(5,7,0,0.1);
+      margin: 0;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 56px;
+      padding: 40px 0 48px;
+    }
+
+    /* Column 1 — brand+social */
+    .footer-brand-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 16px;
+      flex: 0.3 0 0;
+      min-width: 0;
+    }
+
+    .footer-logo-img {
+      width: auto;
+      height: 29px;
+      max-width: 180px;
+      display: block;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 8px;
+    }
+
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 100px;
+      background: rgba(5,7,0,0.05);
+      border: 1px solid rgba(5,7,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(5,7,0,0.4);
+      transition: all var(--transition);
+      text-decoration: none;
+    }
+
+    .footer-social a:hover {
+      background: rgba(5,7,0,0.1);
+      color: rgba(5,7,0,0.85);
+    }
+
+    .footer-social svg { width: 15px; height: 15px; }
+
+    /* Legal entities section — below the grid */
+    .footer-entities {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 24px 32px;
+      padding: 28px 0 36px;
+      border-top: 1px solid rgba(5,7,0,0.08);
+    }
+
+    .footer-entity {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+    }
+
+    .footer-entity-flag { font-size: 15px; flex-shrink: 0; line-height: 1.45; margin-top: 1px; }
+
+    .footer-entity p {
+      font-size: 11px;
+      color: rgba(5,7,0,0.38);
+      line-height: 1.55;
+    }
+
+    .footer-entity strong {
+      color: rgba(5,7,0,0.55);
+      font-weight: 500;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    /* Link columns */
+    .footer-link-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      flex: 0.233 0 0;
+      min-width: 0;
+    }
+
+    .footer-link-col h5 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1em;
+      text-transform: uppercase;
+      color: rgba(5,7,0,0.85);
+      margin-bottom: 0;
+    }
+
+    .footer-link-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-link-col li { margin-bottom: 0; }
+
+    .footer-link-col a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(5,7,0,0.58);
+      text-decoration: none;
+      transition: color 400ms cubic-bezier(.44,0,.56,1);
+    }
+
+    .footer-link-col a:hover { color: rgba(5,7,0,0.9); }
+
+    /* App store buttons */
+    .footer-app-btns {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .btn-app-store {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(162,209,52,0.15);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: all var(--transition);
+      box-shadow: inset 0 1px 1px rgba(255,255,255,0.12), 0 1px 1px rgba(0,0,0,0.25);
+    }
+
+    .btn-app-store:hover {
+      background: rgba(162,209,52,0.25);
+      color: var(--color-text);
+    }
+
+    .btn-app-store svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* Footer bottom bar */
+    .footer-bottom {
+      padding: 16px 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-family: var(--font-meta);
+      font-size: 12px;
+      color: rgba(5,7,0,0.38);
+      letter-spacing: 0.02em;
+    }
+
+    .footer-bottom span { color: rgba(5,7,0,0.22); }
+
+    /* Human | Machine toggle */
+    .hm-toggle {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(5,7,0,0.07);
+      border-radius: 32px;
+      padding: 3px;
+      gap: 0;
+      margin-bottom: 20px;
+    }
+
+    .hm-btn {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 24px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: rgba(5,7,0,0.4);
+      transition: background 200ms ease, color 200ms ease;
+    }
+
+    .hm-btn.active {
+      background: rgba(5,7,0,0.88);
+      color: #eaede4;
+    }
+
+    /* Machine modal */
+    .machine-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #1a1c14;
+      overflow-y: auto;
+    }
+
+    .machine-modal.open { display: block; }
+
+    .machine-modal-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 32px 80px;
+    }
+
+    .machine-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .machine-modal-logo {
+      height: 22px;
+      width: auto;
+      opacity: 0.5;
+    }
+
+    .machine-modal-close {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 24px;
+      border: 1px solid rgba(234,237,228,0.2);
+      background: none;
+      color: rgba(234,237,228,0.5);
+      cursor: pointer;
+      transition: border-color 200ms, color 200ms;
+    }
+
+    .machine-modal-close:hover {
+      border-color: rgba(234,237,228,0.5);
+      color: rgba(234,237,228,0.9);
+    }
+
+    .machine-content {
+      font-family: 'Space Grotesk', monospace;
+      font-size: 13px;
+      line-height: 1.8;
+      color: rgba(234,237,228,0.65);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .machine-content a {
+      color: #859933;
+      text-decoration: none;
+    }
+
+    .machine-content a:hover { text-decoration: underline; }
+
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 450ms ease-out, transform 450ms ease-out;
+    }
+
+    [data-reveal].visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 1100px) {
+      .blog-layout {
+        grid-template-columns: 1fr 256px;
+        gap: var(--space-xl);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .header-nav-pill { display: none; }
+      .burger { display: flex; }
+
+      .blog-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-sm);
+        order: -1;
+      }
+
+      .sidebar-widget.toc-widget { grid-column: 1 / -1; }
+      .sidebar-cta { grid-column: 1 / -1; display: none; }
+
+      .footer-grid {
+        flex-wrap: wrap;
+        gap: 32px;
+      }
+
+      .footer-brand-col,
+      .footer-link-col {
+        flex: 1 1 calc(50% - 16px);
+        min-width: 140px;
+      }
+
+      .footer-entities {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-container { padding: 0 20px; }
+      .header-inner { padding: 0 16px; }
+
+
+      .header-logo-pill { padding: 7px 14px; }
+      .header-actions-pill { padding: 6px 6px 6px 8px; }
+      .btn-find-order { display: none; }
+      .btn-create { font-size: 12px; padding: 8px 12px; }
+      .btn-login { display: none; }
+
+      .blog-layout { padding: var(--space-md) 0 var(--space-2xl); }
+
+      .sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .related-grid { grid-template-columns: 1fr; }
+
+      .footer-grid { flex-direction: column; gap: 28px; }
+      .footer-brand-col, .footer-link-col { flex: 1 1 100%; }
+      .footer-entities { grid-template-columns: 1fr; gap: 16px; }
+      .footer-wordmark { padding: 16px 0; }
+      .footer-app-btns { flex-direction: column; }
+
+      .cta-banner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cta-banner .btn-primary-lg { width: 100%; justify-content: center; }
+
+      .author-bio { flex-direction: column; }
+
+      .stat-row { grid-template-columns: repeat(2, 1fr); }
+
+      .footer-bottom { flex-direction: column; gap: var(--space-sm); text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- READING PROGRESS BAR -->
+  <div class="progress-bar" id="progressBar"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <!-- Left pill: logo + Blog + Meet Mundpay -->
+      <div class="header-left-pill">
+        <a href="https://mundpay.com/" class="pill-logo">
+          <img src="https://framerusercontent.com/images/aJXI6DyfzPccRM0LDUyyVGolauw.svg" alt="mundpay">
+        </a>
+        <div class="pill-sep"></div>
+        <nav aria-label="Menu principal">
+          <a href="https://mundpay.com/blog">Blog</a>
+          <a href="https://mundpay.com/#benefits">Meet Mundpay</a>
+        </nav>
+      </div>
+
+      <!-- Right actions -->
+      <div class="header-actions">
+
+        <!-- Language switcher — cada botão navega para a URL real da versão traduzida -->
+        <div class="lang-switcher" role="navigation" aria-label="Idioma">
+          <a class="lang-btn" href="https://mundpay.com/blog/payment-approval-rate" hreflang="en" title="English">
+            <img src="https://flagcdn.com/us.svg" alt="EN">
+            <span>EN</span>
+          </a>
+          <a class="lang-btn active" href="https://mundpay.com/pt/blog/taxa-de-aprovacao-pagamentos-internacionais" hreflang="pt-BR" title="Português" aria-current="true">
+            <img src="https://flagcdn.com/br.svg" alt="PT">
+            <span>PT</span>
+          </a>
+          <span class="lang-btn disabled" title="Español — em breve" aria-disabled="true">
+            <img src="https://flagcdn.com/es.svg" alt="ES">
+            <span>ES</span>
+          </span>
+        </div>
+
+        <a href="https://login.mundpay.com/login" class="btn-login">LOG IN</a>
+        <a href="https://login.mundpay.com/register" class="btn-start">START NOW</a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <main>
+    <div class="page-container">
+
+      <!-- BREADCRUMB -->
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/blog/pagamentos">Pagamentos</a></li>
+          <li>Taxa de Aprovação</li>
+        </ol>
+      </nav>
+
+      <!-- LAYOUT GRID -->
+      <div class="blog-layout">
+
+        <!-- ============ ARTICLE ============ -->
+        <article aria-labelledby="article-title">
+
+          <!-- HERO -->
+          <header class="article-hero" data-reveal>
+            <div class="article-category">
+              <svg viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M6 4v3l2 1" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Pagamentos Internacionais
+            </div>
+
+            <h1 id="article-title">Como Aumentar sua Taxa de Aprovação de Pagamentos Internacionais</h1>
+
+            <p class="article-lead">
+              Seu tráfego converteu, o cliente chegou ao checkout e mesmo assim a venda caiu. Entenda por que isso acontece e como estruturar sua infraestrutura de pagamentos para recuperar essas vendas.
+            </p>
+
+            <div class="article-meta">
+              <div class="meta-author">
+                <a href="https://mundpay.com/authors/wellington" class="meta-avatar" title="Ver perfil do autor">W</a>
+                <div>
+                  <a href="https://mundpay.com/authors/wellington" style="color: var(--color-text); font-weight: 500; font-size: 14px; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Wellington</a>
+                  <br>
+                  <span style="font-size: 12px;">Fundador, Mundpay</span>
+                </div>
+              </div>
+              <span class="meta-dot"></span>
+              <time datetime="2026-04-27">27 abr 2026</time>
+              <span class="meta-dot"></span>
+              <span>8 min de leitura</span>
+            </div>
+
+            <!-- HERO IMAGE PLACEHOLDER -->
+            <div class="hero-img-placeholder">
+              <div class="hero-img-inner">
+                <div class="hero-img-icon">🌐</div>
+                <p class="hero-img-caption">Infraestrutura de pagamentos globais</p>
+              </div>
+            </div>
+          </header>
+
+          <!-- E-E-A-T CALLOUT -->
+          <div class="eeat-callout" data-reveal>
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1l1.8 3.6L14 5.4l-3 2.9.7 4.1L8 10.4l-3.7 2 .7-4.1L2 5.4l4.2-.8L8 1z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+            <p>
+              <strong>Revisado por especialistas.</strong> Este artigo foi escrito pelo fundador da Mundpay com base em dados reais de mais de 300 mil transações internacionais processadas em 190 paises. Ultima atualizacao: abril 2026.
+            </p>
+          </div>
+
+          <!-- ARTICLE BODY -->
+          <!-- TODO P1: imagens no corpo do artigo devem usar <figure> + <figcaption>
+               Exemplo:
+               <figure>
+                 <img src="..." alt="descrição da imagem" width="800" height="450" loading="lazy">
+                 <figcaption>Legenda da imagem</figcaption>
+               </figure>
+          -->
+          <div class="article-body">
+
+            <!-- SECTION 1 -->
+            <h2 id="problema-real">O problema real nao e o trafego</h2>
+
+            <p>A maioria dos vendedores digitais que opera globalmente acredita que o problema esta no anuncio, na pagina de vendas ou na oferta. Mas existe uma camada que poucos enxergam: a infraestrutura de pagamento.</p>
+
+            <p>Quando um comprador em Miami clica em "comprar agora" e sai sem finalizar, o problema raramente e motivacao. Na maior parte dos casos e tecnico. O cartao foi recusado. O checkout nao reconheceu a moeda. A pagina demorou 8 segundos para carregar.</p>
+
+            <div class="callout note" data-reveal>
+              <span class="callout-icon">💡</span>
+              <div class="callout-content">
+                <strong>Nota importante</strong>
+                <p>Dados internos da Mundpay indicam que 68% dos abandonos no checkout internacional ocorrem por recusa de cartao, nao por desistencia do comprador. E um problema de infraestrutura, nao de marketing.</p>
+              </div>
+            </div>
+
+            <p>Esse e o gap que a maioria dos gateways nao resolve. Eles entregam a estrutura basica, mas nao tem o repertorio tecnico para lidar com as particularidades de cada regiao, adquirente e bandeira.</p>
+
+            <!-- STATS -->
+            <div class="stat-row" data-reveal>
+              <div class="stat-block">
+                <div class="stat-number">68%</div>
+                <div class="stat-label">dos abandonos sao por recusa tecnica</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-number">D+3</div>
+                <div class="stat-label">prazo de saque para pessoa juridica</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-number">190+</div>
+                <div class="stat-label">paises com checkout ativo</div>
+              </div>
+              <div class="stat-block">
+                <div class="stat-number">300k+</div>
+                <div class="stat-label">vendas processadas por ano</div>
+              </div>
+            </div>
+
+            <!-- SECTION 2 -->
+            <h2 id="causas-recusa">Por que os pagamentos sao recusados</h2>
+
+            <p>Existem tres categorias principais de recusa em transacoes internacionais. Entender cada uma e o primeiro passo para corrigi-las.</p>
+
+            <h3>Recusa pelo banco emissor</h3>
+
+            <p>O banco do comprador, nos EUA ou na Europa, classifica a transacao como suspeita. Isso acontece quando o checkout nao esta configurado com os parametros corretos de autenticacao internacional, ou quando o histórico de chargeback da plataforma que voce usa e alto.</p>
+
+            <p>O banco emissor nao te conhece. Ele conhece a plataforma de pagamento que esta processando a transacao. Se essa plataforma tem histórico ruim naquela adquirente, voce paga o preco.</p>
+
+            <h3>Recusa por roteamento incorreto</h3>
+
+            <p>Cada pais tem uma adquirente preferencial. Uma transacao em euros roteada por uma adquirente americana vai ter taxa de aprovacao menor do que se fosse roteada por uma europeia. Isso e roteamento inteligente, e poucos gateways fazem isso de verdade.</p>
+
+            <div class="callout warning" data-reveal>
+              <span class="callout-icon">⚠️</span>
+              <div class="callout-content">
+                <strong>Atenção</strong>
+                <p>Plataformas com taxa de aprovacao abaixo de 70% em transacoes internacionais geralmente nao tem roteamento multi-adquirente. A consequencia direta e perda de receita que voce nunca vai saber que existiu.</p>
+              </div>
+            </div>
+
+            <h3>Recusa por experiencia do checkout</h3>
+
+            <p>Um checkout em ingles para um comprador mexicano reduz a conversao em ate 40%. A ausencia do peso mexicano como opcao de moeda aumenta o abandono em 25%. Sao dados que qualquer gestor de trafego experiente ja viu nos numeros, mas que poucos conectam ao checkout.</p>
+
+            <!-- IMAGE PLACEHOLDER -->
+            <div class="article-image" data-reveal>
+              <div class="article-image-placeholder">
+                <div style="position: relative; z-index: 1; text-align: center;">
+                  <div style="font-size: 32px; margin-bottom: 10px;">📊</div>
+                  <p style="font-family: var(--font-meta); font-size: 13px; color: var(--color-text-muted);">Grafico: taxa de aprovacao por regiao</p>
+                </div>
+              </div>
+              <div class="article-image-caption">Comparativo de taxa de aprovacao por regiao geografica — dados Mundpay Q1 2026</div>
+            </div>
+
+            <!-- SECTION 3 -->
+            <h2 id="como-resolver">Como resolver na pratica</h2>
+
+            <p>A solucao nao e tecnica no sentido abstrato. E uma decisao de infraestrutura que voce toma uma vez e que tem impacto direto em toda venda futura.</p>
+
+            <blockquote>
+              <p>"Nao somos mais baratos. Somos o que faz voce vender mais. A diferenca entre 60% e 85% de aprovacao e o faturamento de um mes inteiro que voce estava perdendo."</p>
+              <cite>Wellington, Fundador da Mundpay</cite>
+            </blockquote>
+
+            <p>Existem tres alavancas que movem a taxa de aprovacao de forma significativa:</p>
+
+            <h3>1. Retentativa inteligente</h3>
+
+            <p>Quando uma transacao e recusada, um sistema de retentativa inteligente tenta novamente com parametros diferentes, em outra adquirente ou com outro roteamento, dentro de milissegundos. Para o comprador, nada muda. Para voce, a venda que seria perdida e recuperada.</p>
+
+            <h3>2. Checkout localizado</h3>
+
+            <p>Idioma, moeda e metodos de pagamento locais nao sao diferenciais. Sao requisitos. Um checkout que reconhece o IP do comprador e adapta automaticamente o idioma, a moeda exibida e os metodos disponiveis converte mais em qualquer regiao.</p>
+
+            <h3>3. Roteamento multi-adquirente</h3>
+
+            <p>Ter mais de uma adquirente ativa e o que permite roteamento inteligente. Quando a adquirente A recusa, o sistema tenta pela B sem interromper a experiencia do comprador. Isso so e possivel com infraestrutura construida para isso desde o inicio.</p>
+
+            <!-- COMPARISON TABLE -->
+            <h2 id="comparativo">Comparativo: plataformas por taxa de aprovacao</h2>
+
+            <p>Para quem esta migrando ou avaliando opcoes, essa tabela compara os principais fatores que impactam diretamente a taxa de aprovacao:</p>
+
+            <div class="table-wrapper" data-reveal>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Recurso</th>
+                    <th>Mundpay</th>
+                    <th>Hotmart</th>
+                    <th>Cartpanda</th>
+                    <th>Stripe</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Retentativa inteligente</td>
+                    <td class="td-check">✓</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-check">✓</td>
+                  </tr>
+                  <tr>
+                    <td>Checkout multilinguagem</td>
+                    <td class="td-check">✓</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-check">✓</td>
+                    <td class="td-check">✓</td>
+                  </tr>
+                  <tr>
+                    <td>Moeda local automatica</td>
+                    <td class="td-check">✓</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-check">✓</td>
+                  </tr>
+                  <tr>
+                    <td>Prazo de saque</td>
+                    <td class="td-highlight">D+3</td>
+                    <td>D+15</td>
+                    <td>D+7</td>
+                    <td>D+7</td>
+                  </tr>
+                  <tr>
+                    <td>Risco proativo (sem bloqueio surpresa)</td>
+                    <td class="td-check">✓</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                  </tr>
+                  <tr>
+                    <td>Secret Order Bump</td>
+                    <td class="td-check">✓</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                  </tr>
+                  <tr>
+                    <td>UTM por pais</td>
+                    <td class="td-check">✓</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                    <td class="td-cross">✗</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout tip" data-reveal>
+              <span class="callout-icon">💡</span>
+              <div class="callout-content">
+                <strong>Dica pratica</strong>
+                <p>Se voce esta migrando de outra plataforma, o processo na Mundpay leva menos de 24h uteis para aprovacao. O setor de risco entra em contato antes de qualquer restricao, nao depois.</p>
+              </div>
+            </div>
+
+            <!-- SECTION 4 -->
+            <h2 id="secret-order-bump">Secret Order Bump: o diferencial que nenhum outro tem</h2>
+
+            <p>Existe uma funcionalidade que desenvolvemos internamente e que nenhuma outra plataforma de pagamento oferece: o <strong>Secret Order Bump</strong>.</p>
+
+            <p>A logica e simples mas o impacto e expressivo. Em vez de mostrar o order bump durante o preenchimento dos dados de pagamento (o que interrompe a experiencia e gera atrito), o Secret Order Bump aparece <strong>apos o preenchimento</strong>, no momento exato em que o cliente ja se comprometeu cognitivamente com a compra.</p>
+
+            <p>O resultado pratico: ofertas entre R$ 19,90 e R$ 49,90 (checklists, mini-cursos, ebooks) tem taxa de aceitacao muito maior nesse momento. Uma venda de R$ 100 passa a gerar R$ 130 a R$ 150 em media.</p>
+
+            <!-- INLINE CTA BANNER -->
+            <div class="cta-banner" data-reveal>
+              <div class="cta-banner-text">
+                <p>Sua taxa de aprovacao esta abaixo de 80%?</p>
+                <p>Abra sua conta na Mundpay e veja a diferenca em até 7 dias de operacao.</p>
+              </div>
+              <a href="#" class="btn-primary-lg">
+                Comecar agora
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 5l4 3-4 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+
+            <!-- SECTION 5 — CONCLUSAO -->
+            <h2 id="conclusao">Conclusao: checkout e estrategia</h2>
+
+            <p>A taxa de aprovacao e um numero que poucos vendedores monitoram com a seriedade que merece. Mas ela e o reflexo direto da qualidade da sua infraestrutura de pagamentos.</p>
+
+            <p>Cada ponto percentual de aprovacao perdido e receita que nunca vai aparecer no seu dashboard. E diferente de uma campanha que performa mal: voce nao ve o problema acontecendo, so ve o resultado menor no final do mes.</p>
+
+            <p>Estruturar bem o checkout internacional nao e um projeto de longo prazo. E uma decisao que voce toma hoje e que impacta cada venda a partir de amanha.</p>
+
+          </div><!-- /article-body -->
+
+          <!-- AUTHOR BIO -->
+          <div class="author-bio" data-reveal>
+            <a href="https://mundpay.com/authors/wellington" class="author-bio-avatar" title="Ver perfil de Wellington">W</a>
+            <div>
+              <p class="author-bio-label">Sobre o autor</p>
+              <a href="https://mundpay.com/authors/wellington" class="author-bio-name" style="text-decoration: none;">Wellington</a>
+              <p class="author-bio-title">Fundador da Mundpay</p>
+              <p class="author-bio-text">
+                Construiu a Mundpay para resolver um problema que viveu na pele: a perda de receita por infraestrutura de pagamento inadequada para vendas globais. Desenvolveu o Secret Order Bump, funcionalidade exclusiva da plataforma, e acompanhou mais de 300 mil transacoes internacionais desde o lancamento.
+              </p>
+              <div class="author-socials">
+                <a href="#" aria-label="LinkedIn">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M2 4.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 1.5v8M6 6v8M6 8.5C6 7 7 6 8.5 6S11 7 11 8.5V14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                </a>
+                <a href="#" aria-label="Twitter / X">
+                  <svg viewBox="0 0 16 16" fill="none"><path d="M13 2L9.25 6.75 13.5 14h-3.25L7.5 9.75 3.5 14H2l4-5.25L1.5 2h3.25L7.5 6.25 11 2h2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- RELATED POSTS -->
+          <!-- TODO P1: cada .related-card deveria ser <article> com aria-label igual ao título do post -->
+          <section class="related-posts" aria-labelledby="related-posts-title" data-reveal>
+            <p class="related-posts-title" id="related-posts-title">Continue lendo</p>
+            <div class="related-grid">
+              <a href="#" class="related-card">
+                <p class="related-card-category">Chargeback</p>
+                <h3 class="related-card-title">Chargeback alto: como resolver antes que bloqueiem sua conta</h3>
+                <div class="related-card-meta">
+                  <span>Wellington</span>
+                  <span class="dot"></span>
+                  <span>6 min</span>
+                </div>
+              </a>
+              <a href="#" class="related-card">
+                <p class="related-card-category">Ferramentas</p>
+                <h3 class="related-card-title">Secret Order Bump: o que e como configurar do zero</h3>
+                <div class="related-card-meta">
+                  <span>Equipe Mundpay</span>
+                  <span class="dot"></span>
+                  <span>5 min</span>
+                </div>
+              </a>
+              <a href="#" class="related-card">
+                <p class="related-card-category">Migracao</p>
+                <h3 class="related-card-title">Como migrar da Cartpanda para a Mundpay sem perder operacao</h3>
+                <div class="related-card-meta">
+                  <span>Breno</span>
+                  <span class="dot"></span>
+                  <span>7 min</span>
+                </div>
+              </a>
+            </div>
+          </section>
+
+        </article>
+
+        <!-- ============ SIDEBAR ============ -->
+        <aside class="sidebar" aria-label="Sidebar do artigo">
+
+          <!-- TOC -->
+          <div class="sidebar-widget toc-widget">
+            <p class="sidebar-widget-title">Neste artigo</p>
+            <nav aria-label="Sumario do artigo">
+              <ul class="toc-list" id="tocList">
+                <li><a href="#problema-real"><span class="toc-num">01</span>O problema real</a></li>
+                <li><a href="#causas-recusa"><span class="toc-num">02</span>Por que os pagamentos sao recusados</a></li>
+                <li><a href="#como-resolver"><span class="toc-num">03</span>Como resolver na pratica</a></li>
+                <li><a href="#comparativo"><span class="toc-num">04</span>Comparativo de plataformas</a></li>
+                <li><a href="#secret-order-bump"><span class="toc-num">05</span>Secret Order Bump</a></li>
+                <li><a href="#conclusao"><span class="toc-num">06</span>Conclusao</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <!-- CTA SIDEBAR -->
+          <div class="sidebar-cta">
+            <div class="sidebar-cta-icon">🚀</div>
+            <h4>Pronto para escalar suas vendas globais?</h4>
+            <p>Abra sua conta gratis e comece a processar pagamentos em 190 paises com taxa de aprovacao mais alta do mercado.</p>
+            <a href="#" class="btn-primary">Comecar agora</a>
+          </div>
+
+          <!-- SHARE -->
+          <div class="sidebar-widget">
+            <p class="sidebar-widget-title">Compartilhar</p>
+            <div class="share-links">
+              <a href="#" class="share-link">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M13 2L9.25 6.75 13.5 14h-3.25L7.5 9.75 3.5 14H2l4-5.25L1.5 2h3.25L7.5 6.25 11 2h2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+                Compartilhar no X
+              </a>
+              <a href="#" class="share-link">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M2 4.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3zm0 1.5v8M6 6v8M6 8.5C6 7 7 6 8.5 6S11 7 11 8.5V14" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                Compartilhar no LinkedIn
+              </a>
+              <a href="#" class="share-link" id="copyLinkBtn" onclick="copyPageLink(event)">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M12 3H4a1 1 0 0 0-1 1v9l3-2h6a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+                <span id="copyLinkText">Copiar link</span>
+              </a>
+            </div>
+
+            <div class="ai-explore-divider">Explorar com IA</div>
+
+            <div class="share-links">
+              <a href="https://chatgpt.com/?q=Resuma+este+artigo+sobre+taxa+de+aprovação+de+pagamentos+internacionais%3A+https%3A%2F%2Fmundpay.com%2Fpt%2Fblog%2Ftaxa-de-aprovacao-pagamentos-internacionais" target="_blank" rel="noopener" class="share-link-ai">
+                <img src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg" alt="ChatGPT">
+                <span class="ai-label">Resumir com ChatGPT</span>
+                <span class="ai-arrow">↗</span>
+              </a>
+              <a href="https://claude.ai/new?q=Resuma+este+artigo+sobre+taxa+de+aprovação+de+pagamentos+internacionais%3A+https%3A%2F%2Fmundpay.com%2Fpt%2Fblog%2Ftaxa-de-aprovacao-pagamentos-internacionais" target="_blank" rel="noopener" class="share-link-ai">
+                <img src="https://unpkg.com/@lobehub/icons-static-svg@latest/icons/claude.svg" alt="Claude">
+                <span class="ai-label">Resumir com Claude</span>
+                <span class="ai-arrow">↗</span>
+              </a>
+            </div>
+          </div>
+
+        </aside>
+
+      </div><!-- /blog-layout -->
+    </div><!-- /page-container -->
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+  <div class="footer-outer">
+
+    <!-- Giant decorative wordmark -->
+    <div class="footer-wordmark" aria-hidden="true">
+      <div class="footer-wordmark-mask"></div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-inner">
+      <div class="footer-grid">
+
+        <!-- Col 1: logo + social -->
+        <div class="footer-brand-col">
+          <a href="https://mundpay.com/" aria-label="mundpay">
+            <img class="footer-logo-img" src="https://framerusercontent.com/images/aJXI6DyfzPccRM0LDUyyVGolauw.svg" alt="mundpay">
+          </a>
+          <div class="footer-social">
+            <a href="https://www.instagram.com/mundpay/" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 18 18" fill="none"><rect x="1.5" y="1.5" width="15" height="15" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.35"/><circle cx="9" cy="9" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="5" r="1" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/mundpay/" target="_blank" rel="noopener" aria-label="Facebook">
+              <svg viewBox="0 0 18 18" fill="none"><rect x="1.5" y="1.5" width="15" height="15" rx="4" stroke="currentColor" stroke-width="1.5" opacity="0.35"/><path d="M10 5.5H11V7.5H10C9.4 7.5 9 7.9 9 8.5V9.5H11L10.5 11.5H9V16H7V11.5H5.5V9.5H7V8.5C7 6.8 8 5.5 10 5.5Z" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@mundpay" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 18 18" fill="none"><rect x="1" y="4" width="16" height="10" rx="3" stroke="currentColor" stroke-width="1.5" opacity="0.35"/><path d="M7.5 6.5l4.5 2.5-4.5 2.5V6.5z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Col 2: Legal & Compliance -->
+        <div class="footer-link-col">
+          <h5>Legal &amp; Compliance</h5>
+          <ul>
+            <li><a href="https://mundpay.com/pagamentos-e-taxas">Payments and Fees</a></li>
+            <li><a href="https://mundpay.com/termos-de-uso">Terms and Conditions</a></li>
+            <li><a href="https://mundpay.com/politica-de-privacidade">Privacy Policy</a></li>
+            <li><a href="#">Reporting Channel</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Canais de Contato -->
+        <div class="footer-link-col">
+          <h5>Canais de Contato</h5>
+          <ul>
+            <li><a href="https://mundpay.com/me-ajuda">Help me</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=%2B5521988294968&text&type=phone_number&app_absent=0" target="_blank" rel="noopener">WhatsApp</a></li>
+            <li><a href="mailto:suporte@mundpay.com">E-mail</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Site + App -->
+        <div class="footer-link-col">
+          <h5>Site</h5>
+          <ul>
+            <li><a href="https://mundpay.com/">Home</a></li>
+            <li><a href="https://mundpay.com/#global">Global Sales</a></li>
+            <li><a href="https://mundpay.com/#taxas">Taxes</a></li>
+            <li><a href="https://mundpay.com/blog">Blog</a></li>
+          </ul>
+          <div class="footer-app-btns">
+            <a href="https://apps.apple.com/br/app/mundpay-mobile/id6744820317" target="_blank" rel="noopener" class="btn-app-store">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M11.5 8.5c0-1.7 1-2.6 1-2.6s-1-1.4-2.4-1.4c-1 0-1.5.6-2.1.6-.7 0-1.3-.6-2.2-.6C4.2 4.5 3 5.9 3 8c0 2.2 1.3 4.5 2.5 4.5.7 0 1-.5 1.9-.5s1.1.5 1.9.5C10.6 12.5 11.5 10 11.5 8.5z" stroke="currentColor" stroke-width="1.3"/><path d="M9.5 2.5c.6-.7 1-1.5 1-2.5-1 .1-2.1.7-2.7 1.5-.5.7-.9 1.5-.8 2.4.9 0 1.9-.6 2.5-1.4z" fill="currentColor"/></svg>
+              App Store
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.mundpay.mundpay" target="_blank" rel="noopener" class="btn-app-store">
+              <svg viewBox="0 0 16 16" fill="none"><path d="M2 2.5l6 5.5-6 5.5V2.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M2 2.5L9.5 8M2 13.5L9.5 8M9.5 8l3 1.8-3 1.7M9.5 8l3-1.8-3-1.7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Play Store
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Legal entities — full width below grid -->
+      <address class="footer-entities">
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇧🇷</span>
+          <p><strong>MUNDPAY PAGAMENTOS INTERNACIONAIS LTDA</strong>CNPJ: 55.009.285/0001-13<br>Av Alfredo Balthazar da Silveira 580, Recreio dos Bandeirantes, Rio de Janeiro, Brasil</p>
+        </div>
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇺🇸</span>
+          <p><strong>MUND USA LLC</strong>EIN: 32-0819366<br>1160 Heron Sound Dr Ste 50, Apopka, FL 32703</p>
+        </div>
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇺🇸</span>
+          <p><strong>MUNDPAY LLC</strong>EIN: 36-5099929<br>169 Madison Avenue, New York, NY 10016</p>
+        </div>
+        <div class="footer-entity">
+          <span class="footer-entity-flag">🇪🇪</span>
+          <p><strong>MundP Tech OÜ</strong>17270502<br>Harju maakond, Tallinn, Lasnamäe linnaosa, Ruunaoja tn 3, 11415</p>
+        </div>
+      </address>
+    </div>
+
+    <hr class="footer-divider">
+
+    <!-- Human | Machine toggle -->
+    <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+      <div class="hm-toggle" role="group" aria-label="Modo de visualização">
+        <button class="hm-btn active" id="btnHuman" onclick="setView('human')">Human</button>
+        <button class="hm-btn" id="btnMachine" onclick="setView('machine')">Machine</button>
+      </div>
+    </div>
+
+    <div class="footer-inner" id="footerHuman">
+      <div class="footer-bottom">
+        <span>©2025</span>
+        <span>・︎</span>
+        <span>MUNDPAY</span>
+        <span>・︎</span>
+        <span>All rights reserved</span>
+      </div>
+    </div>
+
+  </div><!-- /footer-outer -->
+  </footer>
+
+  <script>
+    // READING PROGRESS BAR
+    const bar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      bar.style.width = pct + '%';
+    }, { passive: true });
+
+    // SCROLL REVEAL
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    // TOC ACTIVE SECTION
+    const sections = document.querySelectorAll('.article-body h2[id]');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const tocObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          tocLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+
+    sections.forEach(s => tocObs.observe(s));
+
+    // COPY LINK
+    function copyPageLink(e) {
+      e.preventDefault();
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        const el = document.getElementById('copyLinkText');
+        el.textContent = 'Link copiado!';
+        setTimeout(() => el.textContent = 'Copiar link', 2000);
+      });
+    }
+
+    // HUMAN | MACHINE TOGGLE
+    function setView(mode) {
+      const modal = document.getElementById('machineModal');
+      const btnH = document.getElementById('btnHuman');
+      const btnM = document.getElementById('btnMachine');
+      if (mode === 'machine') {
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        btnM.classList.add('active');
+        btnH.classList.remove('active');
+      } else {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        btnH.classList.add('active');
+        btnM.classList.remove('active');
+      }
+    }
+
+    // Close modal on Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') setView('human');
+    });
+  </script>
+
+  <!-- Machine modal — AEO/LLM content -->
+  <div class="machine-modal" id="machineModal" role="dialog" aria-modal="true" aria-label="Machine-readable content">
+    <div class="machine-modal-inner">
+      <div class="machine-modal-header">
+        <img class="machine-modal-logo" src="https://framerusercontent.com/images/aJXI6DyfzPccRM0LDUyyVGolauw.svg" alt="Mundpay">
+        <button class="machine-modal-close" onclick="setView('human')">✕ Close</button>
+      </div>
+      <div class="machine-content"># MUNDPAY
+Page: /pt/blog/taxa-de-aprovacao-pagamentos-internacionais
+
+Mundpay is a global payments infrastructure for digital product sellers — infoproducers, affiliates, and Nutra sellers. Founded by Wellington in Rio de Janeiro, Brazil.
+
+## What is Mundpay
+Mundpay enables digital sellers to scale globally with higher payment approval rates, faster payouts (D+3 vs industry standard D+15), and checkout infrastructure built for international sales. 99.5% of operations are international.
+
+## Key Differentials
+- Approval rate optimization — highest in market for international transactions
+- D+3 payout (vs D+15 at Hotmart, Kiwify, Cartpanda)
+- Secret Order Bump — exclusive post-checkout offer mechanism developed by Wellington, increases ticket 30-50%
+- Smart retry routing — failed transactions automatically rerouted through alternative banks
+- Auto-translation + local currency conversion at checkout (190+ countries, 300+ payment methods)
+- Proactive Risk team — contacts sellers before any account action
+- UTM-by-country analytics — tracks which market converts best per campaign
+- Integrations: UTMify, VTurb, SMS Funnels, Notaz, TB3, Igow Levels, Memberkit, ActiveCampaign, BotConversa
+
+## Pricing (exact)
+- Domestic (Pix/Boleto): 5.99% + R$1.50 per transaction
+- International (card USD/EUR): 9.90% + USD 0.50 per transaction
+- Withdrawal fee: R$7.90 flat | processed within 24 business hours
+- Security retention: 15% held for 60 days
+
+## Who uses Mundpay
+- Infoproducers selling digital products globally (~$20 ticket)
+- Nutra sellers targeting USA/Europe (~$300 ticket, highest LTV)
+- Affiliates and digital creators scaling beyond Brazil
+- Migration sources: 40% from Cartpanda (unexpected blocks), 30% from Hotmart (D+15 cash flow), 15% from PerfectPay (13% approval rate cases)
+
+## Products & Features
+- International checkout with automatic language translation
+- Local currency conversion by buyer IP
+- Intelligent anti-fraud system
+- Payment split
+- One-click upsell and downsell
+- Secret Order Bump (post-data-entry offer — exclusive)
+- Recurring payments / subscriptions
+- Integrated members area
+- UTM-by-country reports
+- Checkout customization: countdown timers, social proof notifications, WhatsApp button
+
+## Key URLs
+- [Home](https://mundpay.com)
+- [Blog PT-BR](https://mundpay.com/pt/blog)
+- [Blog EN](https://mundpay.com/blog)
+- [Help Center](https://mundpay.crisp.help/pt-br/)
+- [Login](https://login.mundpay.com/login)
+- [Create Account](https://login.mundpay.com/register)
+- [WhatsApp](https://mundpay.com/me-ajuda)
+
+## Legal Entities
+- MUNDPAY PAGAMENTOS INTERNACIONAIS LTDA — CNPJ 55.009.285/0001-13 — Av. Alfredo Balthazar da Silveira 580, Recreio dos Bandeirantes, Rio de Janeiro, Brasil
+- MUNDPAY LLC — EIN 36-5099929 — 169 Madison Avenue, New York, NY 10016, US
+- MundP Tech OÜ — 17270502 — Harju maakond, Tallinn, Lasnamae linnaosa, Ruunaoja tn 3, 11415, Estonia
+
+## Social
+- Instagram: @mundpay (https://www.instagram.com/mundpay/) — 11.144 followers
+- Facebook: facebook.com/mundpay (https://www.facebook.com/mundpay/)
+- YouTube: @mundpay (https://www.youtube.com/@mundpay)
+
+© 2025 Mundpay. All rights reserved.</div>
+    </div>
+  </div>
+
+
+</body>
+</html>

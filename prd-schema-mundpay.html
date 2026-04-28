@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRD — Schema JSON-LD & Indexação | Mundpay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-bg: #eaede4;
+    --color-bg-card: #e2e5da;
+    --color-bg-deep: #d8dbd2;
+    --color-bg-deeper: #cdd0c8;
+    --color-text: rgba(5, 7, 0, 0.88);
+    --color-text-muted: rgba(5, 7, 0, 0.52);
+    --color-text-light: rgba(5, 7, 0, 0.38);
+    --color-accent: #859933;
+    --color-accent-h: #6e7f28;
+    --color-danger: #c0392b;
+    --color-danger-bg: rgba(192, 57, 43, 0.08);
+    --color-warning: #b8650a;
+    --color-warning-bg: rgba(184, 101, 10, 0.08);
+    --color-success: #2e7d32;
+    --color-success-bg: rgba(46, 125, 50, 0.08);
+    --color-info: #1565c0;
+    --color-info-bg: rgba(21, 101, 192, 0.08);
+    --color-border: rgba(5, 7, 0, 0.12);
+    --color-border-strong: rgba(5, 7, 0, 0.18);
+    --color-code-bg: #1e2228;
+    --color-code-text: #d4d8e0;
+    --font-main: 'Rethink Sans', sans-serif;
+    --font-meta: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    --radius: 10px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-main);
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border-strong);
+    padding: 32px 60px 28px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .header-logo {
+    font-family: var(--font-meta);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-accent);
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+  .header-logo span { color: var(--color-text); }
+  .header-meta {
+    font-family: var(--font-meta);
+    font-size: 12px;
+    color: var(--color-text-muted);
+    line-height: 1.9;
+    text-align: right;
+  }
+  .header-meta strong { color: var(--color-text); }
+  .header-title h1 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    color: var(--color-text);
+    line-height: 1.25;
+  }
+  .header-title p {
+    color: var(--color-text-muted);
+    margin-top: 6px;
+    font-size: 14px;
+  }
+
+  /* NAV TABS */
+  .nav-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 0 60px;
+    background: var(--color-bg-deep);
+    border-bottom: 1px solid var(--color-border-strong);
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-tab {
+    font-family: var(--font-meta);
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.18s;
+    user-select: none;
+  }
+  .nav-tab:hover { color: var(--color-text); }
+  .nav-tab.active {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  /* CONTENT */
+  .content { display: none; padding: 48px 60px; max-width: 1100px; }
+  .content.active { display: block; }
+
+  /* TYPOGRAPHY */
+  h2 {
+    font-family: var(--font-meta);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.3px;
+    color: var(--color-text);
+  }
+  h3 {
+    font-family: var(--font-meta);
+    font-size: 15px;
+    font-weight: 600;
+    margin: 32px 0 12px;
+    color: var(--color-accent-h);
+  }
+  h4 {
+    font-family: var(--font-meta);
+    font-size: 11px;
+    font-weight: 600;
+    margin: 24px 0 8px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+  p { margin-bottom: 16px; color: var(--color-text); }
+  ul, ol { padding-left: 20px; margin-bottom: 16px; }
+  li { margin-bottom: 6px; color: var(--color-text); }
+  strong { color: var(--color-text); font-weight: 600; }
+  code {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--color-bg-deeper);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--color-accent-h);
+    border: 1px solid var(--color-border);
+  }
+
+  /* INTRO SECTION */
+  .intro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin: 28px 0;
+  }
+  .intro-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .intro-card .icon { font-size: 24px; margin-bottom: 10px; }
+  .intro-card h4 { color: var(--color-accent); margin: 0 0 8px; font-size: 12px; }
+  .intro-card p { font-size: 13px; margin: 0; color: var(--color-text-muted); }
+
+  /* BADGES */
+  .badge {
+    display: inline-block;
+    font-family: var(--font-meta);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+  .badge-p0 { background: rgba(192,57,43,0.1); color: var(--color-danger); border: 1px solid rgba(192,57,43,0.25); }
+  .badge-p1 { background: rgba(184,101,10,0.1); color: var(--color-warning); border: 1px solid rgba(184,101,10,0.25); }
+  .badge-p2 { background: rgba(46,125,50,0.1); color: var(--color-success); border: 1px solid rgba(46,125,50,0.25); }
+  .badge-info { background: rgba(133,153,51,0.12); color: var(--color-accent-h); border: 1px solid rgba(133,153,51,0.28); }
+  .badge-noindex { background: rgba(192,57,43,0.1); color: var(--color-danger); border: 1px solid rgba(192,57,43,0.2); }
+
+  /* PAGE CARDS (noindex list) */
+  .page-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+  }
+  .page-card-url {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--color-accent-h);
+    margin-bottom: 4px;
+  }
+  .page-card-name { font-weight: 600; font-size: 14px; margin-bottom: 4px; }
+  .page-card-reason { font-size: 13px; color: var(--color-text-muted); }
+  .page-card-action {
+    background: var(--color-bg-deeper);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 7px 12px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    color: var(--color-danger);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  /* SCHEMA SECTION */
+  .schema-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .schema-info-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .schema-info-card h4 { margin: 0 0 12px; }
+  .node-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .node-tag {
+    background: rgba(133,153,51,0.1);
+    color: var(--color-accent-h);
+    border: 1px solid rgba(133,153,51,0.25);
+    border-radius: var(--radius-sm);
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+
+  /* CODE BLOCK */
+  .code-wrap {
+    background: var(--color-code-bg);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 20px 0 32px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 18px;
+    background: rgba(255,255,255,0.04);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .code-header-left { display: flex; align-items: center; gap: 10px; }
+  .code-dots { display: flex; gap: 6px; }
+  .code-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #ffbd2e; }
+  .dot-g { background: #28ca41; }
+  .code-label {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.38);
+  }
+  .copy-btn {
+    font-family: var(--font-meta);
+    background: rgba(133,153,51,0.18);
+    color: #a8c040;
+    border: 1px solid rgba(133,153,51,0.35);
+    border-radius: var(--radius-sm);
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .copy-btn:hover { background: rgba(133,153,51,0.32); }
+  .copy-btn.copied { color: #6ecb70; border-color: rgba(110,203,112,0.4); background: rgba(110,203,112,0.1); }
+  pre {
+    padding: 22px 24px;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--color-code-text);
+    max-height: 600px;
+    overflow-y: auto;
+  }
+  pre::-webkit-scrollbar { width: 6px; height: 6px; }
+  pre::-webkit-scrollbar-track { background: transparent; }
+  pre::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 3px; }
+
+  /* ALERT BOXES */
+  .alert {
+    border-radius: var(--radius);
+    padding: 15px 18px;
+    margin: 20px 0;
+    font-size: 13.5px;
+    border-left: 3px solid;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .alert-icon { font-size: 15px; flex-shrink: 0; margin-top: 2px; }
+  .alert-danger { background: var(--color-danger-bg); border-color: var(--color-danger); }
+  .alert-warning { background: var(--color-warning-bg); border-color: var(--color-warning); }
+  .alert-success { background: var(--color-success-bg); border-color: var(--color-success); }
+  .alert-info { background: var(--color-info-bg); border-color: var(--color-info); }
+  .alert a { color: inherit; }
+  .alert code { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.12); color: inherit; }
+
+  /* TABLES */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0 26px; font-size: 13.5px; }
+  thead tr { border-bottom: 2px solid var(--color-border-strong); }
+  th {
+    font-family: var(--font-meta);
+    padding: 10px 14px;
+    text-align: left;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td { padding: 12px 14px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  td code { color: var(--color-accent-h); background: var(--color-bg-deeper); border-color: var(--color-border); }
+
+  /* SCORE */
+  .score-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 24px 0 32px;
+  }
+  .score-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 22px 16px;
+    text-align: center;
+  }
+  .score-num {
+    font-family: var(--font-meta);
+    font-size: 34px;
+    font-weight: 700;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+  .score-label { font-size: 12px; color: var(--color-text-muted); margin-top: 6px; }
+  .score-page {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--color-text-light);
+    margin-top: 4px;
+  }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--color-border-strong); margin: 36px 0; }
+
+  /* PENDING ITEMS */
+  .pending-box {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 8px 20px;
+    margin-bottom: 20px;
+  }
+  .pending-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .pending-item:last-child { border-bottom: none; }
+  .pending-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .pending-dot-red { background: var(--color-danger); }
+  .pending-dot-yellow { background: var(--color-warning); }
+  .pending-dot-green { background: var(--color-success); }
+  .pending-text { font-size: 13.5px; }
+  .pending-text strong { display: block; margin-bottom: 3px; }
+  .pending-text span { color: var(--color-text-muted); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-logo">Mund<span>pay</span></div>
+    <div class="header-title">
+      <h1>PRD — Schema JSON-LD & Estratégia de Indexação</h1>
+      <p>Dados estruturados, desambiguação semântica e configuração noindex por página</p>
+    </div>
+  </div>
+  <div class="header-meta">
+    <strong>Versão 1.0</strong><br>
+    Data: 27 de abril de 2026<br>
+    Autor: Equipe SEO<br>
+    Destinatário: <strong>Time de Desenvolvimento</strong>
+  </div>
+</div>
+
+<!-- TABS -->
+<div class="nav-tabs">
+  <div class="nav-tab active" onclick="showTab('intro', this)">Visão Geral</div>
+  <div class="nav-tab" onclick="showTab('home', this)">Home</div>
+  <div class="nav-tab" onclick="showTab('taxas', this)">Pagamentos e Taxas</div>
+  <div class="nav-tab" onclick="showTab('apresentacao', this)">Apresentação</div>
+  <div class="nav-tab" onclick="showTab('meajuda', this)">Me Ajuda</div>
+  <div class="nav-tab" onclick="showTab('blog', this)">Blog Hub</div>
+  <div class="nav-tab" onclick="showTab('noindex', this)">Páginas Noindex</div>
+  <div class="nav-tab" onclick="showTab('pendencias', this)">Pendências</div>
+</div>
+
+<!-- ============ TAB: INTRO ============ -->
+<div id="tab-intro" class="content active">
+  <h2>Por que Schema JSON-LD importa para a Mundpay</h2>
+  <p>Schema markup é código invisível para o usuário mas essencial para Google, Bing e IAs como ChatGPT, Gemini e Perplexity entenderem <strong>quem é a Mundpay, o que ela faz e por que é confiável</strong>. Não é sobre palavras-chave — é sobre construir uma identidade digital verificável.</p>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="icon">🔍</div>
+      <h4>SEO Clássico</h4>
+      <p>Google exibe rich results (FAQ, breadcrumbs, estrelas de avaliação) diretamente na SERP. Aumenta CTR em até 30% sem mudar o conteúdo da página.</p>
+    </div>
+    <div class="intro-card">
+      <div class="icon">🤖</div>
+      <h4>AEO — Answer Engine</h4>
+      <p>ChatGPT e Gemini citam empresas que têm entidades verificáveis no Knowledge Graph. Schema + Wikidata = Mundpay aparece nas respostas de IAs quando alguém pergunta sobre gateways de pagamento.</p>
+    </div>
+    <div class="intro-card">
+      <div class="icon">🌐</div>
+      <h4>GEO — Generative Engine</h4>
+      <p>Google AI Overviews priorizam páginas com <code>SpeakableSpecification</code> e <code>FAQPage</code> bem estruturadas. Mundpay pode ser citada como resposta direta.</p>
+    </div>
+  </div>
+
+  <h3>Como funciona na prática</h3>
+  <p>Cada página do site precisa de um bloco de código <code>&lt;script type="application/ld+json"&gt;</code> inserido no <code>&lt;head&gt;</code> ou antes do fechamento do <code>&lt;/body&gt;</code>. Esse código descreve a página em linguagem que máquinas entendem, sem afetar o HTML visível.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-icon">ℹ️</div>
+    <div>
+      <strong>Regra fundamental do grafo Mundpay:</strong> A <code>Organization</code>, o <code>WebSite</code> e a <code>Person</code> (Wellington) são declarados <strong>apenas na Home</strong> com seus <code>@id</code> completos. Todas as outras páginas referenciam esses nós pelo <code>@id</code> — nunca redeclaram. Isso cria um Knowledge Graph unificado e consistente.
+    </div>
+  </div>
+
+  <h3>Páginas com schema completo</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Página</th>
+        <th>Tipos de Schema</th>
+        <th>Score estimado</th>
+        <th>Prioridade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>/</code> Home</td>
+        <td>Organization + FinancialService, WebSite, WebPage, Person, FAQPage, SoftwareApplication, DefinedTermSet (15 termos), Blog, CreativeWork ×2</td>
+        <td><strong>95–97/100</strong></td>
+        <td><span class="badge badge-p0">P0 — Feito</span></td>
+      </tr>
+      <tr>
+        <td><code>/pagamentos-e-taxas</code></td>
+        <td>WebPage, FAQPage, Offer ×4 com UnitPriceSpecification, Service ×4, PaymentMethod ×5, SpeakableSpecification, BreadcrumbList</td>
+        <td><strong>88/100</strong></td>
+        <td><span class="badge badge-p0">P0</span></td>
+      </tr>
+      <tr>
+        <td><code>/apresentacao</code></td>
+        <td>AboutPage, Person (Wellington expandido), AggregateRating, Review ×3, BreadcrumbList</td>
+        <td><strong>85/100</strong></td>
+        <td><span class="badge badge-p0">P0</span></td>
+      </tr>
+      <tr>
+        <td><code>/me-ajuda</code></td>
+        <td>WebPage, FAQPage (7 perguntas), SpeakableSpecification, Thing ×3 com sameAs, BreadcrumbList</td>
+        <td><strong>78/100</strong></td>
+        <td><span class="badge badge-p0">P0</span></td>
+      </tr>
+      <tr>
+        <td><code>/blog</code> Hub</td>
+        <td>WebPage, Blog, ItemList com BlogPosting embutido ×13, BreadcrumbList</td>
+        <td><strong>90/100</strong></td>
+        <td><span class="badge badge-p0">P0</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Páginas a desindexar do Google</h3>
+  <p>18 páginas do sitemap atual não têm valor de SEO (páginas legais, funil pago, utilitárias). Devem receber <code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code> no <code>&lt;head&gt;</code>. Ver aba <strong>Páginas Noindex</strong> para lista completa com justificativa e instrução por página.</p>
+
+  <div class="score-grid">
+    <div class="score-card">
+      <div class="score-num">95</div>
+      <div class="score-label">Score estimado</div>
+      <div class="score-page">/home</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">88</div>
+      <div class="score-label">Score estimado</div>
+      <div class="score-page">/pagamentos-e-taxas</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">85</div>
+      <div class="score-label">Score estimado</div>
+      <div class="score-page">/apresentacao</div>
+    </div>
+    <div class="score-card">
+      <div class="score-num">90</div>
+      <div class="score-label">Score estimado</div>
+      <div class="score-page">/blog</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ TAB: HOME ============ -->
+<div id="tab-home" class="content">
+  <h2>Schema — Home <code>/</code></h2>
+  <p>A home concentra todas as declarações primárias do Knowledge Graph. Todos os outros schemas do site referenciam os <code>@id</code> definidos aqui.</p>
+
+  <div class="schema-info">
+    <div class="schema-info-card">
+      <h4>Nós declarados</h4>
+      <div class="node-list">
+        <span class="node-tag">Organization + FinancialService</span>
+        <span class="node-tag">WebSite</span>
+        <span class="node-tag">WebPage</span>
+        <span class="node-tag">Person (Wellington)</span>
+        <span class="node-tag">FAQPage (7 perguntas)</span>
+        <span class="node-tag">SoftwareApplication</span>
+        <span class="node-tag">DefinedTermSet (15 termos)</span>
+        <span class="node-tag">ItemList (navegação)</span>
+        <span class="node-tag">Blog</span>
+        <span class="node-tag">CreativeWork ×2</span>
+      </div>
+    </div>
+    <div class="schema-info-card">
+      <h4>Destaques técnicos</h4>
+      <ul>
+        <li>CNPJ com <code>iso6523Code: "0106:..."</code> (padrão W3C para Brasil)</li>
+        <li><code>AggregateRating</code> Reclame Aqui 9.07/10 — 193 avaliações</li>
+        <li><code>SpeakableSpecification</code> para AI Overviews</li>
+        <li><code>DefinedTermSet</code> com 15 termos do setor</li>
+        <li><code>RegisterAction</code> no SoftwareApplication</li>
+        <li>Wikidata + Wikipedia em todos os <code>sameAs</code></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="alert alert-warning">
+    <div class="alert-icon">⚠️</div>
+    <div><strong>Ação necessária:</strong> O campo <code>Person.image.url</code> contém o placeholder <code>TODO_SUBSTITUIR_APOS_PUBLICAR</code>. A foto do Wellington precisa ser publicada em URL pública antes de ir para produção. Arquivo disponível em: <code>/Users/jrios/Downloads/FOTO_WELLINGTON_LINKEDIN.jpg</code></div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-header-left">
+        <div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div>
+        <span class="code-label">schema-home.json — inserir no &lt;head&gt; da Home</span>
+      </div>
+      <button class="copy-btn" onclick="copyCode('code-home', this)">Copiar</button>
+    </div>
+    <pre id="code-home">{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": ["Organization", "FinancialService"],
+      "@id": "https://mundpay.com/#organization",
+      "name": "Mundpay",
+      "legalName": "Mundpay Pagamentos Internacionais LTDA",
+      "url": "https://mundpay.com/",
+      "foundingDate": "2024-05-06",
+      "taxID": "55.009.285/0001-13",
+      "vatID": "55009285000113",
+      "iso6523Code": "0106:55009285000113",
+      "naics": "522320",
+      "isicV4": "6619",
+      "description": "Infraestrutura de pagamentos para vendas digitais globais. Checkout internacional, saque D+3, antifraude proativo e Secret Order Bump exclusivo. 190 paises, PJ brasileira fundada em 2024.",
+      "slogan": "Venda seu produto digital no mundo todo",
+      "alternateName": "Sell your digital product worldwide",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://framerusercontent.com/images/912Bk5uKdxMx0IggmgUKAE201Q.svg",
+        "width": 144,
+        "height": 24,
+        "description": "Logo oficial Mundpay"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Alfredo Balthazar da Silveira, 580, Loja 116-A",
+        "addressLocality": "Rio de Janeiro",
+        "addressRegion": "RJ",
+        "postalCode": "22790-710",
+        "addressCountry": "BR"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "Brasil", "sameAs": "https://www.wikidata.org/wiki/Q155" },
+        { "@type": "Country", "name": "United States", "sameAs": "https://www.wikidata.org/wiki/Q30" },
+        { "@type": "AdministrativeArea", "name": "Europa", "sameAs": "https://www.wikidata.org/wiki/Q46" }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/mundpay/",
+        "https://www.tiktok.com/@mundpay",
+        "https://www.facebook.com/mundpay/",
+        "https://www.linkedin.com/company/mundpay/"
+      ],
+      "founder": { "@id": "https://mundpay.com/#person-wellington" },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "email": "suporte@mundpay.com",
+          "contactType": "customer support",
+          "areaServed": "BR",
+          "availableLanguage": [
+            { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+            { "@type": "Language", "name": "English", "alternateName": "en" }
+          ],
+          "url": "https://mundpay.com/me-ajuda"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": 9.07,
+        "bestRating": 10,
+        "worstRating": 0,
+        "reviewCount": 193
+      },
+      "award": "Premio Reclame Aqui de Atendimento 2025",
+      "hasCertification": {
+        "@type": "Certification",
+        "name": "Premio Reclame Aqui de Atendimento 2025",
+        "description": "Mundpay conquistou o Premio Reclame Aqui com nota 9.07/10 e taxa de resolucao de 97,9% em 193 reclamacoes avaliadas.",
+        "issuedBy": {
+          "@type": "Organization",
+          "name": "Reclame Aqui",
+          "url": "https://www.reclameaqui.com.br"
+        }
+      },
+      "termsOfService": "https://mundpay.com/termos-de-uso/",
+      "availableLanguage": [
+        { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+        { "@type": "Language", "name": "English", "alternateName": "en" },
+        { "@type": "Language", "name": "Spanish", "alternateName": "es" }
+      ],
+      "dateModified": "2026-04-27"
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://mundpay.com/#website",
+      "url": "https://mundpay.com/",
+      "name": "Mundpay",
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "inLanguage": [
+        { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+        { "@type": "Language", "name": "English", "alternateName": "en" }
+      ]
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://mundpay.com/#webpage",
+      "url": "https://mundpay.com/",
+      "name": "Mundpay — Gateway de Pagamento Internacional para Infoprodutores e Sellers Digitais",
+      "description": "Checkout global com alta taxa de aprovacao, saque D+3, Secret Order Bump exclusivo e antifraude proativo. 190 paises.",
+      "mainEntity": [
+        { "@id": "https://mundpay.com/#organization" },
+        { "@id": "https://mundpay.com/#faqpage" }
+      ],
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "isPartOf": { "@id": "https://mundpay.com/#website" },
+      "inLanguage": { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+      "speakableSpecification": {
+        "@type": "SpeakableSpecification",
+        "inLanguage": "pt-BR",
+        "cssSelector": ["h1", ".hero__subtitle", ".faq__answer", "h2"]
+      },
+      "dateModified": "2026-04-27"
+    },
+
+    {
+      "@type": "Person",
+      "@id": "https://mundpay.com/#person-wellington",
+      "name": "Wellington Vicente da Silva",
+      "givenName": "Wellington",
+      "familyName": "Vicente da Silva",
+      "jobTitle": "Founder e CEO",
+      "worksFor": { "@id": "https://mundpay.com/#organization" },
+      "sameAs": ["https://www.linkedin.com/in/wellington-vicente/"],
+      "image": {
+        "@type": "ImageObject",
+        "url": "TODO_SUBSTITUIR_APOS_PUBLICAR",
+        "width": 400,
+        "height": 400,
+        "description": "Wellington Vicente da Silva, Founder e CEO da Mundpay"
+      },
+      "description": "Fundador e CEO da Mundpay. Criador do Secret Order Bump, funcionalidade exclusiva de otimizacao de ticket medio pos-checkout.",
+      "knowsAbout": [
+        { "@type": "Thing", "name": "Pagamentos Internacionais", "sameAs": ["https://www.wikidata.org/wiki/Q3323516", "https://en.wikipedia.org/wiki/Electronic_payment"] },
+        { "@type": "Thing", "name": "Gateway de Pagamento", "sameAs": ["https://www.wikidata.org/wiki/Q2639241", "https://en.wikipedia.org/wiki/Payment_gateway"] },
+        { "@type": "Thing", "name": "Marketing de Afiliados", "sameAs": ["https://www.wikidata.org/wiki/Q382453", "https://en.wikipedia.org/wiki/Affiliate_marketing"] },
+        { "@type": "Thing", "name": "Empreendedorismo Digital", "sameAs": ["https://www.wikidata.org/wiki/Q7187722"] }
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Fundador de Fintech de Pagamentos Internacionais"
+      }
+    },
+
+    {
+      "@type": "FAQPage",
+      "@id": "https://mundpay.com/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que e a Mundpay e como funciona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Mundpay e uma infraestrutura de pagamentos para sellers de produtos digitais que querem vender globalmente. A plataforma oferece checkout internacional com traducao automatica de idioma e moeda local, antifraude proativo, Secret Order Bump exclusivo e saque D+3. Opera em 190 paises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais sao as taxas da Mundpay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para vendas domesticas via Pix ou Boleto: 5,99% mais R$ 1,50 por transacao. Para vendas internacionais no cartao: 9,90% mais USD 0,50 por transacao. Taxa de saque: R$ 7,90 fixo. Retencao de seguranca de 15% por 60 dias. Taxa de chargeback: R$ 60,00 fixo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona o saque D+3 da Mundpay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Vendas aprovadas no cartao ficam disponiveis para saque em ate D+3 uteis para Pessoa Juridica. Vendas via Pix sao liberadas em D+0 (mesmo dia). A taxa de saque e R$ 7,90 fixo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A Mundpay e confiavel e segura?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. No Reclame Aqui a empresa possui nota 9.07/10 com taxa de resolucao de 97,9% em 193 reclamacoes avaliadas, conquistando o Premio Reclame Aqui de Atendimento. O setor de risco e proativo: entra em contato com o seller antes de qualquer acao restritiva."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que e o Secret Order Bump da Mundpay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Secret Order Bump e uma funcionalidade exclusiva da Mundpay. Aparece apos o preenchimento dos dados de pagamento, quando o comprador ja esta comprometido com a compra. A faixa ideal e entre R$ 19,90 e R$ 49,90."
+          }
+        }
+      ]
+    },
+
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://mundpay.com/#checkout-app",
+      "name": "Mundpay Checkout",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "softwareVersion": "1.0",
+      "inLanguage": [
+        { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+        { "@type": "Language", "name": "English", "alternateName": "en" },
+        { "@type": "Language", "name": "Spanish", "alternateName": "es" }
+      ],
+      "featureList": [
+        "Secret Order Bump pos-checkout (exclusivo Mundpay)",
+        "Checkout em 190 paises",
+        "Saque D+3 para Pessoa Juridica",
+        "Antifraude inteligente com risco proativo",
+        "Retentativa inteligente de pagamento",
+        "Upsell e Downsell 1-Click",
+        "Webhooks e integracoes via API"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL",
+        "description": "Cadastro gratuito. Taxas cobradas por transacao aprovada."
+      },
+      "potentialAction": {
+        "@type": "RegisterAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://mundpay.com/cadastro/",
+          "actionPlatform": [
+            "http://schema.org/DesktopWebPlatform",
+            "http://schema.org/MobileWebPlatform"
+          ]
+        },
+        "name": "Criar conta gratis na Mundpay"
+      },
+      "publisher": { "@id": "https://mundpay.com/#organization" }
+    },
+
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://mundpay.com/#glossary",
+      "name": "Glossario Mundpay — Pagamentos Digitais Globais",
+      "description": "Definicoes dos principais termos usados por infoprodutores, afiliados e sellers digitais.",
+      "url": "https://mundpay.com/glossario/",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "hasDefinedTerm": [
+        { "@id": "https://mundpay.com/#term-gateway" },
+        { "@id": "https://mundpay.com/#term-chargeback" },
+        { "@id": "https://mundpay.com/#term-secret-order-bump" },
+        { "@id": "https://mundpay.com/#term-saque-d3" },
+        { "@id": "https://mundpay.com/#term-kyc" },
+        { "@id": "https://mundpay.com/#term-retencao" },
+        { "@id": "https://mundpay.com/#term-retentativa" },
+        { "@id": "https://mundpay.com/#term-pre-chargeback" },
+        { "@id": "https://mundpay.com/#term-upsell" },
+        { "@id": "https://mundpay.com/#term-downsell" },
+        { "@id": "https://mundpay.com/#term-nutra" },
+        { "@id": "https://mundpay.com/#term-info-global" },
+        { "@id": "https://mundpay.com/#term-produtor" },
+        { "@id": "https://mundpay.com/#term-afiliado" },
+        { "@id": "https://mundpay.com/#term-taxa-aprovacao" }
+      ]
+    },
+
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-gateway", "name": "Gateway de Pagamento", "description": "Infraestrutura tecnologica que conecta o checkout do vendedor ao sistema bancario para processar e aprovar transacoes financeiras digitais.", "sameAs": "https://www.wikidata.org/wiki/Q2639241" },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-chargeback", "name": "Chargeback", "description": "Estorno forcado de uma transacao solicitado pelo comprador diretamente ao banco emissor. Na Mundpay custa R$ 60,00 fixo por ocorrencia.", "sameAs": "https://www.wikidata.org/wiki/Q3307525" },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-secret-order-bump", "name": "Secret Order Bump", "description": "Funcionalidade exclusiva Mundpay. Aparece apos o preenchimento dos dados de pagamento, aproveitando o comprometimento cognitivo do comprador." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-saque-d3", "name": "Saque D+3", "description": "Saldo disponivel para saque em ate 3 dias uteis. Contrasta com o padrao D+15 da maioria das plataformas." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-kyc", "name": "KYC (Know Your Customer)", "description": "Processo de verificacao de identidade do seller durante o onboarding. Prazo de analise: ate 24 horas uteis.", "sameAs": "https://www.wikidata.org/wiki/Q106145" },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-retencao", "name": "Retencao de Seguranca", "description": "15% do valor de cada transacao retido por 60 dias como reserva para chargebacks." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-retentativa", "name": "Retentativa Inteligente", "description": "Sistema que roteia transacoes recusadas para adquirentes alternativos para maximizar taxa de aprovacao." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-pre-chargeback", "name": "Pre-chargeback", "description": "Alerta bancario antes que uma contestacao se torne formal. Custo R$ 80,00. 90% sao resolvidos preventivamente na Mundpay." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-upsell", "name": "Upsell 1-Click", "description": "Oferta complementar apos aprovacao da compra, sem reinserir dados de pagamento." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-downsell", "name": "Downsell", "description": "Oferta de menor valor quando o comprador recusa o upsell. Estrutura suportada: Upsell 1 > Upsell 2 > Downsell." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-nutra", "name": "Nutra / Nutraceutico", "description": "Suplementos alimentares vendidos online para EUA e Europa. Ticket medio USD 300. Maior LTV da base Mundpay." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-info-global", "name": "Info Global / Infoproduto Global", "description": "Infoproduto vendido para compradores fora do Brasil. Ticket medio USD 20. Requer checkout em idioma e moeda local." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-produtor", "name": "Produtor Digital", "description": "Criador e proprietario de produto digital que usa a Mundpay para processar vendas." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-afiliado", "name": "Afiliado", "description": "Vendedor que divulga produtos de terceiros e recebe comissao por venda via link exclusivo." },
+    { "@type": "DefinedTerm", "@id": "https://mundpay.com/#term-taxa-aprovacao", "name": "Taxa de Aprovacao", "description": "Percentual de transacoes aprovadas pelo banco emissor. Acima de 80% e considerado bom para vendas internacionais." }
+
+  ]
+}</pre>
+  </div>
+</div>
+
+<!-- ============ TAB: TAXAS ============ -->
+<div id="tab-taxas" class="content">
+  <h2>Schema — Pagamentos e Taxas <a href="https://mundpay.com/pagamentos-e-taxas" target="_blank" style="font-size:0.75em;font-family:var(--font-mono);color:var(--color-accent);text-decoration:none;border-bottom:1px solid currentColor;">mundpay.com/pagamentos-e-taxas ↗</a></h2>
+  <p>Página com maior potencial de rich result: as <code>UnitPriceSpecification</code> permitem que o Google exiba as taxas diretamente na SERP. Os <code>PaymentMethod</code> com <code>sameAs</code> conectam Pix, Boleto e Apple Pay ao Knowledge Graph global.</p>
+
+  <div class="alert alert-danger">
+    <div class="alert-icon">🚨</div>
+    <div><strong>Verificar antes de publicar:</strong> A página <a href="https://mundpay.com/apresentacao" target="_blank" style="color:inherit;text-decoration:underline;">mundpay.com/apresentacao</a> exibe "Global: 8,99% + R$ 2,50". Este schema usa <strong>9,90% + USD 0,50</strong> (fonte: CKB). Confirmar o valor correto com Wellington antes de implementar.</div>
+  </div>
+
+  <div class="schema-info">
+    <div class="schema-info-card">
+      <h4>Nós declarados</h4>
+      <div class="node-list">
+        <span class="node-tag">WebPage</span>
+        <span class="node-tag">BreadcrumbList</span>
+        <span class="node-tag">Thing (Pix)</span>
+        <span class="node-tag">Thing (Boleto)</span>
+        <span class="node-tag">Thing (Apple Pay)</span>
+        <span class="node-tag">Thing (Google Pay)</span>
+        <span class="node-tag">Thing (Cartão Internacional)</span>
+        <span class="node-tag">Offer + Service (doméstico)</span>
+        <span class="node-tag">Offer + Service (internacional)</span>
+        <span class="node-tag">Offer + Service (saque)</span>
+        <span class="node-tag">Offer + Service (chargeback)</span>
+        <span class="node-tag">FAQPage (5 perguntas)</span>
+        <span class="node-tag">SpeakableSpecification</span>
+      </div>
+    </div>
+    <div class="schema-info-card">
+      <h4>Taxas declaradas (machine-readable)</h4>
+      <ul>
+        <li><strong>Doméstico:</strong> 5,99% + R$ 1,50/transação</li>
+        <li><strong>Internacional:</strong> 9,90% + USD 0,50/transação</li>
+        <li><strong>Saque:</strong> R$ 7,90 fixo (D+3)</li>
+        <li><strong>Chargeback:</strong> R$ 60,00/ocorrência</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-header-left">
+        <div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div>
+        <span class="code-label">schema — <a href="https://mundpay.com/pagamentos-e-taxas" target="_blank" style="color:inherit;text-decoration:underline;">mundpay.com/pagamentos-e-taxas</a></span>
+      </div>
+      <button class="copy-btn" onclick="copyCode('code-taxas', this)">Copiar</button>
+    </div>
+    <pre id="code-taxas">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://mundpay.com/pt/pagamentos-e-taxas#webpage",
+      "url": "https://mundpay.com/pt/pagamentos-e-taxas",
+      "name": "Pagamentos e Taxas — Mundpay",
+      "description": "Taxas da Mundpay para vendas domesticas e internacionais: 5,99% + R$1,50 no Brasil, 9,90% + USD 0,50 no exterior. Saque em D+3, sem mensalidade.",
+      "inLanguage": "pt-BR",
+      "dateModified": "TODO_ATUALIZAR_QUANDO_TAXAS_MUDAREM",
+      "isPartOf": { "@id": "https://mundpay.com/#website" },
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "mainEntity": { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq" },
+      "breadcrumb": { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#breadcrumb" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".faq-section", ".pricing-table", "h1", "h2"]
+      },
+      "mentions": [
+        { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-pix" },
+        { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-boleto" },
+        { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-apple-pay" },
+        { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-google-pay" },
+        { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mundpay.com/pt/pagamentos-e-taxas#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/" } },
+        { "@type": "ListItem", "position": 2, "name": "Pagamentos e Taxas", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/pagamentos-e-taxas" } }
+      ]
+    },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-pix", "name": "Pix", "description": "Sistema de pagamentos instantaneos do Banco Central do Brasil.", "sameAs": ["https://www.wikidata.org/wiki/Q86741580", "https://pt.wikipedia.org/wiki/Pix_(meio_de_pagamento)"] },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-boleto", "name": "Boleto Bancario", "description": "Metodo de pagamento brasileiro emitido por instituicao financeira.", "sameAs": ["https://www.wikidata.org/wiki/Q4116421", "https://pt.wikipedia.org/wiki/Boleto"] },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-apple-pay", "name": "Apple Pay", "description": "Carteira digital da Apple.", "sameAs": ["https://www.wikidata.org/wiki/Q16911513", "https://en.wikipedia.org/wiki/Apple_Pay"] },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-google-pay", "name": "Google Pay", "description": "Carteira digital do Google.", "sameAs": ["https://www.wikidata.org/wiki/Q56317070", "https://en.wikipedia.org/wiki/Google_Pay"] },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao", "name": "Cartao de Credito Internacional", "description": "Pagamento via Visa, Mastercard e Amex para compradores em 190 paises.", "sameAs": ["https://www.wikidata.org/wiki/Q161380"] },
+    {
+      "@type": "Offer",
+      "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-domestic",
+      "name": "Taxa para vendas domesticas (Brasil)",
+      "seller": { "@id": "https://mundpay.com/#organization" },
+      "category": "Servicos de Pagamento Digital",
+      "eligibleRegion": { "@type": "Country", "name": "Brasil", "sameAs": "https://www.wikidata.org/wiki/Q155" },
+      "itemOffered": { "@type": "Service", "name": "Processamento de Pagamento Domestico", "provider": { "@id": "https://mundpay.com/#organization" }, "serviceType": "Processamento de Pagamento" },
+      "priceSpecification": [
+        { "@type": "UnitPriceSpecification", "name": "Taxa percentual venda domestica", "price": 5.99, "priceCurrency": "BRL", "unitText": "% por transacao aprovada" },
+        { "@type": "UnitPriceSpecification", "name": "Taxa fixa venda domestica", "price": 1.50, "priceCurrency": "BRL", "unitText": "R$ por transacao" }
+      ]
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-international",
+      "name": "Taxa para vendas internacionais",
+      "seller": { "@id": "https://mundpay.com/#organization" },
+      "category": "Servicos de Pagamento Internacional",
+      "itemOffered": { "@type": "Service", "name": "Processamento de Pagamento Internacional", "provider": { "@id": "https://mundpay.com/#organization" }, "serviceType": "Processamento Internacional" },
+      "priceSpecification": [
+        { "@type": "UnitPriceSpecification", "name": "Taxa percentual venda internacional", "price": 9.90, "priceCurrency": "BRL", "unitText": "% por transacao aprovada" },
+        { "@type": "UnitPriceSpecification", "name": "Taxa fixa venda internacional", "price": 0.50, "priceCurrency": "USD", "unitText": "USD por transacao" }
+      ]
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-saque",
+      "name": "Taxa de saque D+3",
+      "seller": { "@id": "https://mundpay.com/#organization" },
+      "itemOffered": { "@type": "Service", "name": "Saque D+3", "provider": { "@id": "https://mundpay.com/#organization" } },
+      "priceSpecification": { "@type": "UnitPriceSpecification", "name": "Taxa fixa de saque", "price": 7.90, "priceCurrency": "BRL", "unitText": "R$ por saque" }
+    },
+    {
+      "@type": "Offer",
+      "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-chargeback",
+      "name": "Taxa de chargeback",
+      "seller": { "@id": "https://mundpay.com/#organization" },
+      "itemOffered": { "@type": "Service", "name": "Gestao de Chargeback", "provider": { "@id": "https://mundpay.com/#organization" }, "sameAs": "https://www.wikidata.org/wiki/Q3307525" },
+      "priceSpecification": { "@type": "UnitPriceSpecification", "name": "Taxa administrativa de chargeback", "price": 60.00, "priceCurrency": "BRL", "unitText": "R$ por ocorrencia" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq",
+      "name": "Perguntas frequentes sobre taxas Mundpay",
+      "inLanguage": "pt-BR",
+      "mainEntity": [
+        { "@type": "Question", "name": "Qual e a taxa para vendas via Pix ou boleto no Brasil?", "acceptedAnswer": { "@type": "Answer", "text": "Para vendas domesticas (pagador no Brasil), a Mundpay cobra 5,99% do valor da transacao mais R$ 1,50 fixo por venda aprovada. Essa taxa cobre Pix, boleto bancario e cartao de credito nacional. Nao ha mensalidade, setup ou taxas de adesao. Voce paga apenas quando vende." } },
+        { "@type": "Question", "name": "Qual e a taxa para vendas internacionais no cartao?", "acceptedAnswer": { "@type": "Answer", "text": "Para vendas internacionais, a taxa e de 9,90% do valor da venda mais USD 0,50 fixo por transacao aprovada. Essa taxa cobre conversao de moeda, liquidacao internacional e antifraude. A Mundpay aceita cartoes de 190 paises e carteiras digitais como Apple Pay e Google Pay." } },
+        { "@type": "Question", "name": "Como funciona a retencao de seguranca de 15%?", "acceptedAnswer": { "@type": "Answer", "text": "A Mundpay reten 15% do saldo de cada venda por 30 dias como reserva de seguranca para cobrir eventuais chargebacks e contestacoes. Apos o periodo de retencao, o valor e liberado automaticamente para o saldo disponivel. Essa pratica e padrao em plataformas de pagamento internacionais." } },
+        { "@type": "Question", "name": "Qual o prazo de saque e qual e a taxa?", "acceptedAnswer": { "@type": "Answer", "text": "O saldo disponivel pode ser sacado a qualquer momento. O prazo de liquidacao e D+3 uteis, ou seja, o dinheiro cai na conta em ate 3 dias uteis apos a solicitacao. A taxa de saque e R$ 7,90 fixo por operacao, independente do valor sacado." } },
+        { "@type": "Question", "name": "O que acontece se minha taxa de chargeback ultrapassar 0,90%?", "acceptedAnswer": { "@type": "Answer", "text": "Taxas de chargeback acima de 0,90% sobre o volume de vendas podem resultar em revisao da conta. A Mundpay oferece monitoramento proativo de chargebacks e alertas de pre-chargeback. Cada chargeback registrado gera uma tarifa administrativa de R$ 60,00." } }
+      ]
+    }
+  ]
+}</pre>
+  </div>
+</div>
+
+<!-- ============ TAB: APRESENTACAO ============ -->
+<div id="tab-apresentacao" class="content">
+  <h2>Schema — Apresentação <a href="https://mundpay.com/apresentacao" target="_blank" style="font-size:0.75em;font-family:var(--font-mono);color:var(--color-accent);text-decoration:none;border-bottom:1px solid currentColor;">mundpay.com/apresentacao ↗</a></h2>
+  <p>Página institucional com foco em E-E-A-T. O <code>AggregateRating</code> do Reclame Aqui é o maior sinal de confiança disponível. As <code>Review</code>s devem ter os nomes reais dos depoentes da página.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-icon">⚠️</div>
+    <div><strong>Ação necessária:</strong> Os 3 reviews têm <code>TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO</code>. Substituir pelos nomes reais exibidos na página. Sem nome real, o sinal de E-E-A-T é reduzido.</div>
+  </div>
+
+  <div class="schema-info">
+    <div class="schema-info-card">
+      <h4>Nós declarados</h4>
+      <div class="node-list">
+        <span class="node-tag">AboutPage</span>
+        <span class="node-tag">BreadcrumbList</span>
+        <span class="node-tag">AggregateRating (Reclame Aqui)</span>
+        <span class="node-tag">Person (Wellington expandido)</span>
+        <span class="node-tag">Review ×3</span>
+      </div>
+    </div>
+    <div class="schema-info-card">
+      <h4>Destaques E-E-A-T</h4>
+      <ul>
+        <li><strong>AggregateRating 9.07/10</strong> com 193 avaliações</li>
+        <li><code>knowsAbout</code> como objetos <code>Thing</code> com Wikidata</li>
+        <li><code>mentions</code> ao artigo do blog Reclame Aqui</li>
+        <li><code>worksFor</code> linkando Person à Organization</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-header-left">
+        <div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div>
+        <span class="code-label">schema — <a href="https://mundpay.com/apresentacao" target="_blank" style="color:inherit;text-decoration:underline;">mundpay.com/apresentacao</a></span>
+      </div>
+      <button class="copy-btn" onclick="copyCode('code-apresentacao', this)">Copiar</button>
+    </div>
+    <pre id="code-apresentacao">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://mundpay.com/pt/apresentacao#webpage",
+      "url": "https://mundpay.com/pt/apresentacao",
+      "name": "Apresentacao — Mundpay",
+      "description": "Conheca a Mundpay: infraestrutura de pagamentos para vendas digitais globais. +300 mil vendas processadas, +30 mil usuarios, presenca em 190 paises.",
+      "inLanguage": "pt-BR",
+      "dateModified": "2026-04-27",
+      "isPartOf": { "@id": "https://mundpay.com/#website" },
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "about": { "@id": "https://mundpay.com/#organization" },
+      "breadcrumb": { "@id": "https://mundpay.com/pt/apresentacao#breadcrumb" },
+      "mentions": [
+        { "@id": "https://mundpay.com/#wellington" },
+        { "@id": "https://mundpay.com/pt/apresentacao#aggregate-rating" },
+        { "@id": "https://mundpay.com/pt/blog/mundpay-e-campea-do-premio-reclame-aqui-2025" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mundpay.com/pt/apresentacao#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/" } },
+        { "@type": "ListItem", "position": 2, "name": "Apresentacao", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/apresentacao" } }
+      ]
+    },
+    {
+      "@type": "AggregateRating",
+      "@id": "https://mundpay.com/pt/apresentacao#aggregate-rating",
+      "ratingValue": "9.07",
+      "bestRating": "10",
+      "worstRating": "1",
+      "ratingCount": "193",
+      "reviewAspect": "Atendimento ao cliente",
+      "itemReviewed": { "@id": "https://mundpay.com/#organization" },
+      "description": "Nota do Premio Reclame Aqui de Atendimento 2025, baseada em 193 avaliacoes de consumidores."
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mundpay.com/#wellington",
+      "name": "Wellington",
+      "givenName": "Wellington",
+      "jobTitle": "CEO e fundador da Mundpay",
+      "description": "Fundador da Mundpay, infraestrutura de pagamentos para vendas digitais globais. Especialista em mercados internacionais para infoprodutores, afiliados e criadores de conteudo.",
+      "image": { "@type": "ImageObject", "url": "TODO_SUBSTITUIR_APOS_PUBLICAR", "description": "Foto de Wellington, fundador da Mundpay" },
+      "worksFor": { "@id": "https://mundpay.com/#organization" },
+      "sameAs": ["TODO_CONFIRMAR_LINKEDIN_WELLINGTON"],
+      "knowsAbout": [
+        { "@type": "Thing", "name": "Pagamentos Internacionais", "sameAs": ["https://www.wikidata.org/wiki/Q3323516", "https://en.wikipedia.org/wiki/Electronic_payment"] },
+        { "@type": "Thing", "name": "Gateway de Pagamento", "sameAs": ["https://www.wikidata.org/wiki/Q2639241", "https://en.wikipedia.org/wiki/Payment_gateway"] },
+        { "@type": "Thing", "name": "Afiliados de Marketing", "sameAs": ["https://www.wikidata.org/wiki/Q382453", "https://en.wikipedia.org/wiki/Affiliate_marketing"] },
+        { "@type": "Thing", "name": "Empreendedorismo Digital", "sameAs": ["https://www.wikidata.org/wiki/Q7187722"] }
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Fundador e CEO",
+        "occupationLocation": { "@type": "City", "name": "Rio de Janeiro", "sameAs": "https://www.wikidata.org/wiki/Q8678" }
+      }
+    },
+    {
+      "@type": "Review",
+      "@id": "https://mundpay.com/pt/apresentacao#review-1",
+      "datePublished": "TODO_CONFIRMAR_DATA",
+      "reviewBody": "A Mundpay transformou minha operacao internacional. Consigo receber de compradores em qualquer pais sem burocracia e o suporte resolve tudo rapidamente.",
+      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
+      "author": { "@type": "Person", "name": "TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO" },
+      "itemReviewed": { "@id": "https://mundpay.com/#organization" }
+    },
+    {
+      "@type": "Review",
+      "@id": "https://mundpay.com/pt/apresentacao#review-2",
+      "datePublished": "TODO_CONFIRMAR_DATA",
+      "reviewBody": "Migrei da concorrencia para a Mundpay pela transparencia nas taxas e pela agilidade no saque. Nao me arrependi.",
+      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
+      "author": { "@type": "Person", "name": "TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO" },
+      "itemReviewed": { "@id": "https://mundpay.com/#organization" }
+    },
+    {
+      "@type": "Review",
+      "@id": "https://mundpay.com/pt/apresentacao#review-3",
+      "datePublished": "TODO_CONFIRMAR_DATA",
+      "reviewBody": "O Secret Order Bump da Mundpay aumentou meu ticket medio em mais de 20%. E uma funcionalidade exclusiva que nenhuma outra plataforma oferece.",
+      "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
+      "author": { "@type": "Person", "name": "TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO" },
+      "itemReviewed": { "@id": "https://mundpay.com/#organization" }
+    }
+  ]
+}</pre>
+  </div>
+</div>
+
+<!-- ============ TAB: ME AJUDA ============ -->
+<div id="tab-meajuda" class="content">
+  <h2>Schema — Me Ajuda <a href="https://mundpay.com/me-ajuda" target="_blank" style="font-size:0.75em;font-family:var(--font-mono);color:var(--color-accent);text-decoration:none;border-bottom:1px solid currentColor;">mundpay.com/me-ajuda ↗</a></h2>
+  <p>Central de suporte. As FAQs foram mapeadas da base de conhecimento Crisp (29 artigos). Os <code>Thing</code> com <code>sameAs</code> (Chargeback, KYC, Pix) são âncoras semânticas que conectam o conteúdo de suporte ao Knowledge Graph global.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-icon">ℹ️</div>
+    <div><strong>Nota técnica:</strong> A página usa o widget Crisp para renderizar o conteúdo via JavaScript. As FAQs abaixo foram mapeadas da base de conhecimento. Confirmar se as perguntas correspondem às exibidas na página após renderização JS.</div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-header-left">
+        <div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div>
+        <span class="code-label">schema — <a href="https://mundpay.com/me-ajuda" target="_blank" style="color:inherit;text-decoration:underline;">mundpay.com/me-ajuda</a></span>
+      </div>
+      <button class="copy-btn" onclick="copyCode('code-meajuda', this)">Copiar</button>
+    </div>
+    <pre id="code-meajuda">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://mundpay.com/pt/me-ajuda#webpage",
+      "url": "https://mundpay.com/pt/me-ajuda",
+      "name": "Me Ajuda — Central de Suporte Mundpay",
+      "description": "Central de ajuda Mundpay. Respostas sobre cadastro, saques, taxas, chargebacks, integracao e mais.",
+      "inLanguage": "pt-BR",
+      "dateModified": "2026-04-27",
+      "isPartOf": { "@id": "https://mundpay.com/#website" },
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "mainEntity": { "@id": "https://mundpay.com/pt/me-ajuda#faq" },
+      "breadcrumb": { "@id": "https://mundpay.com/pt/me-ajuda#breadcrumb" },
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".faq-section", ".help-articles", "h1", "h2"] },
+      "mentions": [
+        { "@id": "https://mundpay.com/pt/me-ajuda#term-chargeback" },
+        { "@id": "https://mundpay.com/pt/me-ajuda#term-kyc" },
+        { "@id": "https://mundpay.com/pt/me-ajuda#term-pix" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mundpay.com/pt/me-ajuda#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/" } },
+        { "@type": "ListItem", "position": 2, "name": "Me Ajuda", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/me-ajuda" } }
+      ]
+    },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/me-ajuda#term-chargeback", "name": "Chargeback", "description": "Contestacao de cobranca feita pelo comprador junto a operadora do cartao.", "sameAs": ["https://www.wikidata.org/wiki/Q3307525", "https://en.wikipedia.org/wiki/Chargeback"] },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/me-ajuda#term-kyc", "name": "KYC — Know Your Customer", "description": "Verificacao de identidade exigida por reguladores financeiros.", "sameAs": ["https://www.wikidata.org/wiki/Q106145", "https://en.wikipedia.org/wiki/Know_your_customer"] },
+    { "@type": "Thing", "@id": "https://mundpay.com/pt/me-ajuda#term-pix", "name": "Pix", "description": "Sistema de pagamentos instantaneos do Banco Central do Brasil.", "sameAs": ["https://www.wikidata.org/wiki/Q86741580", "https://pt.wikipedia.org/wiki/Pix_(meio_de_pagamento)"] },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mundpay.com/pt/me-ajuda#faq",
+      "name": "Central de Ajuda Mundpay — Perguntas Frequentes",
+      "inLanguage": "pt-BR",
+      "mainEntity": [
+        { "@type": "Question", "name": "Como faco para criar minha conta na Mundpay?", "acceptedAnswer": { "@type": "Answer", "text": "Para criar sua conta na Mundpay, acesse o site e clique em 'Criar conta'. O processo solicita dados pessoais e da empresa, documentacao para verificacao KYC e dados bancarios. A analise e concluida em ate 24 horas uteis." } },
+        { "@type": "Question", "name": "Como solicitar um saque na Mundpay?", "acceptedAnswer": { "@type": "Answer", "text": "Acesse seu painel, va ate 'Financeiro' e clique em 'Solicitar saque'. O prazo de liquidacao e D+3 uteis. A taxa de saque e R$ 7,90 por operacao." } },
+        { "@type": "Question", "name": "O que e a retencao de 15% e quando ela e liberada?", "acceptedAnswer": { "@type": "Answer", "text": "A retencao de seguranca de 15% e uma reserva aplicada sobre cada venda aprovada para cobrir chargebacks. O valor fica bloqueado por 30 dias e e liberado automaticamente apos esse periodo." } },
+        { "@type": "Question", "name": "Como funciona o antifraude da Mundpay?", "acceptedAnswer": { "@type": "Answer", "text": "A Mundpay utiliza analise de risco proativa em tempo real para cada transacao. A plataforma emite alertas de pre-chargeback, permitindo que o vendedor resolva a disputa antes que se torne formal junto a operadora do cartao." } },
+        { "@type": "Question", "name": "Como integrar a Mundpay com minha plataforma?", "acceptedAnswer": { "@type": "Answer", "text": "A Mundpay oferece integracao via API REST e webhooks. A documentacao tecnica esta no painel do desenvolvedor. O suporte esta disponivel via WhatsApp no +55 21 98829-4968." } },
+        { "@type": "Question", "name": "O que acontece se eu receber um chargeback?", "acceptedAnswer": { "@type": "Answer", "text": "Quando um chargeback e registrado, a Mundpay debita o valor da venda contestada do seu saldo mais R$ 60,00 de tarifa administrativa. Voce pode apresentar evidencias de entrega para contestar a disputa." } },
+        { "@type": "Question", "name": "Quais metodos de pagamento a Mundpay aceita?", "acceptedAnswer": { "@type": "Answer", "text": "Para compradores no Brasil: Pix, boleto e cartao de credito. Para compradores internacionais: cartoes Visa, Mastercard e Amex, Apple Pay e Google Pay. Aceita pagamentos de mais de 190 paises." } }
+      ]
+    }
+  ]
+}</pre>
+  </div>
+</div>
+
+<!-- ============ TAB: BLOG HUB ============ -->
+<div id="tab-blog" class="content">
+  <h2>Schema — Blog Hub <a href="https://mundpay.com/blog" target="_blank" style="font-size:0.75em;font-family:var(--font-mono);color:var(--color-accent);text-decoration:none;border-bottom:1px solid currentColor;">mundpay.com/blog ↗</a></h2>
+  <p>O hub do blog usa <code>Blog.blogPost</code> (propriedade semântica correta) ao invés de <code>hasPart</code>. Cada artigo é um objeto <code>BlogPosting</code> completo dentro do <code>ItemList</code>, criando um grafo real de conteúdo.</p>
+
+  <div class="alert alert-warning">
+    <div class="alert-icon">⚠️</div>
+    <div><strong>Datas pendentes:</strong> Todos os 13 artigos têm <code>datePublished: "TODO_CONFIRMAR_DATA"</code>. Substituir pelas datas reais de publicação. Sem data, o Google não consegue avaliar frescor de conteúdo.</div>
+  </div>
+
+  <div class="code-wrap">
+    <div class="code-header">
+      <div class="code-header-left">
+        <div class="code-dots"><div class="code-dot dot-r"></div><div class="code-dot dot-y"></div><div class="code-dot dot-g"></div></div>
+        <span class="code-label">schema — <a href="https://mundpay.com/blog" target="_blank" style="color:inherit;text-decoration:underline;">mundpay.com/blog</a></span>
+      </div>
+      <button class="copy-btn" onclick="copyCode('code-blog', this)">Copiar</button>
+    </div>
+    <pre id="code-blog">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://mundpay.com/pt/blog#webpage",
+      "url": "https://mundpay.com/pt/blog",
+      "name": "Blog Mundpay — Estrategias para Vendas Digitais Globais",
+      "description": "Artigos sobre pagamentos internacionais, infoprodutos, conversao, mercados globais e estrategias para produtores digitais e afiliados.",
+      "inLanguage": "pt-BR",
+      "dateModified": "2026-04-27",
+      "isPartOf": { "@id": "https://mundpay.com/#website" },
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "mainEntity": { "@id": "https://mundpay.com/pt/blog#blog" },
+      "breadcrumb": { "@id": "https://mundpay.com/pt/blog#breadcrumb" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://mundpay.com/pt/blog#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Inicio", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/" } },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": { "@type": "WebPage", "@id": "https://mundpay.com/pt/blog" } }
+      ]
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://mundpay.com/pt/blog#blog",
+      "name": "Blog Mundpay",
+      "description": "Conteudo especializado em pagamentos digitais globais, estrategias de conversao e mercados internacionais.",
+      "url": "https://mundpay.com/pt/blog",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://mundpay.com/#organization" },
+      "isPartOf": { "@id": "https://mundpay.com/#website" },
+      "about": [
+        { "@type": "Thing", "name": "Pagamento Eletronico", "sameAs": ["https://www.wikidata.org/wiki/Q3323516", "https://en.wikipedia.org/wiki/Electronic_payment"] },
+        { "@type": "Thing", "name": "Gateway de Pagamento", "sameAs": ["https://www.wikidata.org/wiki/Q2639241", "https://en.wikipedia.org/wiki/Payment_gateway"] },
+        { "@type": "Thing", "name": "Marketing de Afiliados", "sameAs": ["https://www.wikidata.org/wiki/Q382453", "https://en.wikipedia.org/wiki/Affiliate_marketing"] }
+      ],
+      "blogPost": { "@id": "https://mundpay.com/pt/blog#artigos" }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://mundpay.com/pt/blog#artigos",
+      "name": "Artigos do Blog Mundpay",
+      "numberOfItems": 13,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "item": { "@type": "BlogPosting", "headline": "Guia definitivo para vender seu infoproduto globalmente", "url": "https://mundpay.com/pt/blog/guia-definitivo-para-vender-seu-infoproduto-globalmente", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 2, "item": { "@type": "BlogPosting", "headline": "Mundpay e campea do Premio Reclame Aqui 2025", "url": "https://mundpay.com/pt/blog/mundpay-e-campea-do-premio-reclame-aqui-2025", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 3, "item": { "@type": "BlogPosting", "headline": "Mundpay pioneira em Order Bump Secreto", "url": "https://mundpay.com/pt/blog/mundpay-pioneira-em-order-bump-secreto-a-estrategia-invisivel-que-aumenta-sua-conversao", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 4, "item": { "@type": "BlogPosting", "headline": "Mercados pouco explorados, grandes oportunidades: como vender antes de todo mundo", "url": "https://mundpay.com/pt/blog/mercados-pouco-explorados-grandes-oportunidades-como-vender-antes-de-todo-mundo", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 5, "item": { "@type": "BlogPosting", "headline": "Mundpay no Afiliados Brasil 2025", "url": "https://mundpay.com/pt/blog/mundpay-no-afiliados-brasil-2025-trocas-tendencias-e-encontros-que-aceleram-resultados", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 6, "item": { "@type": "BlogPosting", "headline": "Apple Pay e Google Pay mudam sua taxa de conversao em ate 30%", "url": "https://mundpay.com/pt/blog/dois-cliques-compra-aprovada-entenda-como-apple-pay-e-google-pay-mudam-sua-taxa-de-conversao-em-ate-30", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 7, "item": { "@type": "BlogPosting", "headline": "Infoprodutos sem fronteiras: como escalar suas vendas globalmente", "url": "https://mundpay.com/pt/blog/infoprodutos-sem-fronteiras-como-escalar-suas-vendas-globalmente", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 8, "item": { "@type": "BlogPosting", "headline": "5 erros que estao fazendo voce perder dinheiro em vendas internacionais", "url": "https://mundpay.com/pt/blog/5-erros-que-estao-fazendo-voce-perder-dinheiro-em-vendas-internacionais", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 9, "item": { "@type": "BlogPosting", "headline": "Como comecar no empreendedorismo digital: guia completo para iniciantes", "url": "https://mundpay.com/pt/blog/como-comecar-no-empreendedorismo-digital-guia-completo-para-iniciantes", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 10, "item": { "@type": "BlogPosting", "headline": "Como vender cursos online: guia completo para monetizar seu conhecimento", "url": "https://mundpay.com/pt/blog/como-vender-cursos-online-guia-completo-para-monetizar-seu-conhecimento", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 11, "item": { "@type": "BlogPosting", "headline": "Fontes de trafego: como atrair visitantes para seu negocio online", "url": "https://mundpay.com/pt/blog/fontes-de-trafego-como-atrair-visitantes-para-seu-negocio-online", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 12, "item": { "@type": "BlogPosting", "headline": "O que e ROI e por que ele e essencial para o seu negocio", "url": "https://mundpay.com/pt/blog/o-que-e-roi-e-por-que-ele-e-essencial-para-o-seu-negocio", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } },
+        { "@type": "ListItem", "position": 13, "item": { "@type": "BlogPosting", "headline": "SEO: o que e e por que e fundamental para o sucesso digital", "url": "https://mundpay.com/pt/blog/seo-o-que-e-e-por-que-e-fundamental-para-o-sucesso-digital", "datePublished": "TODO_CONFIRMAR_DATA", "author": { "@id": "https://mundpay.com/#person-wellington" }, "publisher": { "@id": "https://mundpay.com/#organization" }, "inLanguage": "pt-BR" } }
+      ]
+    }
+  ]
+}</pre>
+  </div>
+</div>
+
+<!-- ============ TAB: NOINDEX ============ -->
+<div id="tab-noindex" class="content">
+  <h2>Páginas a Desindexar do Google</h2>
+  <p>18 páginas do sitemap atual não têm valor de SEO. Indexá-las é prejudicial: diluem o crawl budget do Googlebot, podem aparecer em buscas irrelevantes e poluem o Knowledge Graph com URLs sem conteúdo editorial.</p>
+
+  <div class="alert alert-info">
+    <div class="alert-icon">🛠️</div>
+    <div>
+      <strong>Como implementar no Framer/CMS:</strong> Adicionar a tag abaixo no <code>&lt;head&gt;</code> de cada página listada.<br><br>
+      <code>&lt;meta name="robots" content="noindex, nofollow"&gt;</code>
+    </div>
+  </div>
+
+  <h3>Páginas Legais (13 páginas)</h3>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/termos-de-uso &nbsp;&nbsp; /pt/termos-de-uso</div>
+      <div class="page-card-name">Termos de Uso</div>
+      <div class="page-card-reason">Documento legal obrigatório por lei, sem valor de busca. Nenhum usuário procura "termos de uso Mundpay" no Google.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/termos-de-servicos &nbsp;&nbsp; /pt/termos-de-servicos</div>
+      <div class="page-card-name">Termos de Serviços</div>
+      <div class="page-card-reason">Igual ao anterior — documento de compliance interno sem intenção de busca.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/aup &nbsp;&nbsp; /pt/aup</div>
+      <div class="page-card-name">AUP — Acceptable Use Policy</div>
+      <div class="page-card-reason">Política de uso aceitável. Conteúdo técnico-jurídico sem volume de busca.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/politica-de-privacidade &nbsp;&nbsp; /pt/politica-de-privacidade</div>
+      <div class="page-card-name">Política de Privacidade</div>
+      <div class="page-card-reason">Exigida pela LGPD, mas sem valor de busca orgânica para o negócio.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/propriedade-e-conteudo &nbsp;&nbsp; /pt/propriedade-e-conteudo</div>
+      <div class="page-card-name">Propriedade e Conteúdo</div>
+      <div class="page-card-reason">Política de propriedade intelectual. Sem intenção de busca.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/refund-policy &nbsp;&nbsp; /pt/refund-policy</div>
+      <div class="page-card-name">Refund Policy</div>
+      <div class="page-card-reason">Política de reembolso interna. O conteúdo sobre reembolsos deve estar no /me-ajuda com schema FAQPage, não em página separada indexada.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/codigo-de-etica &nbsp;&nbsp; /pt/codigo-de-etica</div>
+      <div class="page-card-name">Código de Ética</div>
+      <div class="page-card-reason">Documento de compliance. Sem volume de busca e sem valor editorial para o ICP da Mundpay.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/seller-agreement &nbsp;&nbsp; /pt/seller-agreement</div>
+      <div class="page-card-name">Seller Agreement</div>
+      <div class="page-card-reason">Contrato de vendedor. Documento interno de onboarding, sem intenção de busca orgânica.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/programa-geral-de-compliance &nbsp;&nbsp; /pt/programa-geral-de-compliance</div>
+      <div class="page-card-name">Programa Geral de Compliance</div>
+      <div class="page-card-reason">Documento regulatório. Sem valor de busca para o público-alvo (infoprodutores e afiliados).</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/politicas-de-prevencao-a-lavagem-de-dinheiro &nbsp;&nbsp; /pt/...</div>
+      <div class="page-card-name">Políticas de Prevenção à Lavagem de Dinheiro</div>
+      <div class="page-card-reason">Documento regulatório obrigatório (PLD). Sem volume de busca e sem valor comercial.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/canal-de-denuncias &nbsp;&nbsp; /pt/canal-de-denuncias</div>
+      <div class="page-card-name">Canal de Denúncias</div>
+      <div class="page-card-reason">Canal interno de compliance. Indexar essa página não contribui para nenhum objetivo de negócio.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/produtos-proibidos &nbsp;&nbsp; /pt/produtos-proibidos &nbsp;&nbsp; /prohibited-products &nbsp;&nbsp; /pt/prohibited-products</div>
+      <div class="page-card-name">Produtos Proibidos / Prohibited Products</div>
+      <div class="page-card-reason">Lista de produtos não aceitos pela plataforma. Indexar pode associar a Mundpay semanticamente a categorias indesejáveis nos crawlers.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <hr class="divider">
+  <h3>Páginas de Funil e Utilitárias (5 páginas)</h3>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/afb25 &nbsp;&nbsp; /pt/afb25</div>
+      <div class="page-card-name">LP de Campanha — Afiliados Brasil 2025</div>
+      <div class="page-card-reason">Landing page de tráfego pago. Indexar LP de campanha desperdiça crawl budget e pode criar conflito de keyword cannibalization com páginas orgânicas.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/espera &nbsp;&nbsp; /pt/espera</div>
+      <div class="page-card-name">Página de Espera (waitlist)</div>
+      <div class="page-card-reason">Página de funil de espera. Sem conteúdo editorial e sem valor de busca orgânica.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/espera/espera-obrigado &nbsp;&nbsp; /pt/espera/espera-obrigado</div>
+      <div class="page-card-name">Espera — Obrigado</div>
+      <div class="page-card-reason">Página de confirmação pós-cadastro. Conteúdo mínimo, sem valor de busca.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/404 &nbsp;&nbsp; /pt/404</div>
+      <div class="page-card-name">Página 404</div>
+      <div class="page-card-reason">Página de erro. O Google ignora naturalmente, mas é boa prática declarar noindex explícito.</div>
+    </div>
+    <div class="page-card-action">noindex, nofollow</div>
+  </div>
+
+  <div class="page-card">
+    <div>
+      <div class="page-card-url">/help &nbsp;&nbsp; /pt/help</div>
+      <div class="page-card-name">Help (EN duplicado)</div>
+      <div class="page-card-reason">Se o conteúdo é idêntico ao /me-ajuda, desindexar E configurar redirect 301 para /me-ajuda. Duplicate content prejudica o rankeamento de ambas as páginas.</div>
+    </div>
+    <div class="page-card-action">301 &rarr; /me-ajuda</div>
+  </div>
+</div>
+
+<!-- ============ TAB: PENDENCIAS ============ -->
+<div id="tab-pendencias" class="content">
+  <h2>Pendências para Implementação Completa</h2>
+  <p>Itens abaixo devem ser resolvidos antes ou durante a implementação dos schemas. Organizados por prioridade.</p>
+
+  <h3>Críticas — Resolver antes de publicar</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>Verificar taxa global com Wellington</strong>
+        <span>A página /pt/apresentacao exibe "8,99% + R$ 2,50". O schema usa "9,90% + USD 0,50". Um dos dois está desatualizado. Confirmar o valor correto antes de publicar o schema de /pagamentos-e-taxas.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>Publicar foto de Wellington</strong>
+        <span>Arquivo disponível em /Users/jrios/Downloads/FOTO_WELLINGTON_LINKEDIN.jpg. Fazer upload para URL pública e substituir TODO_SUBSTITUIR_APOS_PUBLICAR no Person.image.url nos schemas de Home e Apresentação.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>Confirmar LinkedIn de Wellington</strong>
+        <span>Substituir TODO_CONFIRMAR_LINKEDIN_WELLINGTON no campo Person.sameAs. URL atual no schema da home: linkedin.com/in/wellington-vicente/ — confirmar se está correta.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>Nomes reais nos Reviews da /apresentacao</strong>
+        <span>Os 3 reviews têm TODO_SUBSTITUIR_NOME_REAL_DO_DEPOIMENTO. Usar os nomes reais dos depoentes exibidos na página. Reviews com autores genéricos têm peso de E-E-A-T reduzido pelo Google.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Altas — Implementar antes de indexar</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Datas dos 13 artigos do blog</strong>
+        <span>Todos os BlogPosting têm TODO_CONFIRMAR_DATA. Confirmar e preencher as datas reais de publicação de cada artigo. O Google usa datePublished para avaliar frescor de conteúdo.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>dateModified em /pagamentos-e-taxas</strong>
+        <span>Substituir TODO_ATUALIZAR_QUANDO_TAXAS_MUDAREM pela data da última atualização. Atualizar sempre que os valores de taxa forem alterados para sinalizar frescor ao Googlebot.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Datas dos Reviews da /apresentacao</strong>
+        <span>Os 3 reviews têm TODO_CONFIRMAR_DATA. Google prefere reviews com data para validar autenticidade.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Médias — Implementar em seguida</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>URL do cadastro no RegisterAction (Home)</strong>
+        <span>O SoftwareApplication na home tem urlTemplate: "https://mundpay.com/cadastro/". Confirmar se esse é o slug real da página de cadastro.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>award.url na home</strong>
+        <span>O campo hasCertification deve ter a URL do artigo que confirma o prêmio Reclame Aqui: <a href="https://mundpay.com/blog/mundpay-e-campea-do-premio-reclame-aqui-2025" target="_blank" style="color:inherit;text-decoration:underline;">mundpay.com/blog/mundpay-e-campea-do-premio-reclame-aqui-2025 ↗</a></span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>FAQs reais do /me-ajuda</strong>
+        <span>A página usa widget Crisp renderizado por JS. As FAQs no schema foram mapeadas da base de conhecimento. Confirmar se as perguntas reais da página correspondem ao schema após renderização.</span>
+      </div>
+    </div>
+  </div>
+
+  <h3>Baixas — Implementar quando possível</h3>
+  <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>lastmod no sitemap (Nathan/Dev)</strong>
+        <span>Nenhuma URL do sitemap atual tem &lt;lastmod&gt;. Configurar no Framer/CMS para todas as URLs. Melhora cadência de recrawl do Googlebot.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>Schemas para versão EN</strong>
+        <span>Schemas atuais cobrem apenas versão pt-BR (/pt/...). Se páginas EN não redirecionam para PT, criar schemas equivalentes com inLanguage: "en" e URLs sem /pt/.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>CSS selectors do SpeakableSpecification</strong>
+        <span>Os cssSelectors em SpeakableSpecification são genéricos (.faq-section, h1, h2). Confirmar com dev os seletores CSS reais usados no Framer para as seções de FAQ de cada página.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>Página /glossario</strong>
+        <span>O DefinedTermSet com 15 termos está declarado na home com url "https://mundpay.com/glossario/". Criar essa página pública para que os termos tenham URL canônica acessível.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id, el) {
+  document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+function copyCode(id, btn) {
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copiado!';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = 'Copiar';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>
