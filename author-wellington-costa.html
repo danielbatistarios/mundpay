@@ -198,11 +198,10 @@
     }
 
     .author-hero-inner {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: var(--space-xl);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--space-2xl);
+      align-items: start;
     }
 
     .author-meta-label {
@@ -215,11 +214,9 @@
       margin-bottom: 14px;
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 8px;
     }
 
-    .author-meta-label::before,
     .author-meta-label::after {
       content: '';
       display: block;
@@ -258,7 +255,6 @@
       display: flex;
       gap: var(--space-lg);
       margin-bottom: var(--space-lg);
-      justify-content: center;
     }
 
     .author-stat {
@@ -293,7 +289,6 @@
     .author-social {
       display: flex;
       gap: 8px;
-      justify-content: center;
     }
 
     .author-social a {
@@ -324,7 +319,6 @@
       flex-direction: column;
       align-items: center;
       gap: 14px;
-      order: -1;
     }
 
     .author-avatar {
@@ -863,8 +857,10 @@
     }
 
     @media (max-width: 768px) {
-      .author-avatar { width: 160px; height: 160px; }
-      .author-avatar-initials { font-size: 48px; }
+      .author-hero-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
+      .author-avatar-wrap { flex-direction: row; align-items: center; }
+      .author-avatar { width: 120px; height: 120px; border-radius: 18px; }
+      .author-avatar-initials { font-size: 36px; }
       .author-stats { gap: var(--space-md); flex-wrap: wrap; }
       .author-content { grid-template-columns: 1fr; }
       .bio-sidebar { position: static; }
