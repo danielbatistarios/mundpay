@@ -14,7 +14,7 @@
     "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
     "@graph": [
       {
-        "@type": ["Organization", "FinancialService"],
+        "@type": "Organization",
         "@id": "https://mundpay.com/#organization",
         "name": "Mundpay",
         "legalName": "Mundpay Pagamentos Internacionais LTDA",
@@ -44,6 +44,14 @@
           "description": "Logo oficial Mundpay",
           "caption": "Mundpay — Gateway de Pagamento Internacional"
         },
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://mundpay.pages.dev/img/wellington-vicente.jpg",
+          "width": 400,
+          "height": 400,
+          "caption": "Mundpay — Gateway de Pagamento Internacional"
+        },
+        "telephone": "+55-21-98829-4968",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "Av. Alfredo Balthazar da Silveira, 580, Loja 116-A",
@@ -75,7 +83,6 @@
           { "@type": "Organization", "name": "Digistore24", "url": "https://www.digistore24.com" },
           { "@type": "Organization", "name": "Perfect Pay", "url": "https://www.perfectpay.com.br" }
         ],
-        "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
         "contactPoint": [
           {
             "@type": "ContactPoint",
@@ -135,16 +142,6 @@
           "issuedBy": { "@type": "Organization", "name": "Reclame Aqui", "url": "https://www.reclameaqui.com.br" },
           "url": "https://mundpay.com/blog/mundpay-%C3%A9-campe%C3%A3-do-pr%C3%AAmio-reclame-aqui-2025"
         },
-        "acceptedPaymentMethod": [
-          { "@type": "PaymentMethod", "name": "Pix", "sameAs": "https://www.wikidata.org/wiki/Q86741580" },
-          { "@type": "PaymentMethod", "name": "Boleto Bancario" },
-          { "@type": "PaymentMethod", "name": "Visa", "sameAs": "https://www.wikidata.org/wiki/Q134646" },
-          { "@type": "PaymentMethod", "name": "Mastercard", "sameAs": "https://www.wikidata.org/wiki/Q315107" },
-          { "@type": "PaymentMethod", "name": "American Express", "sameAs": "https://www.wikidata.org/wiki/Q49813" },
-          { "@type": "PaymentMethod", "name": "Apple Pay", "sameAs": "https://www.wikidata.org/wiki/Q17118079" },
-          { "@type": "PaymentMethod", "name": "Google Pay", "sameAs": "https://www.wikidata.org/wiki/Q30622009" }
-        ],
-        "acceptedCurrency": "BRL",
         "award": "Premio Reclame Aqui de Atendimento 2025",
         "availableLanguage": [
           { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
@@ -154,6 +151,32 @@
         "termsOfService": "https://mundpay.com/termos-de-uso/",
         "mainEntityOfPage": { "@id": "https://mundpay.com/#webpage" },
         "dateModified": "2026-04-27"
+      },
+      {
+        "@type": "FinancialService",
+        "@id": "https://mundpay.com/#financial-service",
+        "name": "Mundpay",
+        "url": "https://mundpay.com/",
+        "description": "Gateway de pagamento internacional para vendas digitais. Checkout em 190 paises, saque D+3, antifraude proativo.",
+        "provider": { "@id": "https://mundpay.com/#organization" },
+        "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
+        "acceptedPaymentMethod": [
+          { "@type": "PaymentMethod", "name": "Pix", "sameAs": "https://www.wikidata.org/wiki/Q86741580" },
+          { "@type": "PaymentMethod", "name": "Boleto Bancario" },
+          { "@type": "PaymentMethod", "name": "Visa", "sameAs": "https://www.wikidata.org/wiki/Q134646" },
+          { "@type": "PaymentMethod", "name": "Mastercard", "sameAs": "https://www.wikidata.org/wiki/Q315107" },
+          { "@type": "PaymentMethod", "name": "American Express", "sameAs": "https://www.wikidata.org/wiki/Q49813" },
+          { "@type": "PaymentMethod", "name": "Apple Pay", "sameAs": "https://www.wikidata.org/wiki/Q17118079" },
+          { "@type": "PaymentMethod", "name": "Google Pay", "sameAs": "https://www.wikidata.org/wiki/Q30622009" }
+        ],
+        "currenciesAccepted": "BRL, USD, EUR",
+        "areaServed": { "@type": "AdministrativeArea", "name": "Global", "description": "190 paises" },
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Rio de Janeiro",
+          "addressRegion": "RJ",
+          "addressCountry": "BR"
+        }
       },
       {
         "@type": "WebSite",
@@ -190,7 +213,6 @@
         "isPartOf": { "@id": "https://mundpay.com/#website" },
         "speakableSpecification": {
           "@type": "SpeakableSpecification",
-          "inLanguage": "pt-BR",
           "cssSelector": ["h1", ".hero__subtitle", ".faq__answer", "h2"]
         },
         "inLanguage": "pt-BR",
@@ -542,7 +564,7 @@
   </section>
 
   <div class="schema-badge">
-    Schema JSON-LD v3 — P0+P1 aplicados — DefinedTermSet (15 termos) + certification + acceptedPaymentMethod + @language pt-BR + isicV4 6619 —
+    Schema JSON-LD v4 — Organization + FinancialService separados + telephone + image + priceRange + aggregateRating + sem warnings —
     <a href="https://search.google.com/test/rich-results?url=file%3A%2F%2F%2FUsers%2Fjrios%2Fmundpay-seo%2Fpreview%2Fhome.html" target="_blank">testar no Rich Results</a>
   </div>
 
