@@ -584,15 +584,24 @@
       <button class="copy-btn" onclick="copyCode('code-home', this)">Copiar</button>
     </div>
     <pre id="code-home">{
-  "@context": "https://schema.org",
+  "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
   "@graph": [
 
     {
-      "@type": ["Organization", "FinancialService"],
+      "@type": "Organization",
       "@id": "https://mundpay.com/#organization",
       "name": "Mundpay",
       "legalName": "Mundpay Pagamentos Internacionais LTDA",
       "url": "https://mundpay.com/",
+      "telephone": "+55-21-98829-4968",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://mundpay.pages.dev/img/wellington-vicente.jpg",
+        "width": 400,
+        "height": 400,
+        "caption": "Mundpay — Gateway de Pagamento Internacional"
+      },
+      "priceRange": "A partir de 5,99% por transacao",
       "foundingDate": "2024-05-06",
       "taxID": "55.009.285/0001-13",
       "vatID": "55009285000113",
@@ -671,6 +680,36 @@
     },
 
     {
+      "@type": "FinancialService",
+      "@id": "https://mundpay.com/#financial-service",
+      "name": "Mundpay",
+      "url": "https://mundpay.com/",
+      "provider": { "@id": "https://mundpay.com/#organization" },
+      "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
+      "acceptedPaymentMethod": [
+        { "@type": "PaymentMethod", "name": "Pix", "sameAs": "https://www.wikidata.org/wiki/Q105690833" },
+        { "@type": "PaymentMethod", "name": "Boleto Bancario", "sameAs": "https://www.wikidata.org/wiki/Q2974062" },
+        { "@type": "PaymentMethod", "name": "Cartao de Credito", "sameAs": "https://www.wikidata.org/wiki/Q161380" },
+        { "@type": "PaymentMethod", "name": "Apple Pay", "sameAs": "https://www.wikidata.org/wiki/Q16993456" },
+        { "@type": "PaymentMethod", "name": "Google Pay", "sameAs": "https://www.wikidata.org/wiki/Q16993461" }
+      ],
+      "currenciesAccepted": "BRL, USD, EUR",
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Global",
+        "description": "190 paises"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Alfredo Balthazar da Silveira, 580, Loja 116-A",
+        "addressLocality": "Rio de Janeiro",
+        "addressRegion": "RJ",
+        "postalCode": "22790-710",
+        "addressCountry": "BR"
+      }
+    },
+
+    {
       "@type": "WebSite",
       "@id": "https://mundpay.com/#website",
       "url": "https://mundpay.com/",
@@ -697,7 +736,6 @@
       "inLanguage": { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
       "speakableSpecification": {
         "@type": "SpeakableSpecification",
-        "inLanguage": "pt-BR",
         "cssSelector": ["h1", ".hero__subtitle", ".faq__answer", "h2"]
       },
       "dateModified": "2026-04-27"
