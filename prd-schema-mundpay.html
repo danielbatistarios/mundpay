@@ -570,9 +570,9 @@
     </div>
   </div>
 
-  <div class="alert alert-warning">
-    <div class="alert-icon">⚠️</div>
-    <div><strong>Ação necessária:</strong> O campo <code>Person.image.url</code> contém o placeholder <code>TODO_SUBSTITUIR_APOS_PUBLICAR</code>. A foto do Wellington precisa ser publicada em URL pública antes de ir para produção. Arquivo disponível em: <code>/Users/jrios/Downloads/FOTO_WELLINGTON_LINKEDIN.jpg</code></div>
+  <div class="alert" style="background:#052e16;border-color:#16a34a44">
+    <div class="alert-icon">✅</div>
+    <div><strong>Resolvido 2026-04-27:</strong> Foto publicada em <code>https://mundpay.pages.dev/img/wellington-vicente.jpg</code>. Person.image.url atualizado em home.html e apresentacao.html.</div>
   </div>
 
   <div class="code-wrap">
@@ -710,13 +710,13 @@
       "familyName": "Vicente da Silva",
       "jobTitle": "Founder e CEO",
       "worksFor": { "@id": "https://mundpay.com/#organization" },
-      "sameAs": ["https://www.linkedin.com/in/wellington-vicente/"],
+      "sameAs": ["https://br.linkedin.com/in/wellington-vicente", "https://www.instagram.com/owell.oficial/"],
       "image": {
         "@type": "ImageObject",
-        "url": "TODO_SUBSTITUIR_APOS_PUBLICAR",
+        "url": "https://mundpay.pages.dev/img/wellington-vicente.jpg",
         "width": 400,
         "height": 400,
-        "description": "Wellington Vicente da Silva, Founder e CEO da Mundpay"
+        "caption": "Wellington Vicente da Silva, CEO e Fundador da Mundpay"
       },
       "description": "Fundador e CEO da Mundpay. Criador do Secret Order Bump, funcionalidade exclusiva de otimizacao de ticket medio pos-checkout.",
       "knowsAbout": [
@@ -1102,9 +1102,9 @@
       "givenName": "Wellington",
       "jobTitle": "CEO e fundador da Mundpay",
       "description": "Fundador da Mundpay, infraestrutura de pagamentos para vendas digitais globais. Especialista em mercados internacionais para infoprodutores, afiliados e criadores de conteudo.",
-      "image": { "@type": "ImageObject", "url": "TODO_SUBSTITUIR_APOS_PUBLICAR", "description": "Foto de Wellington, fundador da Mundpay" },
+      "image": { "@type": "ImageObject", "url": "https://mundpay.pages.dev/img/wellington-vicente.jpg", "width": 400, "height": 400, "caption": "Wellington Vicente da Silva, CEO e Fundador da Mundpay" },
       "worksFor": { "@id": "https://mundpay.com/#organization" },
-      "sameAs": ["TODO_CONFIRMAR_LINKEDIN_WELLINGTON"],
+      "sameAs": ["https://br.linkedin.com/in/wellington-vicente", "https://www.instagram.com/owell.oficial/"],
       "knowsAbout": [
         { "@type": "Thing", "name": "Pagamentos Internacionais", "sameAs": ["https://www.wikidata.org/wiki/Q3323516", "https://en.wikipedia.org/wiki/Electronic_payment"] },
         { "@type": "Thing", "name": "Gateway de Pagamento", "sameAs": ["https://www.wikidata.org/wiki/Q2639241", "https://en.wikipedia.org/wiki/Payment_gateway"] },
@@ -1504,18 +1504,18 @@
         <span>A página /pt/apresentacao exibe "8,99% + R$ 2,50". O schema usa "9,90% + USD 0,50". Um dos dois está desatualizado. Confirmar o valor correto antes de publicar o schema de /pagamentos-e-taxas.</span>
       </div>
     </div>
-    <div class="pending-item">
-      <div class="pending-dot pending-dot-red"></div>
+    <div class="pending-item" style="opacity:0.5">
+      <div class="pending-dot" style="background:#22c55e"></div>
       <div class="pending-text">
-        <strong>Publicar foto de Wellington</strong>
-        <span>Arquivo disponível em /Users/jrios/Downloads/FOTO_WELLINGTON_LINKEDIN.jpg. Fazer upload para URL pública e substituir TODO_SUBSTITUIR_APOS_PUBLICAR no Person.image.url nos schemas de Home e Apresentação.</span>
+        <strong>✅ Foto de Wellington — RESOLVIDO 2026-04-27</strong>
+        <span>Upload feito para o GitHub repo (danielbatistarios/mundpay). URL pública: <code>https://mundpay.pages.dev/img/wellington-vicente.jpg</code>. Person.image atualizado em home.html e apresentacao.html.</span>
       </div>
     </div>
-    <div class="pending-item">
-      <div class="pending-dot pending-dot-red"></div>
+    <div class="pending-item" style="opacity:0.5">
+      <div class="pending-dot" style="background:#22c55e"></div>
       <div class="pending-text">
-        <strong>Confirmar LinkedIn de Wellington</strong>
-        <span>Substituir TODO_CONFIRMAR_LINKEDIN_WELLINGTON no campo Person.sameAs. URL atual no schema da home: linkedin.com/in/wellington-vicente/ — confirmar se está correta.</span>
+        <strong>✅ LinkedIn e Instagram de Wellington — RESOLVIDO 2026-04-27</strong>
+        <span>Person.sameAs atualizado em home.html e apresentacao.html: <code>https://br.linkedin.com/in/wellington-vicente</code> + <code>https://www.instagram.com/owell.oficial/</code></span>
       </div>
     </div>
     <div class="pending-item">
@@ -1582,25 +1582,25 @@
         <span>O schema da /apresentacao tem 3 nós Review com <code>TODO_SUBSTITUIR_NOME_REAL</code>. Fornecer 3 a 5 depoimentos reais com: nome do autor (ou abreviatura LGPD-compliant), data da avaliação e texto. Reviews sem autor e sem data têm peso E-E-A-T mínimo.</span>
       </div>
     </div>
-    <div class="pending-item">
-      <div class="pending-dot pending-dot-green"></div>
+    <div class="pending-item" style="opacity:0.5">
+      <div class="pending-dot" style="background:#22c55e"></div>
       <div class="pending-text">
-        <strong>Confirmar isicV4: "6619" → "6612"</strong>
-        <span>O painel PhD identificou que o código ISIC atual ("6619 — Other financial service activities") está incorreto. O correto para gateway de pagamento é "6612 — Securities and commodity exchanges" — ou mais precisamente verificar se "6612" se aplica, pois pode ser "6619" mesmo dependendo da classificação BACEN. Confirmar com contador ou jurídico antes de alterar.</span>
+        <strong>✅ isicV4 "6619" — CONFIRMADO 2026-04-27</strong>
+        <span>CNPJ 55.009.285/0001-13 confirma CNAE principal 6619-3/02 (correspondentes de instituições financeiras). isicV4: "6619" está correto. Schema atualizado com additionalProperty para CNAE principal e secundários.</span>
       </div>
     </div>
-    <div class="pending-item">
-      <div class="pending-dot pending-dot-green"></div>
+    <div class="pending-item" style="opacity:0.5">
+      <div class="pending-dot" style="background:#22c55e"></div>
       <div class="pending-text">
-        <strong>URL do cadastro no RegisterAction (Home)</strong>
-        <span>O SoftwareApplication na home tem urlTemplate: "https://mundpay.com/cadastro/". Confirmar se esse é o slug real da página de cadastro.</span>
+        <strong>✅ URL do cadastro no RegisterAction — RESOLVIDO 2026-04-27</strong>
+        <span>Atualizado para <code>https://login.mundpay.com/register</code> em SoftwareApplication.url e RegisterAction.urlTemplate na home.html.</span>
       </div>
     </div>
-    <div class="pending-item">
-      <div class="pending-dot pending-dot-green"></div>
+    <div class="pending-item" style="opacity:0.5">
+      <div class="pending-dot" style="background:#22c55e"></div>
       <div class="pending-text">
-        <strong>award.url na home</strong>
-        <span>O campo hasCertification deve ter a URL do artigo que confirma o prêmio Reclame Aqui: <a href="https://mundpay.com/blog/mundpay-e-campea-do-premio-reclame-aqui-2025" target="_blank" style="color:inherit;text-decoration:underline;">mundpay.com/blog/mundpay-e-campea-do-premio-reclame-aqui-2025 ↗</a></span>
+        <strong>✅ certification.url Reclame Aqui — RESOLVIDO 2026-04-27</strong>
+        <span>URL real com slug correto: <code>https://mundpay.com/blog/mundpay-%C3%A9-campe%C3%A3-do-pr%C3%AAmio-reclame-aqui-2025</code>. Atualizado em home.html (certification.url) e blog.html (BlogPosting.url).</span>
       </div>
     </div>
     <div class="pending-item">
@@ -1614,11 +1614,11 @@
 
   <h3>Baixas — Implementar quando possível</h3>
   <div class="pending-box">
-    <div class="pending-item">
-      <div class="pending-dot pending-dot-green"></div>
+    <div class="pending-item" style="opacity:0.5">
+      <div class="pending-dot" style="background:#22c55e"></div>
       <div class="pending-text">
-        <strong>CNAE — confirmar código correto</strong>
-        <span>A Mundpay usa NAICS "522320" no schema. Confirmar o CNAE brasileiro correspondente (candidato: 6419-1/00 — Bancos e outras instituições de crédito não especificados anteriormente, ou 6499-9/99). Verificar no CNPJ 55.009.285/0001-13 no portal da Receita Federal qual CNAE está registrado.</span>
+        <strong>✅ CNAE — RESOLVIDO 2026-04-27</strong>
+        <span>Via CNPJ 55.009.285/0001-13: principal 6619-3/02, secundários 6499-9/99 + 4751-2/01 + 7490-1/04. Todos adicionados como additionalProperty (PropertyValue) no schema da home.html. isicV4 confirmado em "6619".</span>
       </div>
     </div>
     <div class="pending-item">
