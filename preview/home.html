@@ -14,7 +14,7 @@
     "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
     "@graph": [
       {
-        "@type": "Organization",
+        "@type": ["Organization", "FinancialService"],
         "@id": "https://mundpay.com/#organization",
         "name": "Mundpay",
         "legalName": "Mundpay Pagamentos Internacionais LTDA",
@@ -132,6 +132,7 @@
           "bestRating": "10",
           "worstRating": "1",
           "ratingCount": 193,
+          "reviewCount": 773,
           "reviewAspect": "Atendimento ao cliente",
           "itemReviewed": { "@id": "https://mundpay.com/#organization" },
           "description": "Nota do Premio Reclame Aqui de Atendimento 2025, baseada em 193 avaliacoes de consumidores."
@@ -149,29 +150,23 @@
           { "@type": "Language", "name": "Spanish", "alternateName": "es" }
         ],
         "termsOfService": "https://mundpay.com/termos-de-uso/",
-        "mainEntityOfPage": { "@id": "https://mundpay.com/#webpage" },
-        "dateModified": "2026-04-27"
-      },
-      {
-        "@type": "FinancialService",
-        "@id": "https://mundpay.com/#financial-service",
-        "name": "Mundpay",
-        "url": "https://mundpay.com/",
-        "description": "Gateway de pagamento internacional para vendas digitais. Checkout em 190 paises, saque D+3, antifraude proativo.",
-        "parentOrganization": { "@id": "https://mundpay.com/#organization" },
         "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
         "acceptedPaymentMethod": [
           "https://schema.org/CreditCard",
           "https://schema.org/DebitCard"
         ],
         "currenciesAccepted": "BRL, USD, EUR",
-        "areaServed": { "@type": "AdministrativeArea", "name": "Global", "description": "190 paises" },
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Rio de Janeiro",
-          "addressRegion": "RJ",
-          "addressCountry": "BR"
-        }
+        "serviceType": "Payment Gateway",
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        "makesOffer": { "@id": "https://mundpay.com/#checkout-app" },
+        "hasPart": { "@id": "https://mundpay.com/#privacy" },
+        "mainEntityOfPage": { "@id": "https://mundpay.com/#webpage" },
+        "dateModified": "2026-04-28"
       },
       {
         "@type": "WebSite",
@@ -199,10 +194,7 @@
         "url": "https://mundpay.com/",
         "name": "Mundpay — Gateway de Pagamento Internacional para Infoprodutores e Sellers Digitais",
         "description": "Checkout global com alta taxa de aprovacao, saque D+3, Secret Order Bump exclusivo e antifraude proativo. 190 paises.",
-        "mainEntity": [
-          { "@id": "https://mundpay.com/#organization" },
-          { "@id": "https://mundpay.com/#faqpage" }
-        ],
+        "mainEntity": { "@id": "https://mundpay.com/#organization" },
         "about": { "@id": "https://mundpay.com/#organization" },
         "publisher": { "@id": "https://mundpay.com/#organization" },
         "isPartOf": { "@id": "https://mundpay.com/#website" },
@@ -211,8 +203,12 @@
           "cssSelector": ["h1", ".hero__subtitle", ".faq__answer", "h2"]
         },
         "inLanguage": "pt-BR",
-        "hasPart": [{ "@id": "https://mundpay.com/#faqpage" }],
-        "dateModified": "2026-04-27"
+        "hasPart": [
+          { "@id": "https://mundpay.com/#faqpage" },
+          { "@id": "https://mundpay.com/#checkout-app" }
+        ],
+        "mentions": [{ "@id": "https://mundpay.com/#glossary" }],
+        "dateModified": "2026-04-28"
       },
       {
         "@type": "Person",
@@ -345,7 +341,6 @@
         "url": "https://login.mundpay.com/register",
         "softwareVersion": "1.0",
         "featureList": "Secret Order Bump pos-checkout (exclusivo Mundpay), Checkout em 190 paises com traducao automatica de moeda, Saque D+3 para Pessoa Juridica, Antifraude inteligente com risco proativo, Retentativa inteligente de pagamento, Upsell e Downsell pos-compra, Webhooks e API REST para integracoes",
-        "provider": { "@id": "https://mundpay.com/#organization" },
         "publisher": { "@id": "https://mundpay.com/#organization" }
       },
       {

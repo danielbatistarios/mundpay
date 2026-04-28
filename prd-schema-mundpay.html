@@ -590,7 +590,7 @@
   "@graph": [
 
     {
-      "@type": "Organization",
+      "@type": ["Organization", "FinancialService"],
       "@id": "https://mundpay.com/#organization",
       "name": "Mundpay",
       "legalName": "Mundpay Pagamentos Internacionais LTDA",
@@ -674,39 +674,28 @@
         }
       },
       "termsOfService": "https://mundpay.com/termos-de-uso/",
-      "availableLanguage": [
-        { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
-        { "@type": "Language", "name": "English", "alternateName": "en" },
-        { "@type": "Language", "name": "Spanish", "alternateName": "es" }
-      ],
-      "dateModified": "2026-04-27"
-    },
-
-    {
-      "@type": "FinancialService",
-      "@id": "https://mundpay.com/#financial-service",
-      "name": "Mundpay",
-      "url": "https://mundpay.com/",
-      "provider": { "@id": "https://mundpay.com/#organization" },
       "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
       "acceptedPaymentMethod": [
         "https://schema.org/CreditCard",
         "https://schema.org/DebitCard"
       ],
       "currenciesAccepted": "BRL, USD, EUR",
-      "areaServed": {
-        "@type": "AdministrativeArea",
-        "name": "Global",
-        "description": "190 paises"
+      "serviceType": "Payment Gateway",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
       },
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Alfredo Balthazar da Silveira, 580, Loja 116-A",
-        "addressLocality": "Rio de Janeiro",
-        "addressRegion": "RJ",
-        "postalCode": "22790-710",
-        "addressCountry": "BR"
-      }
+      "makesOffer": { "@id": "https://mundpay.com/#checkout-app" },
+      "hasPart": { "@id": "https://mundpay.com/#privacy" },
+      "availableLanguage": [
+        { "@type": "Language", "name": "Portuguese", "alternateName": "pt-BR" },
+        { "@type": "Language", "name": "English", "alternateName": "en" },
+        { "@type": "Language", "name": "Spanish", "alternateName": "es" }
+      ],
+      "mainEntityOfPage": { "@id": "https://mundpay.com/pt/#webpage" },
+      "dateModified": "2026-04-28"
     },
 
     {
@@ -724,10 +713,12 @@
       "url": "https://mundpay.com/pt/",
       "name": "Mundpay — Gateway de Pagamento Internacional para Infoprodutores e Sellers Digitais",
       "description": "Checkout global com alta taxa de aprovacao, saque D+3, Secret Order Bump exclusivo e antifraude proativo. 190 paises.",
-      "mainEntity": [
-        { "@id": "https://mundpay.com/#organization" },
-        { "@id": "https://mundpay.com/#faqpage" }
+      "mainEntity": { "@id": "https://mundpay.com/#organization" },
+      "hasPart": [
+        { "@id": "https://mundpay.com/#faqpage" },
+        { "@id": "https://mundpay.com/#checkout-app" }
       ],
+      "mentions": [{ "@id": "https://mundpay.com/#glossary" }],
       "publisher": { "@id": "https://mundpay.com/#organization" },
       "isPartOf": { "@id": "https://mundpay.com/#website" },
       "inLanguage": "pt-BR",
@@ -735,7 +726,7 @@
         "@type": "SpeakableSpecification",
         "cssSelector": ["h1", ".hero__subtitle", ".faq__answer", "h2"]
       },
-      "dateModified": "2026-04-27"
+      "dateModified": "2026-04-28"
     },
 
     {
