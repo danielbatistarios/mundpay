@@ -2011,8 +2011,22 @@
     <div class="pending-item">
       <div class="pending-dot pending-dot-red"></div>
       <div class="pending-text">
-        <strong>Publicar llms.txt na raiz do site</strong>
-        <span>Arquivo pronto em <code>/Users/jrios/mundpay-llms-txt-v2.txt</code>. Publicar como <code>https://mundpay.com/llms.txt</code>. Requisitos: Content-Type: <code>text/plain; charset=utf-8</code>, resposta HTTP 200, sem redirecionamento. Verificação: <code>curl -I https://mundpay.com/llms.txt</code> deve retornar 200. No Framer: adicionar arquivo estático ou configurar rota de arquivo no domínio.</span>
+        <strong>Publicar llms.txt na raiz do site — passo a passo para Nathan (Framer)</strong>
+        <span>
+          Arquivo pronto em <code>/Users/jrios/mundpay-llms-txt-v2.txt</code> (656 linhas, v2.1). Deve estar acessível em <code>https://mundpay.com/llms.txt</code>.<br><br>
+          <strong>Como publicar no Framer:</strong><br>
+          1. Renomear o arquivo para <code>llms.txt</code> (sem número de versão)<br>
+          2. No Framer: <strong>Site Settings → General → Custom Code / Static Files</strong> — fazer upload do arquivo. O Framer serve arquivos da raiz automaticamente.<br>
+          3. Se não tiver opção de static files no plano: ir em <strong>Site Settings → Redirects</strong>, criar redirect de <code>/llms.txt</code> apontando para URL externa (R2 ou GitHub raw) — atenção: redirect retorna 301, não 200; neste caso preferir opção 4.<br>
+          4. Alternativa: hospedar o arquivo no Cloudflare R2 com bucket público e configurar Worker ou Page Rule em <code>mundpay.com/llms.txt</code> para servir o objeto R2 diretamente (retorna 200, content-type correto).<br><br>
+          <strong>Requisitos obrigatórios:</strong><br>
+          — HTTP 200 (não 301/302)<br>
+          — Content-Type: <code>text/plain; charset=utf-8</code><br>
+          — Sem autenticação — acessível por crawlers de LLMs<br><br>
+          <strong>Verificação após deploy (rodar no terminal):</strong><br>
+          <code>curl -I https://mundpay.com/llms.txt</code> — deve retornar <code>200 OK</code> + <code>content-type: text/plain</code><br>
+          <code>curl https://mundpay.com/llms.txt | head -3</code> — deve mostrar <code># MUNDPAY llms.txt v2.1</code>
+        </span>
       </div>
     </div>
     <div class="pending-item">
