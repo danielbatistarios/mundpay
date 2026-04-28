@@ -100,6 +100,7 @@
     }
 
     .header-left-pill nav { display: flex; align-items: center; }
+    .header-left-pill nav ul { display: flex; align-items: center; list-style: none; }
 
     .header-left-pill nav a {
       font-family: var(--font-meta);
@@ -199,9 +200,9 @@
 
     .author-hero-inner {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr auto;
       gap: var(--space-2xl);
-      align-items: center;
+      align-items: start;
     }
 
     .author-meta-label {
@@ -892,9 +893,11 @@
         </a>
         <div class="pill-sep" aria-hidden="true"></div>
         <nav aria-label="Menu principal">
-          <a href="https://mundpay.com/#global">Global Sales</a>
-          <a href="https://mundpay.com/#taxas">Fees</a>
-          <a href="https://mundpay.com/pt/blog" class="active">Blog</a>
+          <ul>
+            <li><a href="https://mundpay.com/#global">Global Sales</a></li>
+            <li><a href="https://mundpay.com/#taxas">Fees</a></li>
+            <li><a href="https://mundpay.com/pt/blog" class="active">Blog</a></li>
+          </ul>
         </nav>
       </div>
       <div class="header-actions">
@@ -902,10 +905,10 @@
           <button class="lang-btn active">
             <img src="https://flagcdn.com/br.svg" alt="PT"> PT
           </button>
-          <button class="lang-btn disabled">
+          <button class="lang-btn" disabled aria-disabled="true">
             <img src="https://flagcdn.com/us.svg" alt="EN"> EN
           </button>
-          <button class="lang-btn disabled">
+          <button class="lang-btn" disabled aria-disabled="true">
             <img src="https://flagcdn.com/es.svg" alt="ES"> ES
           </button>
         </div>
@@ -931,19 +934,6 @@
     <!-- AUTHOR HERO -->
     <section class="author-hero" aria-labelledby="author-name">
       <div class="author-hero-inner">
-
-        <!-- Avatar -->
-        <div class="author-avatar-wrap">
-          <div class="author-avatar" aria-hidden="true">
-            <span class="author-avatar-initials">WC</span>
-          </div>
-          <div class="author-verified-badge">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Autor verificado
-          </div>
-        </div>
 
         <div class="author-info">
           <p class="author-meta-label">Autor do Blog</p>
@@ -988,6 +978,14 @@
               </svg>
               X
             </a>
+            <a href="https://www.instagram.com/mundpay/" target="_blank" rel="noopener" aria-label="Instagram de Wellington Costa">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+              </svg>
+              Instagram
+            </a>
             <a href="mailto:wellington@mundpay.com" aria-label="E-mail de Wellington Costa">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <rect x="2" y="4" width="20" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/>
@@ -996,6 +994,19 @@
               E-mail
             </a>
           </nav>
+        </div>
+
+        <!-- Avatar -->
+        <div class="author-avatar-wrap">
+          <div class="author-avatar" aria-hidden="true">
+            <span class="author-avatar-initials">WC</span>
+          </div>
+          <div class="author-verified-badge">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Autor verificado
+          </div>
         </div>
 
       </div>
@@ -1286,7 +1297,7 @@
           </div>
         </div>
 
-        <div class="footer-link-col">
+        <nav class="footer-link-col" aria-label="Legal e Compliance">
           <h5>Legal &amp; Compliance</h5>
           <ul>
             <li><a href="https://mundpay.com/pagamentos-e-taxas">Payments and Fees</a></li>
@@ -1294,25 +1305,27 @@
             <li><a href="https://mundpay.com/politica-de-privacidade">Privacy Policy</a></li>
             <li><a href="#">Reporting Channel</a></li>
           </ul>
-        </div>
+        </nav>
 
-        <div class="footer-link-col">
+        <nav class="footer-link-col" aria-label="Canais de Contato">
           <h5>Canais de Contato</h5>
           <ul>
             <li><a href="https://mundpay.com/me-ajuda">Help me</a></li>
             <li><a href="https://api.whatsapp.com/send/?phone=%2B5521988294968" target="_blank" rel="noopener">WhatsApp</a></li>
             <li><a href="mailto:suporte@mundpay.com">E-mail</a></li>
           </ul>
-        </div>
+        </nav>
 
         <div class="footer-link-col">
-          <h5>Site</h5>
-          <ul>
-            <li><a href="https://mundpay.com/">Home</a></li>
-            <li><a href="https://mundpay.com/#global">Global Sales</a></li>
-            <li><a href="https://mundpay.com/#taxas">Taxes</a></li>
-            <li><a href="https://mundpay.com/pt/blog">Blog</a></li>
-          </ul>
+          <nav aria-label="Site">
+            <h5>Site</h5>
+            <ul>
+              <li><a href="https://mundpay.com/">Home</a></li>
+              <li><a href="https://mundpay.com/#global">Global Sales</a></li>
+              <li><a href="https://mundpay.com/#taxas">Taxes</a></li>
+              <li><a href="https://mundpay.com/pt/blog">Blog</a></li>
+            </ul>
+          </nav>
           <div class="footer-app-btns">
             <a href="https://apps.apple.com/br/app/mundpay-mobile/id6744820317" target="_blank" rel="noopener" class="btn-app-store">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -1357,11 +1370,7 @@
 
     <div class="footer-inner">
       <div class="footer-bottom">
-        <span>©2025</span>
-        <span>・︎</span>
-        <span>MUNDPAY</span>
-        <span>・︎</span>
-        <span>All rights reserved</span>
+        <small>©2025 MUNDPAY — All rights reserved</small>
       </div>
     </div>
 
