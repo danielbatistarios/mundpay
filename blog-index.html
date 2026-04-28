@@ -119,34 +119,96 @@
       gap: 16px;
     }
 
-    /* Left — logo pill + "Blog" label */
-    .header-logo-pill {
+    /* Left group */
+    .header-left {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(5,7,0,0.05);
-      border-radius: 40px;
-      padding: 8px 16px 8px 10px;
-      text-decoration: none;
     }
-    .header-logo-pill .pill-globe {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      background: #c8d45a;
-      display: flex; align-items: center; justify-content: center;
+
+    /* mundpay logo mask */
+    .header-logo-mark {
+      -webkit-mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') left center / contain no-repeat;
+      mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') left center / contain no-repeat;
+      background-color: rgba(5,7,0,0.82);
+      width: 96px;
+      height: 16px;
+      flex-shrink: 0;
+      text-decoration: none;
+      display: block;
+    }
+
+    .header-blog-label {
+      font-family: var(--font-meta);
+      font-size: 14px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(5,7,0,0.5);
+    }
+
+    .header-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(5,7,0,0.15);
       flex-shrink: 0;
     }
-    .header-logo-pill .pill-globe svg { width: 16px; height: 16px; }
-    .header-logo-pill .pill-blog {
+
+    .header-meet-link {
+      display: flex;
+      align-items: center;
+      background: rgba(5,7,0,0.05);
+      border-radius: 40px;
+      padding: 6px 14px;
       font-family: var(--font-meta);
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 500;
-      font-style: italic;
-      color: rgba(5,7,0,0.75);
+      color: rgba(5,7,0,0.72);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 150ms;
     }
+    .header-meet-link:hover { background: rgba(5,7,0,0.09); }
 
     /* Right actions */
     .header-actions { display: flex; align-items: center; gap: 8px; }
+
+    /* Desktop-only CTA buttons */
+    .header-btn-login {
+      font-family: var(--font-meta);
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.72);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 32px;
+      white-space: nowrap;
+      transition: color 150ms;
+    }
+    .header-btn-login:hover { color: rgba(5,7,0,1); }
+
+    .header-btn-start {
+      font-family: var(--font-meta);
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.82);
+      text-decoration: none;
+      padding: 7px 16px;
+      border-radius: 32px;
+      border: 1px solid rgba(5,7,0,0.18);
+      background: rgba(5,7,0,0.04);
+      white-space: nowrap;
+      transition: background 150ms, border-color 150ms;
+    }
+    .header-btn-start:hover { background: rgba(5,7,0,0.08); border-color: rgba(5,7,0,0.28); }
+
+    /* Hide desktop buttons on mobile */
+    .header-btn-login,
+    .header-btn-start { display: none; }
+
+    @media (min-width: 768px) {
+      .header-btn-login,
+      .header-btn-start { display: inline-flex; align-items: center; }
+    }
 
     /* Lang selector — bandeira + chevron */
     .lang-selector {
@@ -1283,15 +1345,13 @@
   <header class="site-header" role="banner">
     <div class="header-inner">
 
-      <!-- Logo + Blog pill -->
-      <a href="https://mundpay.com/pt/blog" class="header-logo-pill" aria-label="mundpay Blog">
-        <span class="pill-globe" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(5,7,0,0.75)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-        </span>
-        <span class="pill-blog">Blog</span>
-      </a>
+      <!-- Left: logo + Blog label + separator + Meet Mundpay -->
+      <div class="header-left">
+        <a href="https://mundpay.com/" class="header-logo-mark" aria-label="mundpay"></a>
+        <span class="header-blog-label">Blog</span>
+        <span class="header-sep" aria-hidden="true"></span>
+        <a href="https://mundpay.com/" class="header-meet-link">Meet Mundpay</a>
+      </div>
 
       <!-- Right actions -->
       <div class="header-actions">
@@ -1305,19 +1365,17 @@
             </svg>
           </button>
           <div class="lang-dropdown" role="listbox" aria-label="Idiomas disponíveis">
-            <a href="https://mundpay.com/blog" hreflang="en" role="option">
-              <img src="https://flagcdn.com/us.svg" alt="">EN — English
-            </a>
-            <a href="https://mundpay.com/pt/blog" hreflang="pt-BR" role="option" class="active" aria-selected="true">
-              <img src="https://flagcdn.com/br.svg" alt="">PT — Português
-            </a>
-            <span role="option" aria-disabled="true" title="Em breve">
-              <img src="https://flagcdn.com/es.svg" alt="">ES — Español
-            </span>
+            <a href="https://mundpay.com/blog" hreflang="en" role="option"><img src="https://flagcdn.com/us.svg" alt="">EN — English</a>
+            <a href="https://mundpay.com/pt/blog" hreflang="pt-BR" role="option" class="active" aria-selected="true"><img src="https://flagcdn.com/br.svg" alt="">PT — Português</a>
+            <span role="option" aria-disabled="true" title="Em breve"><img src="https://flagcdn.com/es.svg" alt="">ES — Español</span>
           </div>
         </div>
 
-        <!-- Hamburger -->
+        <!-- Desktop CTA buttons -->
+        <a href="https://login.mundpay.com/login" class="header-btn-login">LOG IN</a>
+        <a href="https://login.mundpay.com/register" class="header-btn-start">START NOW</a>
+
+        <!-- Hamburger (mobile only) -->
         <button class="header-burger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu" id="burgerBtn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <line x1="3" y1="6" x2="21" y2="6"/>
@@ -1333,14 +1391,10 @@
   <!-- Mobile menu overlay -->
   <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Menu de navegação">
     <div class="mobile-menu-header">
-      <a href="https://mundpay.com/pt/blog" class="header-logo-pill" aria-label="mundpay Blog">
-        <span class="pill-globe" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="rgba(5,7,0,0.75)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-        </span>
-        <span class="pill-blog">Blog</span>
-      </a>
+      <div class="header-left">
+        <a href="https://mundpay.com/" class="header-logo-mark" aria-label="mundpay"></a>
+        <span class="header-blog-label">Blog</span>
+      </div>
       <button class="mobile-menu-close" aria-label="Fechar menu" id="menuClose">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
