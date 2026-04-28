@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundpay — Arquivos do Projeto</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #eaede4;
+      font-family: 'Space Grotesk', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 560px;
+      width: 100%;
+    }
+
+    .logo {
+      -webkit-mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') center / contain no-repeat;
+      mask: url('https://framerusercontent.com/images/tzjzM5myUA2OJRfcZIQ43LjdT88.svg') center / contain no-repeat;
+      background-color: rgba(5,7,0,0.75);
+      width: 160px;
+      height: 27px;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(5,7,0,0.35);
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 22px;
+      background: rgba(5,7,0,0.04);
+      border: 1px solid rgba(5,7,0,0.09);
+      border-radius: 12px;
+      text-decoration: none;
+      color: rgba(5,7,0,0.88);
+      transition: background 150ms, border-color 150ms, transform 150ms;
+    }
+
+    .card:hover {
+      background: rgba(5,7,0,0.07);
+      border-color: rgba(5,7,0,0.16);
+      transform: translateY(-1px);
+    }
+
+    .card-left { display: flex; align-items: center; gap: 14px; }
+
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card-icon svg { width: 16px; height: 16px; }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(5,7,0,0.88);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: rgba(5,7,0,0.45);
+    }
+
+    .card-arrow {
+      font-size: 16px;
+      color: rgba(5,7,0,0.25);
+      transition: color 150ms, transform 150ms;
+    }
+
+    .card:hover .card-arrow {
+      color: rgba(5,7,0,0.55);
+      transform: translateX(3px);
+    }
+
+    .footer-note {
+      margin-top: 28px;
+      font-size: 12px;
+      color: rgba(5,7,0,0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo" aria-label="Mundpay"></div>
+
+    <h1>Arquivos do projeto</h1>
+
+    <div class="cards">
+
+      <a href="/blog-index.html" class="card">
+        <div class="card-left">
+          <div class="card-icon" style="background:rgba(133,153,51,0.12)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#859933" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 6h16M4 10h16M4 14h10"/>
+            </svg>
+          </div>
+          <div>
+            <span class="card-title">Blog — Listagem</span>
+            <span class="card-desc">Pagina principal do blog com todos os artigos</span>
+          </div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="/blog-post-template.html" class="card">
+        <div class="card-left">
+          <div class="card-icon" style="background:rgba(74,122,155,0.12)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#4a7a9b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <div>
+            <span class="card-title">Blog — Template de Artigo</span>
+            <span class="card-desc">Template base para novos artigos do blog</span>
+          </div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+      <a href="/prd-schema-mundpay.html" class="card">
+        <div class="card-left">
+          <div class="card-icon" style="background:rgba(108,92,231,0.1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#6c5ce7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
+          <div>
+            <span class="card-title">PRD — Schema Markup</span>
+            <span class="card-desc">Diretrizes de dados estruturados JSON-LD</span>
+          </div>
+        </div>
+        <span class="card-arrow">→</span>
+      </a>
+
+    </div>
+
+    <p class="footer-note">mundpay.pages.dev — ambiente de desenvolvimento</p>
+  </div>
+</body>
+</html>
