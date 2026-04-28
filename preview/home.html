@@ -161,13 +161,8 @@
         "provider": { "@id": "https://mundpay.com/#organization" },
         "feesAndCommissionsSpecification": "https://mundpay.com/pagamentos-e-taxas",
         "acceptedPaymentMethod": [
-          { "@type": "PaymentMethod", "name": "Pix", "sameAs": "https://www.wikidata.org/wiki/Q86741580" },
-          { "@type": "PaymentMethod", "name": "Boleto Bancario" },
-          { "@type": "PaymentMethod", "name": "Visa", "sameAs": "https://www.wikidata.org/wiki/Q134646" },
-          { "@type": "PaymentMethod", "name": "Mastercard", "sameAs": "https://www.wikidata.org/wiki/Q315107" },
-          { "@type": "PaymentMethod", "name": "American Express", "sameAs": "https://www.wikidata.org/wiki/Q49813" },
-          { "@type": "PaymentMethod", "name": "Apple Pay", "sameAs": "https://www.wikidata.org/wiki/Q17118079" },
-          { "@type": "PaymentMethod", "name": "Google Pay", "sameAs": "https://www.wikidata.org/wiki/Q30622009" }
+          "https://schema.org/CreditCard",
+          "https://schema.org/DebitCard"
         ],
         "currenciesAccepted": "BRL, USD, EUR",
         "areaServed": { "@type": "AdministrativeArea", "name": "Global", "description": "190 paises" },
@@ -329,11 +324,11 @@
         "@type": "SoftwareApplication",
         "@id": "https://mundpay.com/#checkout-app",
         "name": "Mundpay Checkout",
-        "applicationCategory": "FinanceApplication",
+        "applicationCategory": "https://schema.org/FinanceApplication",
         "operatingSystem": "Web",
         "offers": {
           "@type": "Offer",
-          "price": 0,
+          "price": "0",
           "priceCurrency": "BRL",
           "description": "Cadastro gratuito. Taxas cobradas por transacao aprovada.",
           "seller": { "@id": "https://mundpay.com/#organization" }
@@ -343,21 +338,13 @@
           "target": {
             "@type": "EntryPoint",
             "urlTemplate": "https://login.mundpay.com/register",
-            "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+            "actionPlatform": ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"]
           },
           "name": "Criar conta gratis na Mundpay"
         },
         "url": "https://login.mundpay.com/register",
         "softwareVersion": "1.0",
-        "featureList": [
-          "Secret Order Bump pos-checkout (exclusivo Mundpay)",
-          "Checkout em 190 paises com traducao automatica de moeda",
-          "Saque D+3 para Pessoa Juridica",
-          "Antifraude inteligente com risco proativo",
-          "Retentativa inteligente de pagamento",
-          "Upsell e Downsell pos-compra",
-          "Webhooks e API REST para integracoes"
-        ],
+        "featureList": "Secret Order Bump pos-checkout (exclusivo Mundpay), Checkout em 190 paises com traducao automatica de moeda, Saque D+3 para Pessoa Juridica, Antifraude inteligente com risco proativo, Retentativa inteligente de pagamento, Upsell e Downsell pos-compra, Webhooks e API REST para integracoes",
         "provider": { "@id": "https://mundpay.com/#organization" },
         "publisher": { "@id": "https://mundpay.com/#organization" }
       },
@@ -414,7 +401,12 @@
         "@id": "https://mundpay.com/#privacy",
         "name": "Politica de Privacidade Mundpay",
         "url": "https://mundpay.com/politica-de-privacidade",
-        "publisher": { "@id": "https://mundpay.com/#organization" }
+        "publisher": { "@id": "https://mundpay.com/#organization" },
+        "author": { "@id": "https://mundpay.com/#organization" },
+        "datePublished": "2024-05-06",
+        "dateModified": "2026-04-27",
+        "inLanguage": "pt-BR",
+        "text": "A Mundpay coleta dados pessoais necessarios para processamento de pagamentos e cumprimento de obrigacoes regulatorias (BACEN, LGPD). Dados de titulares de cartao sao tratados conforme PCI-DSS. O usuario pode solicitar exclusao de dados via privacy@mundpay.com."
       }
     ]
   }
