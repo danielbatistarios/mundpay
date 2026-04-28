@@ -11,7 +11,7 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
     "@graph": [
       {
         "@type": "AboutPage",
@@ -24,6 +24,7 @@
         "isPartOf": { "@id": "https://mundpay.com/#website" },
         "publisher": { "@id": "https://mundpay.com/#organization" },
         "about": { "@id": "https://mundpay.com/#organization" },
+        "mainEntity": { "@id": "https://mundpay.com/#organization" },
         "breadcrumb": { "@id": "https://mundpay.com/pt/apresentacao#breadcrumb" },
         "mentions": [
           { "@id": "https://mundpay.com/#person-wellington" },
@@ -47,16 +48,19 @@
         "ratingCount": "193",
         "reviewAspect": "Atendimento ao cliente",
         "itemReviewed": { "@id": "https://mundpay.com/#organization" },
-        "description": "Nota do Premio Reclame Aqui de Atendimento 2025, baseada em 193 avaliacoes de consumidores."
+        "description": "Nota do Premio Reclame Aqui de Atendimento 2025, baseada em 193 avaliacoes de consumidores.",
+        "url": "https://www.reclameaqui.com.br/blog/mundpay-%C3%A9-campe%C3%A3-do-pr%C3%AAmio-reclame-aqui-de-atendimento-2025/"
       },
       {
         "@type": "Person",
         "@id": "https://mundpay.com/#person-wellington",
         "name": "Wellington Vicente da Silva",
         "givenName": "Wellington",
+        "familyName": "Vicente da Silva",
         "jobTitle": "CEO e Fundador da Mundpay",
         "image": {
           "@type": "ImageObject",
+          "@id": "https://mundpay.com/#person-wellington-image",
           "url": "https://mundpay.pages.dev/img/wellington-vicente.jpg",
           "width": 400,
           "height": 400,
@@ -64,6 +68,7 @@
         },
         "description": "Fundador da Mundpay, infraestrutura de pagamentos para vendas digitais globais. Especialista em mercados internacionais para infoprodutores, afiliados e criadores de conteudo.",
         "worksFor": { "@id": "https://mundpay.com/#organization" },
+        "founder": { "@id": "https://mundpay.com/#organization" },
         "sameAs": [
           "https://br.linkedin.com/in/wellington-vicente",
           "https://www.instagram.com/owell.oficial/"
@@ -79,30 +84,6 @@
           "name": "Fundador e CEO",
           "occupationLocation": { "@type": "City", "name": "Rio de Janeiro", "sameAs": "https://www.wikidata.org/wiki/Q8678" }
         }
-      },
-      {
-        "@type": "Review",
-        "@id": "https://mundpay.com/pt/apresentacao#review-1",
-        "reviewBody": "A Mundpay transformou minha operacao internacional. Consigo receber de compradores em qualquer pais sem burocracia e o suporte resolve tudo rapidamente.",
-        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-        "author": { "@type": "Person", "name": "TODO_SUBSTITUIR_NOME_REAL" },
-        "itemReviewed": { "@id": "https://mundpay.com/#organization" }
-      },
-      {
-        "@type": "Review",
-        "@id": "https://mundpay.com/pt/apresentacao#review-2",
-        "reviewBody": "Migrei da concorrencia para a Mundpay pela transparencia nas taxas e pela agilidade no saque. Nao me arrependi.",
-        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-        "author": { "@type": "Person", "name": "TODO_SUBSTITUIR_NOME_REAL" },
-        "itemReviewed": { "@id": "https://mundpay.com/#organization" }
-      },
-      {
-        "@type": "Review",
-        "@id": "https://mundpay.com/pt/apresentacao#review-3",
-        "reviewBody": "O Secret Order Bump da Mundpay aumentou meu ticket medio em mais de 20%. E uma funcionalidade exclusiva que nenhuma outra plataforma oferece.",
-        "reviewRating": { "@type": "Rating", "ratingValue": 5, "bestRating": 5, "worstRating": 1 },
-        "author": { "@type": "Person", "name": "TODO_SUBSTITUIR_NOME_REAL" },
-        "itemReviewed": { "@id": "https://mundpay.com/#organization" }
       }
     ]
   }
@@ -245,7 +226,7 @@
     </div>
   </section>
 
-  <div class="schema-badge">Schema JSON-LD ativo — AboutPage + AggregateRating + Person + 3 Reviews</div>
+  <div class="schema-badge">Schema JSON-LD v2 — AboutPage (mainEntity=Org) + AggregateRating + Person (founder+familyName) — Reviews aguardando nomes reais</div>
 
 </body>
 </html>

@@ -11,7 +11,7 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
     "@graph": [
       {
         "@type": "WebPage",
@@ -23,6 +23,7 @@
         "dateModified": "2026-04-27",
         "isPartOf": { "@id": "https://mundpay.com/#website" },
         "publisher": { "@id": "https://mundpay.com/#organization" },
+        "about": { "@id": "https://mundpay.com/#organization" },
         "mainEntity": { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq" },
         "breadcrumb": { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#breadcrumb" },
         "speakableSpecification": {
@@ -34,7 +35,11 @@
           { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-boleto" },
           { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-apple-pay" },
           { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-google-pay" },
-          { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao" }
+          { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao" },
+          { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-domestic" },
+          { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-international" },
+          { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-saque" },
+          { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-chargeback" }
         ]
       },
       {
@@ -47,59 +52,186 @@
       },
       { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-pix", "name": "Pix", "description": "Sistema de pagamentos instantaneos do Banco Central do Brasil.", "sameAs": ["https://www.wikidata.org/wiki/Q86741580", "https://pt.wikipedia.org/wiki/Pix_(meio_de_pagamento)"] },
       { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-boleto", "name": "Boleto Bancario", "description": "Metodo de pagamento brasileiro emitido por instituicao financeira.", "sameAs": ["https://www.wikidata.org/wiki/Q4116421", "https://pt.wikipedia.org/wiki/Boleto"] },
-      { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-apple-pay", "name": "Apple Pay", "description": "Carteira digital da Apple.", "sameAs": ["https://www.wikidata.org/wiki/Q16911513", "https://en.wikipedia.org/wiki/Apple_Pay"] },
-      { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-google-pay", "name": "Google Pay", "description": "Carteira digital do Google.", "sameAs": ["https://www.wikidata.org/wiki/Q56317070", "https://en.wikipedia.org/wiki/Google_Pay"] },
-      { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao", "name": "Cartao de Credito Internacional", "description": "Pagamento via Visa, Mastercard e Amex para compradores em 190 paises.", "sameAs": ["https://www.wikidata.org/wiki/Q161380"] },
+      { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-apple-pay", "name": "Apple Pay", "description": "Carteira digital da Apple para pagamentos em dispositivos iOS e Mac.", "sameAs": ["https://www.wikidata.org/wiki/Q16911513", "https://en.wikipedia.org/wiki/Apple_Pay"] },
+      { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-google-pay", "name": "Google Pay", "description": "Carteira digital do Google para pagamentos em Android e web.", "sameAs": ["https://www.wikidata.org/wiki/Q56317070", "https://en.wikipedia.org/wiki/Google_Pay"] },
+      { "@type": "Thing", "@id": "https://mundpay.com/pt/pagamentos-e-taxas#method-cartao", "name": "Cartao de Credito Internacional", "description": "Pagamento via Visa, Mastercard e American Express para compradores em 190 paises.", "sameAs": ["https://www.wikidata.org/wiki/Q161380", "https://en.wikipedia.org/wiki/Credit_card"] },
       {
         "@type": "Offer",
         "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-domestic",
         "name": "Taxa para vendas domesticas (Brasil)",
+        "description": "Processamento de Pix, boleto e cartao de credito nacional: 5,99% mais R$ 1,50 fixo por transacao aprovada. Sem mensalidade ou taxa de adesao.",
         "seller": { "@id": "https://mundpay.com/#organization" },
         "eligibleRegion": { "@type": "Country", "name": "Brasil", "sameAs": "https://www.wikidata.org/wiki/Q155" },
-        "itemOffered": { "@type": "Service", "name": "Processamento de Pagamento Domestico", "provider": { "@id": "https://mundpay.com/#organization" } },
+        "priceCurrency": "BRL",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Processamento de Pagamento Domestico",
+          "provider": { "@id": "https://mundpay.com/#organization" },
+          "serviceType": "Payment Processing",
+          "areaServed": { "@type": "Country", "name": "Brasil", "sameAs": "https://www.wikidata.org/wiki/Q155" }
+        },
         "priceSpecification": [
-          { "@type": "UnitPriceSpecification", "name": "Taxa percentual venda domestica", "price": 5.99, "priceCurrency": "BRL", "unitText": "% por transacao aprovada" },
-          { "@type": "UnitPriceSpecification", "name": "Taxa fixa venda domestica", "price": 1.50, "priceCurrency": "BRL", "unitText": "R$ por transacao" }
+          {
+            "@type": "UnitPriceSpecification",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#price-domestic-pct",
+            "name": "Taxa percentual venda domestica",
+            "price": 5.99,
+            "priceCurrency": "BRL",
+            "unitCode": "P1",
+            "unitText": "% por transacao aprovada",
+            "valueAddedTaxIncluded": false
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#price-domestic-fixed",
+            "name": "Taxa fixa venda domestica",
+            "price": 1.50,
+            "priceCurrency": "BRL",
+            "unitText": "R$ por transacao aprovada",
+            "valueAddedTaxIncluded": false
+          }
         ]
       },
       {
         "@type": "Offer",
         "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-international",
         "name": "Taxa para vendas internacionais",
+        "description": "Processamento de cartoes internacionais Visa, Mastercard, Amex, Apple Pay e Google Pay: 9,90% mais USD 0,50 fixo por transacao aprovada. Cobre conversao de moeda e antifraude.",
         "seller": { "@id": "https://mundpay.com/#organization" },
-        "itemOffered": { "@type": "Service", "name": "Processamento de Pagamento Internacional", "provider": { "@id": "https://mundpay.com/#organization" } },
+        "eligibleRegion": { "@type": "Place", "name": "Internacional", "description": "190 paises aceitos" },
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Processamento de Pagamento Internacional",
+          "provider": { "@id": "https://mundpay.com/#organization" },
+          "serviceType": "International Payment Processing",
+          "areaServed": { "@type": "Place", "name": "Global", "description": "190 paises" }
+        },
         "priceSpecification": [
-          { "@type": "UnitPriceSpecification", "name": "Taxa percentual venda internacional", "price": 9.90, "priceCurrency": "BRL", "unitText": "% por transacao aprovada" },
-          { "@type": "UnitPriceSpecification", "name": "Taxa fixa venda internacional", "price": 0.50, "priceCurrency": "USD", "unitText": "USD por transacao" }
+          {
+            "@type": "UnitPriceSpecification",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#price-intl-pct",
+            "name": "Taxa percentual venda internacional",
+            "price": 9.90,
+            "priceCurrency": "BRL",
+            "unitCode": "P1",
+            "unitText": "% por transacao aprovada",
+            "valueAddedTaxIncluded": false
+          },
+          {
+            "@type": "UnitPriceSpecification",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#price-intl-fixed",
+            "name": "Taxa fixa venda internacional",
+            "price": 0.50,
+            "priceCurrency": "USD",
+            "unitText": "USD por transacao aprovada",
+            "valueAddedTaxIncluded": false
+          }
         ]
       },
       {
         "@type": "Offer",
         "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-saque",
         "name": "Taxa de saque D+3",
+        "description": "Saque do saldo disponivel com liquidacao em D+3 uteis. Taxa fixa de R$ 7,90 por operacao, independente do valor sacado.",
         "seller": { "@id": "https://mundpay.com/#organization" },
-        "itemOffered": { "@type": "Service", "name": "Saque D+3", "provider": { "@id": "https://mundpay.com/#organization" } },
-        "priceSpecification": { "@type": "UnitPriceSpecification", "name": "Taxa fixa de saque", "price": 7.90, "priceCurrency": "BRL", "unitText": "R$ por saque" }
+        "availableAtOrFrom": { "@type": "VirtualLocation", "url": "https://app.mundpay.com", "name": "Painel Mundpay" },
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Saque D+3",
+          "provider": { "@id": "https://mundpay.com/#organization" },
+          "serviceType": "Fund Withdrawal"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#price-saque",
+          "name": "Taxa fixa de saque",
+          "price": 7.90,
+          "priceCurrency": "BRL",
+          "unitText": "R$ por operacao de saque",
+          "valueAddedTaxIncluded": false
+        }
       },
       {
         "@type": "Offer",
         "@id": "https://mundpay.com/pt/pagamentos-e-taxas#offer-chargeback",
-        "name": "Taxa de chargeback",
+        "name": "Taxa administrativa de chargeback",
+        "description": "Tarifa cobrada por ocorrencia de chargeback registrado. Inclui gestao da disputa e monitoramento proativo com alertas de pre-chargeback.",
         "seller": { "@id": "https://mundpay.com/#organization" },
-        "itemOffered": { "@type": "Service", "name": "Gestao de Chargeback", "provider": { "@id": "https://mundpay.com/#organization" }, "sameAs": "https://www.wikidata.org/wiki/Q3307525" },
-        "priceSpecification": { "@type": "UnitPriceSpecification", "name": "Taxa administrativa de chargeback", "price": 60.00, "priceCurrency": "BRL", "unitText": "R$ por ocorrencia" }
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Gestao de Chargeback",
+          "provider": { "@id": "https://mundpay.com/#organization" },
+          "serviceType": "Chargeback Management",
+          "sameAs": "https://www.wikidata.org/wiki/Q3307525"
+        },
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "@id": "https://mundpay.com/pt/pagamentos-e-taxas#price-chargeback",
+          "name": "Taxa administrativa de chargeback",
+          "price": 60.00,
+          "priceCurrency": "BRL",
+          "unitText": "R$ por ocorrencia registrada",
+          "valueAddedTaxIncluded": false
+        }
       },
       {
         "@type": "FAQPage",
         "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq",
         "name": "Perguntas frequentes sobre taxas Mundpay",
         "inLanguage": "pt-BR",
+        "about": { "@id": "https://mundpay.com/#organization" },
+        "isPartOf": { "@id": "https://mundpay.com/pt/pagamentos-e-taxas#webpage" },
         "mainEntity": [
-          { "@type": "Question", "name": "Qual e a taxa para vendas via Pix ou boleto no Brasil?", "acceptedAnswer": { "@type": "Answer", "text": "Para vendas domesticas (pagador no Brasil), a Mundpay cobra 5,99% do valor da transacao mais R$ 1,50 fixo por venda aprovada. Essa taxa cobre Pix, boleto bancario e cartao de credito nacional. Nao ha mensalidade, setup ou taxas de adesao. Voce paga apenas quando vende." } },
-          { "@type": "Question", "name": "Qual e a taxa para vendas internacionais no cartao?", "acceptedAnswer": { "@type": "Answer", "text": "Para vendas internacionais, a taxa e de 9,90% do valor da venda mais USD 0,50 fixo por transacao aprovada. Essa taxa cobre conversao de moeda, liquidacao internacional e antifraude. A Mundpay aceita cartoes de 190 paises e carteiras digitais como Apple Pay e Google Pay." } },
-          { "@type": "Question", "name": "Como funciona a retencao de seguranca de 15%?", "acceptedAnswer": { "@type": "Answer", "text": "A Mundpay reten 15% do saldo de cada venda por 30 dias como reserva de seguranca para cobrir eventuais chargebacks e contestacoes. Apos o periodo de retencao, o valor e liberado automaticamente para o saldo disponivel." } },
-          { "@type": "Question", "name": "Qual o prazo de saque e qual e a taxa?", "acceptedAnswer": { "@type": "Answer", "text": "O saldo disponivel pode ser sacado a qualquer momento. O prazo de liquidacao e D+3 uteis. A taxa de saque e R$ 7,90 fixo por operacao, independente do valor sacado." } },
-          { "@type": "Question", "name": "O que acontece se minha taxa de chargeback ultrapassar 0,90%?", "acceptedAnswer": { "@type": "Answer", "text": "Taxas de chargeback acima de 0,90% sobre o volume de vendas podem resultar em revisao da conta. A Mundpay oferece monitoramento proativo e alertas de pre-chargeback. Cada chargeback registrado gera uma tarifa administrativa de R$ 60,00." } }
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq-taxa-brasil",
+            "name": "Qual e a taxa para vendas via Pix ou boleto no Brasil?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para vendas domesticas (pagador no Brasil), a Mundpay cobra 5,99% do valor da transacao mais R$ 1,50 fixo por venda aprovada. Essa taxa cobre Pix, boleto bancario e cartao de credito nacional. Nao ha mensalidade, setup ou taxas de adesao. Voce paga apenas quando vende.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq-taxa-internacional",
+            "name": "Qual e a taxa para vendas internacionais no cartao?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para vendas internacionais, a taxa e de 9,90% do valor da venda mais USD 0,50 fixo por transacao aprovada. Essa taxa cobre conversao de moeda, liquidacao internacional e antifraude. A Mundpay aceita cartoes de 190 paises e carteiras digitais como Apple Pay e Google Pay.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq-retencao",
+            "name": "Como funciona a retencao de seguranca de 15%?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Mundpay reten 15% do saldo de cada venda por 30 dias como reserva de seguranca para cobrir eventuais chargebacks e contestacoes. Apos o periodo de retencao, o valor e liberado automaticamente para o saldo disponivel.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq-saque",
+            "name": "Qual o prazo de saque e qual e a taxa?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "O saldo disponivel pode ser sacado a qualquer momento. O prazo de liquidacao e D+3 uteis. A taxa de saque e R$ 7,90 fixo por operacao, independente do valor sacado.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/pagamentos-e-taxas#faq-chargeback-limite",
+            "name": "O que acontece se minha taxa de chargeback ultrapassar 0,90%?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Taxas de chargeback acima de 0,90% sobre o volume de vendas podem resultar em revisao da conta. A Mundpay oferece monitoramento proativo e alertas de pre-chargeback. Cada chargeback registrado gera uma tarifa administrativa de R$ 60,00.",
+              "datePublished": "2026-04-27"
+            }
+          }
         ]
       }
     ]
@@ -233,7 +365,7 @@
     </div>
   </section>
 
-  <div class="schema-badge">Schema JSON-LD ativo — FAQPage + 4 Offers + 5 PaymentMethods</div>
+  <div class="schema-badge">Schema JSON-LD v2 — WebPage + 5 Things + 4 Offers (unitCode P1) + FAQPage (5 @id + datePublished)</div>
 
 </body>
 </html>

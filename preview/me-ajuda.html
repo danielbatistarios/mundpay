@@ -11,7 +11,7 @@
 
   <script type="application/ld+json">
   {
-    "@context": "https://schema.org",
+    "@context": { "@vocab": "https://schema.org/", "@language": "pt-BR" },
     "@graph": [
       {
         "@type": "WebPage",
@@ -23,6 +23,7 @@
         "dateModified": "2026-04-27",
         "isPartOf": { "@id": "https://mundpay.com/#website" },
         "publisher": { "@id": "https://mundpay.com/#organization" },
+        "about": { "@id": "https://mundpay.com/#organization" },
         "mainEntity": { "@id": "https://mundpay.com/pt/me-ajuda#faq" },
         "breadcrumb": { "@id": "https://mundpay.com/pt/me-ajuda#breadcrumb" },
         "speakableSpecification": {
@@ -51,14 +52,79 @@
         "@id": "https://mundpay.com/pt/me-ajuda#faq",
         "name": "Central de Ajuda Mundpay — Perguntas Frequentes",
         "inLanguage": "pt-BR",
+        "about": { "@id": "https://mundpay.com/#organization" },
+        "isPartOf": { "@id": "https://mundpay.com/pt/me-ajuda#webpage" },
         "mainEntity": [
-          { "@type": "Question", "name": "Como faco para criar minha conta na Mundpay?", "acceptedAnswer": { "@type": "Answer", "text": "Para criar sua conta na Mundpay, acesse o site e clique em 'Criar conta'. O processo solicita dados pessoais e da empresa, documentacao para verificacao KYC e dados bancarios. A analise e concluida em ate 24 horas uteis." } },
-          { "@type": "Question", "name": "Como solicitar um saque na Mundpay?", "acceptedAnswer": { "@type": "Answer", "text": "Acesse seu painel, va ate 'Financeiro' e clique em 'Solicitar saque'. O prazo de liquidacao e D+3 uteis. A taxa de saque e R$ 7,90 por operacao." } },
-          { "@type": "Question", "name": "O que e a retencao de 15% e quando ela e liberada?", "acceptedAnswer": { "@type": "Answer", "text": "A retencao de seguranca de 15% e uma reserva aplicada sobre cada venda aprovada para cobrir chargebacks. O valor fica bloqueado por 30 dias e e liberado automaticamente apos esse periodo." } },
-          { "@type": "Question", "name": "Como funciona o antifraude da Mundpay?", "acceptedAnswer": { "@type": "Answer", "text": "A Mundpay utiliza analise de risco proativa em tempo real para cada transacao. A plataforma emite alertas de pre-chargeback, permitindo que o vendedor resolva a disputa antes que se torne formal junto a operadora do cartao." } },
-          { "@type": "Question", "name": "Como integrar a Mundpay com minha plataforma?", "acceptedAnswer": { "@type": "Answer", "text": "A Mundpay oferece integracao via API REST e webhooks. A documentacao tecnica esta no painel do desenvolvedor. O suporte esta disponivel via WhatsApp no +55 21 98829-4968." } },
-          { "@type": "Question", "name": "O que acontece se eu receber um chargeback?", "acceptedAnswer": { "@type": "Answer", "text": "Quando um chargeback e registrado, a Mundpay debita o valor da venda contestada do seu saldo mais R$ 60,00 de tarifa administrativa. Voce pode apresentar evidencias de entrega para contestar a disputa." } },
-          { "@type": "Question", "name": "Quais metodos de pagamento a Mundpay aceita?", "acceptedAnswer": { "@type": "Answer", "text": "Para compradores no Brasil: Pix, boleto e cartao de credito. Para compradores internacionais: cartoes Visa, Mastercard e Amex, Apple Pay e Google Pay. Aceita pagamentos de mais de 190 paises." } }
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/me-ajuda#faq-criar-conta",
+            "name": "Como faco para criar minha conta na Mundpay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para criar sua conta na Mundpay, acesse o site e clique em 'Criar conta'. O processo solicita dados pessoais e da empresa, documentacao para verificacao KYC e dados bancarios. A analise e concluida em ate 24 horas uteis.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/me-ajuda#faq-saque",
+            "name": "Como solicitar um saque na Mundpay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Acesse seu painel, va ate 'Financeiro' e clique em 'Solicitar saque'. O prazo de liquidacao e D+3 uteis. A taxa de saque e R$ 7,90 por operacao.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/me-ajuda#faq-retencao",
+            "name": "O que e a retencao de 15% e quando ela e liberada?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A retencao de seguranca de 15% e uma reserva aplicada sobre cada venda aprovada para cobrir chargebacks. O valor fica bloqueado por 30 dias e e liberado automaticamente apos esse periodo.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/me-ajuda#faq-antifraude",
+            "name": "Como funciona o antifraude da Mundpay?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Mundpay utiliza analise de risco proativa em tempo real para cada transacao. A plataforma emite alertas de pre-chargeback, permitindo que o vendedor resolva a disputa antes que se torne formal junto a operadora do cartao.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/me-ajuda#faq-integracao",
+            "name": "Como integrar a Mundpay com minha plataforma?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A Mundpay oferece integracao via API REST e webhooks. A documentacao tecnica esta no painel do desenvolvedor. O suporte esta disponivel via WhatsApp no +55 21 98829-4968.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/me-ajuda#faq-chargeback",
+            "name": "O que acontece se eu receber um chargeback?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Quando um chargeback e registrado, a Mundpay debita o valor da venda contestada do seu saldo mais R$ 60,00 de tarifa administrativa. Voce pode apresentar evidencias de entrega para contestar a disputa.",
+              "datePublished": "2026-04-27"
+            }
+          },
+          {
+            "@type": "Question",
+            "@id": "https://mundpay.com/pt/me-ajuda#faq-metodos",
+            "name": "Quais metodos de pagamento a Mundpay aceita?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Para compradores no Brasil: Pix, boleto e cartao de credito. Para compradores internacionais: cartoes Visa, Mastercard e Amex, Apple Pay e Google Pay. Aceita pagamentos de mais de 190 paises.",
+              "datePublished": "2026-04-27"
+            }
+          }
         ]
       }
     ]
@@ -213,7 +279,7 @@
     </div>
   </section>
 
-  <div class="schema-badge">Schema JSON-LD ativo — FAQPage (7 perguntas) + 3 Things com Wikidata</div>
+  <div class="schema-badge">Schema JSON-LD v2 — WebPage + 3 Things + FAQPage (7 @id + datePublished + about + isPartOf)</div>
 
 </body>
 </html>
