@@ -1486,6 +1486,20 @@
     <div class="pending-item">
       <div class="pending-dot pending-dot-red"></div>
       <div class="pending-text">
+        <strong>hasCredential — Certificações PCI-DSS e ISO 27001</strong>
+        <span>O schema usa <code>hasCredential</code> com placeholders. Confirmar com Wellington se a Mundpay possui PCI-DSS Level 1/2 (via adquirente) e ISO 27001. Se certificações existirem, fornecer: nome exato, número de certificado, organismo emissor e data de validade para estruturar o nó Credential completo.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
+        <strong>acceptedPaymentMethod — Lista completa de métodos</strong>
+        <span>Confirmar com Wellington quais métodos estão 100% ativos: Pix, Boleto, Visa, Mastercard, Amex, Apple Pay, Google Pay. Verificar se há métodos regionais adicionais (ex: PayPal, SEPA, local APMs) para preencher o array <code>acceptedPaymentMethod</code> no Organization e SoftwareApplication.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-red"></div>
+      <div class="pending-text">
         <strong>Verificar taxa global com Wellington</strong>
         <span>A página /pt/apresentacao exibe "8,99% + R$ 2,50". O schema usa "9,90% + USD 0,50". Um dos dois está desatualizado. Confirmar o valor correto antes de publicar o schema de /pagamentos-e-taxas.</span>
       </div>
@@ -1518,6 +1532,27 @@
     <div class="pending-item">
       <div class="pending-dot pending-dot-yellow"></div>
       <div class="pending-text">
+        <strong>acceptedCurrency — Lista de moedas aceitas</strong>
+        <span>Confirmar quais moedas a Mundpay aceita no checkout: BRL é certo. Confirmar USD, EUR e outras. Preencher <code>acceptedCurrency</code> no Organization (array de strings ISO 4217, ex: "BRL", "USD", "EUR").</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>regulators — Registro no Banco Central</strong>
+        <span>Verificar com Wellington se a Mundpay possui registro formal no Banco Central do Brasil (como Instituição de Pagamento, SubIP, etc.) ou outro regulador (CVM, Bacen). Se sim, fornecer o número de autorização para preencher o campo <code>regulators</code> com o nó correto de GovernmentOrganization.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
+        <strong>Wellington — credenciais do nó Person</strong>
+        <span>Para fortalecer E-E-A-T do nó Person: (1) formação acadêmica para <code>educationalBackground</code>; (2) associações profissionais (ex: ABFintechs, ABECS) para <code>memberOf</code>; (3) prêmios ou reconhecimentos individuais para <code>award</code>. Dados ausentes reduzem authority signal no Knowledge Graph.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-yellow"></div>
+      <div class="pending-text">
         <strong>Datas dos 13 artigos do blog</strong>
         <span>Todos os BlogPosting têm TODO_CONFIRMAR_DATA. Confirmar e preencher as datas reais de publicação de cada artigo. O Google usa datePublished para avaliar frescor de conteúdo.</span>
       </div>
@@ -1543,6 +1578,20 @@
     <div class="pending-item">
       <div class="pending-dot pending-dot-green"></div>
       <div class="pending-text">
+        <strong>Amostras de Reviews reais para nós Review</strong>
+        <span>O schema da /apresentacao tem 3 nós Review com <code>TODO_SUBSTITUIR_NOME_REAL</code>. Fornecer 3 a 5 depoimentos reais com: nome do autor (ou abreviatura LGPD-compliant), data da avaliação e texto. Reviews sem autor e sem data têm peso E-E-A-T mínimo.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>Confirmar isicV4: "6619" → "6612"</strong>
+        <span>O painel PhD identificou que o código ISIC atual ("6619 — Other financial service activities") está incorreto. O correto para gateway de pagamento é "6612 — Securities and commodity exchanges" — ou mais precisamente verificar se "6612" se aplica, pois pode ser "6619" mesmo dependendo da classificação BACEN. Confirmar com contador ou jurídico antes de alterar.</span>
+      </div>
+    </div>
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
         <strong>URL do cadastro no RegisterAction (Home)</strong>
         <span>O SoftwareApplication na home tem urlTemplate: "https://mundpay.com/cadastro/". Confirmar se esse é o slug real da página de cadastro.</span>
       </div>
@@ -1565,6 +1614,13 @@
 
   <h3>Baixas — Implementar quando possível</h3>
   <div class="pending-box">
+    <div class="pending-item">
+      <div class="pending-dot pending-dot-green"></div>
+      <div class="pending-text">
+        <strong>CNAE — confirmar código correto</strong>
+        <span>A Mundpay usa NAICS "522320" no schema. Confirmar o CNAE brasileiro correspondente (candidato: 6419-1/00 — Bancos e outras instituições de crédito não especificados anteriormente, ou 6499-9/99). Verificar no CNPJ 55.009.285/0001-13 no portal da Receita Federal qual CNAE está registrado.</span>
+      </div>
+    </div>
     <div class="pending-item">
       <div class="pending-dot pending-dot-green"></div>
       <div class="pending-text">
