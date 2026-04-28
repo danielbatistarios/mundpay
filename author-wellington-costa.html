@@ -856,29 +856,110 @@
        RESPONSIVE
     ============================================= */
     @media (max-width: 1024px) {
-      .author-content { grid-template-columns: 260px 1fr; gap: var(--space-xl); }
+      .author-content { grid-template-columns: 240px 1fr; gap: var(--space-xl); }
+      .footer-grid { grid-template-columns: 1.2fr 1fr 1fr; }
+      .footer-brand-col { grid-column: 1 / -1; display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-xl); }
+      .footer-app-btns { flex-direction: row; flex-wrap: wrap; margin-top: 0; }
     }
 
     @media (max-width: 768px) {
-      .author-hero-inner { grid-template-columns: 1fr; gap: var(--space-xl); }
-      .author-avatar-wrap { flex-direction: row; align-items: center; }
-      .author-avatar { width: 120px; height: 120px; border-radius: 18px; }
-      .author-avatar-initials { font-size: 36px; }
+      /* Header */
+      .lang-switcher { display: none; }
+      .btn-login { display: none; }
+
+      /* Hero — avatar sobe pro topo (row-reverse coloca avatar primeiro visualmente) */
+      .author-hero { padding: var(--space-xl) 20px var(--space-lg); }
+      .author-hero-inner {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        gap: var(--space-lg);
+      }
+      .author-avatar-wrap {
+        order: -1;
+        flex-direction: row;
+        align-items: center;
+        gap: var(--space-md);
+        justify-content: flex-start;
+      }
+      .author-info { order: 0; }
+      .author-avatar { width: 88px; height: 88px; border-radius: 16px; }
+      .author-avatar-initials { font-size: 28px; }
+      .author-verified-badge { font-size: 10px; }
       .author-stats { gap: var(--space-md); flex-wrap: wrap; }
-      .author-content { grid-template-columns: 1fr; }
+      .author-bio-short { font-size: 15px; }
+      .author-social { flex-wrap: wrap; gap: 6px; }
+
+      /* Expertise */
+      .expertise-inner { gap: var(--space-sm); padding: 0 20px; }
+      .expertise-section { padding: var(--space-md) 0; margin-bottom: var(--space-xl); }
+
+      /* Content layout */
+      .author-content {
+        grid-template-columns: 1fr;
+        padding: 0 20px var(--space-2xl);
+        gap: var(--space-xl);
+      }
       .bio-sidebar { position: static; }
-      .post-card { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+
+      /* Post card — coluna única com imagem no topo */
+      .post-card {
+        grid-template-columns: 1fr;
+        padding: var(--space-sm);
+      }
+      .post-card-img {
+        aspect-ratio: 16/9;
+        width: 100%;
+        border-radius: 8px;
+      }
+      .post-card-body { padding: 4px 4px 0; }
+
+      /* About section */
+      .about-section { padding: 0 20px var(--space-2xl); }
+      .about-card-header { padding: var(--space-md) var(--space-lg); }
+      .about-preview { padding: var(--space-lg); }
+      .about-expand-wrap { padding: 0 var(--space-lg) var(--space-lg); }
+
+      /* Footer */
+      .footer-brand-col { grid-column: auto; flex-direction: column; }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-lg);
+      }
+      .footer-app-btns { flex-direction: column; margin-top: 16px; }
       .footer-entities { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { padding: var(--space-lg) 20px; }
     }
 
     @media (max-width: 480px) {
+      /* Header */
+      .header-inner { padding: 0 16px; }
+      .header-left-pill nav { display: none; }
+      .pill-sep { display: none; }
+
+      /* Hero */
+      .author-hero { padding: var(--space-lg) 16px; }
       .author-name { font-size: clamp(28px, 8vw, 40px); }
-      .author-social { flex-wrap: wrap; }
-      .expertise-inner { gap: var(--space-sm); }
+      .author-role { font-size: 14px; margin-bottom: var(--space-md); }
+      .author-stats { gap: var(--space-sm); }
+      .author-stat-value { font-size: 18px; }
+      .author-social a { padding: 7px 11px; font-size: 12px; }
+
+      /* Expertise */
+      .expertise-inner { padding: 0 16px; }
+
+      /* Content */
+      .author-content { padding: 0 16px var(--space-xl); }
+
+      /* About */
+      .about-section { padding: 0 16px var(--space-xl); }
+      .about-preview p, .about-full p { font-size: 14px; }
+
+      /* Footer */
+      .footer-inner { padding: var(--space-lg) 16px; }
       .footer-grid { grid-template-columns: 1fr; gap: var(--space-lg); }
       .footer-entities { grid-template-columns: 1fr; }
-      .header-left-pill nav { display: none; }
+      .footer-app-btns { flex-direction: row; flex-wrap: wrap; }
+      .footer-bottom small { font-size: 11px; }
     }
   </style>
 </head>
